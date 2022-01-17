@@ -1,4 +1,7 @@
 package com.mobileinvitation.repository;
 
-public interface VideoRepo {
+import com.mobileinvitation.model.entity.VideoEntity;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface VideoRepo extends JpaRepository<VideoEntity, Long> {
 }
