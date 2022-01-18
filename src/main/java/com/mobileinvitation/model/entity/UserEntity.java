@@ -10,11 +10,11 @@ import java.sql.Time;
 
 @Getter
 @Entity
-@NoArgsConstructor( access = AccessLevel.PROTECTED )
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class UserEntity extends TimeEntity {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idx;
 
     @OneToOne
@@ -28,8 +28,8 @@ public class UserEntity extends TimeEntity {
     private String userPass;
 
     @Builder
-    public UserEntity(String userName, String userPass)
-    {
+    public UserEntity(Long idx, String userName, String userPass) {
+        this.idx = idx;
         this.userName = userName;
         this.userPass = userPass;
     }
