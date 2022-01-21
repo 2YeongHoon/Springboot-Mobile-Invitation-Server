@@ -15,11 +15,11 @@ public class MobileInvitationController {
     private final MobileInvitationService mobileInvitationService;
 
     @PostMapping("/")
-    public String TestPath(@RequestBody CreateUserReq createUserReq) {
+    public String Login(@RequestBody CreateUserReq createUserReq) {
 
-        mobileInvitationService.savePost(createUserReq);
+        String result = mobileInvitationService.savePost(createUserReq);
 
-        return "pathsucess";
+        return result;
     }
 //    @GetMapping("/path/{userName}/{userPass}")
 //    public String TestPath(@PathVariable String userName, @PathVariable String userPass) {
