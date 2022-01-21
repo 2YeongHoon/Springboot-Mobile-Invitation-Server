@@ -5,6 +5,7 @@ import com.mobileinvitation.model.request.CreateUserReq;
 import com.mobileinvitation.repository.UserRepo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.util.ObjectUtils;
 
 import javax.transaction.Transactional;
 import java.util.Optional;
@@ -22,9 +23,9 @@ public class MobileInvitationService {
         String userPass = createUserReq.getUserPass();
 
         try {
-            Optional<UserEntity> user = userLoginCheck(createUserReq);
+            UserEntity user = userLoginCheck(createUserReq).orElseGet(null);
 
-            if (user.isEmpty()) {
+            if (ObjectUtils.isEmpty(user)) {
                 UserEntity userEntity = UserEntity.builder()
                         .userName(userName)
                         .userPass(userPass)
@@ -32,8 +33,8 @@ public class MobileInvitationService {
                 userRepo.save(userEntity);
                 return "회원정보 저장";
             } else {
-                UserEntity userEntity = user.get();
-                if (!userPass.equals(userEntity.getUserPass())) {
+//                UserEntity userEntity = user.get();
+                if (!userPass.equals(user.getUserPass())) {
                     return "Passwd가 일치 하지 않습니다.";
                 }
             }
