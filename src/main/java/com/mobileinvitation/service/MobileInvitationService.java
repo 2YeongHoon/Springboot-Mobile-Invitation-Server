@@ -17,7 +17,7 @@ public class MobileInvitationService {
     private final UserRepo userRepo;
 
     @Transactional
-    public String savePost(CreateUserReq createUserReq) {
+    public String savePost(CreateUserReq createUserReq) throws Exception {
 
         String userName = createUserReq.getUserName();
         String userPass = createUserReq.getUserPass();
@@ -39,7 +39,7 @@ public class MobileInvitationService {
                 }
             }
         } catch (Exception e) {
-            return "Err";
+            throw new Exception(e.getMessage());
         }
         return "Success";
     }

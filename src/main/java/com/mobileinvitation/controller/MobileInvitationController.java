@@ -15,29 +15,10 @@ public class MobileInvitationController {
     private final MobileInvitationService mobileInvitationService;
 
     @PostMapping("/")
-    public String Login(@RequestBody CreateUserReq createUserReq) {
+    public String login(@RequestBody CreateUserReq createUserReq) {
 
         String result = mobileInvitationService.savePost(createUserReq);
 
         return result;
     }
-//    @GetMapping("/path/{userName}/{userPass}")
-//    public String TestPath(@PathVariable String userName, @PathVariable String userPass) {
-//
-//        log.info("userName: {}", userName);
-//        log.info("userPass: {}", userPass);
-//
-//        return "pathsucess";
-//    }
-//
-//    @GetMapping("/req/{userName}/{userPass}")
-//    public String TestReq(@RequestParam String userName, @RequestParam String userPass) {
-//
-//        log.info("userName: {}", userName);
-//        log.info("userPass: {}", userPass);
-//
-//        return "reqsucess";
-//    }
-
-
 }
