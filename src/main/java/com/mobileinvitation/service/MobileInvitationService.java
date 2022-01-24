@@ -23,7 +23,7 @@ public class MobileInvitationService {
         String userPass = createUserReq.getUserPass();
 
         try {
-            UserEntity user = userLoginCheck(createUserReq).orElseGet(null);
+            UserEntity user = userLoginCheck(createUserReq).orElse(null);
 
             if (ObjectUtils.isEmpty(user)) {
                 UserEntity userEntity = UserEntity.builder()
@@ -43,7 +43,6 @@ public class MobileInvitationService {
         }
         return "Success";
     }
-
 
     @Transactional
     public Optional<UserEntity> userLoginCheck(CreateUserReq createUserReq) {
