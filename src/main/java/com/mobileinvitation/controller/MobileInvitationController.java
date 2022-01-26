@@ -7,10 +7,11 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class MobileInvitationController {
 
-    @GetMapping(value = "/information")
+    @GetMapping(value = "/information/userName")
     public ModelAndView information() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("information");
+//        modelAndView.addObject("userName", userName);
         return modelAndView;
     }
 

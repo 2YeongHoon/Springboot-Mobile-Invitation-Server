@@ -17,7 +17,7 @@ public class MobileInvitationService {
     private final UserRepo userRepo;
 
     @Transactional
-    public String savePost(CreateUserReq createUserReq) throws Exception {
+    public String saveUser(CreateUserReq createUserReq) throws Exception {
 
         String userName = createUserReq.getUserName();
         String userPass = createUserReq.getUserPass();
@@ -42,6 +42,16 @@ public class MobileInvitationService {
             throw new Exception(e.getMessage());
         }
         return "Success";
+    }
+
+    @Transactional
+    public String getInfo() {
+        return "";
+    }
+
+    @Transactional
+    public String saveInfo() {
+        return "";
     }
 
     @Transactional

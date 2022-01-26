@@ -16,8 +16,18 @@ public class MobileInvitationRestController {
     @PostMapping("/")
     public String login(@RequestBody CreateUserReq createUserReq) throws Exception {
 
-        String result = mobileInvitationService.savePost(createUserReq);
+        String result = mobileInvitationService.saveUser(createUserReq);
 
         return result;
+    }
+
+    @PostMapping("/info")
+    public String postInfo() {
+        return "";
+    }
+
+    @GetMapping
+    public String getInfo() {
+        return "";
     }
 }
