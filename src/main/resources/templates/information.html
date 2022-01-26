@@ -3,6 +3,23 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <th:block layout:fragment="style">
     <style>
+        .wrap {
+            width: 100%;
+        }
+
+        .body-wrap {
+            width: 500px;
+            margin: auto;
+        }
+
+        .save-btn {
+            display: block !important;
+            margin: auto;
+        }
+
+        input {
+            margin-bottom: 10px !important;
+        }
     </style>
 </th:block>
 
@@ -21,41 +38,41 @@
             <div class="family-info">
                 <label class="mt-3">신랑</label>
                 <div class="row">
-                    <div class="col-3">
+                    <div class="col">
                         <input class="form-control form-control-sm" type="text" placeholder="아버님"
                                aria-label=".form-control-sm example">
                     </div>
-                    <div class="col-3">
+                    <div class="col">
                         <input class="form-control form-control-sm" type="text" placeholder="어머님"
                                aria-label=".form-control-sm example">
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-3">
+                    <div class="col">
                         <input class="form-control form-control-sm" type="text" placeholder="신랑이름"
                                aria-label=".form-control-sm example">
                     </div>
-                    <div class="col-3">
+                    <div class="col">
                         <input class="form-control form-control-sm" type="text" placeholder="관계(선택)"
                                aria-label=".form-control-sm example">
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-3">
+                    <div class="col">
                         <input class="form-control form-control-sm" type="text" placeholder="연락처"
                                aria-label=".form-control-sm example">
                     </div>
-                    <div class="col-3">
+                    <div class="col">
                         <input class="form-control form-control-sm" type="text" placeholder="은행"
                                aria-label=".form-control-sm example">
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-3">
+                    <div class="col">
                         <input class="form-control form-control-sm" type="text" placeholder="계좌번호"
                                aria-label=".form-control-sm example">
                     </div>
-                    <div class="col-3">
+                    <div class="col">
                         <input class="form-control form-control-sm" type="text" placeholder="예금주"
                                aria-label=".form-control-sm example">
                     </div>
@@ -63,41 +80,41 @@
 
                 <label class="mt-3">신부</label>
                 <div class="row">
-                    <div class="col-3">
+                    <div class="col">
                         <input class="form-control form-control-sm" type="text" placeholder="아버님"
                                aria-label=".form-control-sm example">
                     </div>
-                    <div class="col-3">
+                    <div class="col">
                         <input class="form-control form-control-sm" type="text" placeholder="어머님"
                                aria-label=".form-control-sm example">
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-3">
+                    <div class="col">
                         <input class="form-control form-control-sm" type="text" placeholder="신부"
                                aria-label=".form-control-sm example">
                     </div>
-                    <div class="col-3">
+                    <div class="col">
                         <input class="form-control form-control-sm" type="text" placeholder="관계(선택)"
                                aria-label=".form-control-sm example">
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-3">
+                    <div class="col">
                         <input class="form-control form-control-sm" type="text" placeholder="연락처"
                                aria-label=".form-control-sm example">
                     </div>
-                    <div class="col-3">
+                    <div class="col">
                         <input class="form-control form-control-sm" type="text" placeholder="은행"
                                aria-label=".form-control-sm example">
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-3">
+                    <div class="col">
                         <input class="form-control form-control-sm" type="text" placeholder="계좌번호"
                                aria-label=".form-control-sm example">
                     </div>
-                    <div class="col-3">
+                    <div class="col">
                         <input class="form-control form-control-sm" type="text" placeholder="예금주"
                                aria-label=".form-control-sm example">
                     </div>
@@ -106,53 +123,56 @@
 
             <div class="wedding-hall-info mt-5">
                 <label class="mt-3">웨딩홀</label>
-                <input name="" class="form-control form-control-sm d-flex w-25" placeholder="날짜">
-                <input name="" class="form-control form-control-sm d-flex w-25" placeholder="예식장명">
-                <input type="text" class="form-control form-control-sm w-25" id="sample6_postcode" placeholder="우편번호">
-                <input type="button" class="form-control form-control-sm w-25" onclick="sample6_execDaumPostcode()"
+                <input name="" class="form-control form-control-sm d-flex" placeholder="날짜">
+                <input name="" class="form-control form-control-sm d-flex" placeholder="예식장명">
+                <input type="text" class="form-control form-control-sm" id="sample6_postcode" placeholder="우편번호">
+                <input type="button" class="form-control form-control-sm" onclick="sample6_execDaumPostcode()"
                        value="우편번호 찾기">
-                <input type="text" class="form-control form-control-sm w-25" id="sample6_address" placeholder="주소">
-                <input type="text" class="form-control form-control-sm w-25" id="sample6_detailAddress"
+                <input type="text" class="form-control form-control-sm" id="sample6_address" placeholder="주소">
+                <input type="text" class="form-control form-control-sm" id="sample6_detailAddress"
                        placeholder="상세주소">
-                <input type="text" class="form-control form-control-sm w-25" id="sample6_extraAddress"
+                <input type="text" class="form-control form-control-sm" id="sample6_extraAddress"
                        placeholder="참고항목">
-                <!--      <input name="" class="form-control form-control-sm d-flex w-25" placeholder="주소">-->
-                <!--      <input name="" class="form-control form-control-sm d-flex w-25" placeholder="상세주소">-->
+                <!--      <input name="" class="form-control form-control-sm d-flex" placeholder="주소">-->
+                <!--      <input name="" class="form-control form-control-sm d-flex" placeholder="상세주소">-->
             </div>
 
             <div class="location-info mt-5">
                 <label class="mt-3">위치</label>
-                <textarea name="" class="form-control form-control-sm d-flex w-25" placeholder="오시는길"></textarea>
-                <textarea name="" class="form-control form-control-sm d-flex w-25" placeholder="약도"></textarea>
+                <textarea name="" class="form-control form-control-sm d-flex" placeholder="오시는길"></textarea>
+                <textarea name="" class="form-control form-control-sm d-flex" placeholder="약도"></textarea>
             </div>
 
             <div class="media mt-5">
                 <label class="mt-3">미디어</label>
-                <input type="file" name="" class="form-control form-control-sm d-flex w-25" placeholder="사진">
-                <input type="file" name="" class="form-control form-control-sm d-flex w-25" placeholder="비디오">
+                <input type="file" name="" class="form-control form-control-sm d-flex" placeholder="사진">
+                <input type="file" name="" class="form-control form-control-sm d-flex" placeholder="비디오">
             </div>
 
             <div class="greetings mt-5">
                 <label class="mt-3">인사말</label>
-                <textarea name="" class="form-control form-control-sm d-flex w-25" placeholder="인사말"></textarea>
+                <textarea name="" class="form-control form-control-sm d-flex" placeholder="인사말"></textarea>
             </div>
 
             <div class="greetings mt-5">
                 <label class="mt-3">글귀</label>
-                <textarea name="" class="form-control form-control-sm d-flex w-25"
+                <textarea name="" class="form-control form-control-sm d-flex"
                           placeholder="150자 이내로 작성해주세요^^"></textarea>
             </div>
 
             <div class="greetings mt-5">
                 <label class="mt-3">인적사항</label>
-                <textarea name="" class="form-control form-control-sm d-flex w-25"
+                <textarea name="" class="form-control form-control-sm d-flex"
                           placeholder="150자 이내로 작성해주세요^^"></textarea>
             </div>
 
             <div class="notice mt-5">
                 <label class="mt-3">공지사항</label>
-                <textarea name="" class="form-control form-control-sm d-flex w-25"
+                <textarea style="height: 100px;" name="" class="form-control form-control-sm d-flex"
                           placeholder="자가용보다 대중교통이 편리해요와 같이 전하고 싶은 내용을 작성해 주세요. 전하고 싶은 내용을 작성해 주세요. 또는, 마무리 말씀을 써주셔도 돼요^^!* 150자 이내"></textarea>
+            </div>
+            <div class="btn-area mt-5 mb-5">
+                <button class="btn btn-primary save-btn" type="button">저장하기</button>
             </div>
         </div>
     </div>
