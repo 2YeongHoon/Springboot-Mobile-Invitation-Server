@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<th:block layout:fragment="style">
+    <style>
+        .login {
+            width: 500px;
+            margin: 200px auto auto auto;
+            text-align: center;
+        }
+    </style>
+</th:block>
+
+<th:block layout:fragment="content">
+    <head>
+        <meta charset="UTF-8">
+        <title>login</title>
+    </head>
+    <body>
+    <form action="login" method="post">
+        전화번호 : <input type="text" id="userName"><br>
+        패스워드 : <input type="text" id="userPass">
+        <input type="button" value="제작하기" onclick="login();">
+    </form>
+    </body>
+</th:block>
+
+<th:block layout:fragment="script">
+    <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script>
+        console.log("hello");
+
+        function login() {
+            let userName = document.getElementById("userName").value;
+            let userPass = document.getElementById("userPass").value;
+            let obj = {
+                "userName": userName,
+                "userPass": userPass
+            }
+            $.ajax({
+                type: "POST",
+                url: "login",
+                data: JSON.stringify(obj),
+                contentType: "application/json",
+                success: function (data) {
+                    console.log(data);
+                    location.href = "information";
+
+                    alert("성공")
+                }
+                ,
+                error: function () {
+                    alert("에러")
+                }
+            })
+            ;
+
+        }
+
+        // function ajax(){
+        //
+        //     $.ajax({
+        //         url: "memberRegi.do",
+        //         data: "userName=" + userName,
+        //         type: "POST",
+        //         success : function(data){
+        //             alert("성공")
+        //         },
+        //         error : function(){
+        //             alert("에러")
+        //         }
+        //     });
+        // }
+
+
+    </script>
+</th:block>
+
+</html>

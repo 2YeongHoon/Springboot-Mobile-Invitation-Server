@@ -1,7 +1,7 @@
 package com.mobileinvitation.service;
 
 import com.mobileinvitation.model.entity.UserEntity;
-import com.mobileinvitation.model.request.CreateUserReq;
+import com.mobileinvitation.model.request.LoginUserReq;
 import com.mobileinvitation.repository.UserRepo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -17,26 +17,23 @@ public class MobileInvitationService {
     private final UserRepo userRepo;
 
     @Transactional
-    public String saveUser(CreateUserReq createUserReq) throws Exception {
-
-        String userName = createUserReq.getUserName();
-        String userPass = createUserReq.getUserPass();
-
+    public String login(LoginUserReq loginUserReq) throws Exception {
         try {
-            UserEntity user = userLoginCheck(createUserReq).orElse(null);
+            UserEntity user = userLoginCheck(loginUserReq).orElse(null);
 
             if (ObjectUtils.isEmpty(user)) {
-                UserEntity userEntity = UserEntity.builder()
-                        .userName(userName)
-                        .userPass(userPass)
-                        .build();
-                userRepo.save(userEntity);
-                return "회원정보 저장";
+//                UserEntity userEntity = UserEntity.builder()
+//                        .userName(userName)
+//                        .userPass(userPass)
+//                        .build();
+//                userRepo.save(userEntity);
+                return "회원정보 없음, infomation.html 호출";
             } else {
 //                UserEntity userEntity = user.get();
-                if (!userPass.equals(user.getUserPass())) {
-                    return "Passwd가 일치 하지 않습니다.";
+                if (!user.getUserPass().equals(user.getUserPass())) {
+                    return "Passwd를 확인해주세요.";
                 }
+                // getInfo
             }
         } catch (Exception e) {
             throw new Exception(e.getMessage());
@@ -55,7 +52,7 @@ public class MobileInvitationService {
     }
 
     @Transactional
-    public Optional<UserEntity> userLoginCheck(CreateUserReq createUserReq) {
-        return userRepo.findByUserNameAndUserPass(createUserReq.getUserName(), createUserReq.getUserPass());
+    public Optional<UserEntity> userLoginCheck(LoginUserReq loginUserReq) {
+        return userRepo.findByUserNameAndUserPass(loginUserReq.getUserName(), loginUserReq.getUserPass());
     }
 }
