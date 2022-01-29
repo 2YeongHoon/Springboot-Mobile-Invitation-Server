@@ -43,10 +43,15 @@
                 data: JSON.stringify(obj),
                 contentType: "application/json",
                 success: function (data) {
-                    console.log(data);
-                    location.href = "information";
-
-                    alert("성공")
+                    switch (data.code) {
+                        case 0:
+                        case 1:
+                            location.href = "information";
+                            break;
+                        case 2:
+                            alert(data.message);
+                            break;
+                    }
                 }
                 ,
                 error: function () {

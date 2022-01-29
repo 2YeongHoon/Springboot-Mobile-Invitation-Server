@@ -1,5 +1,6 @@
 package com.mobileinvitation.controller;
 
+import com.mobileinvitation.common.CommonResult;
 import com.mobileinvitation.model.request.LoginUserReq;
 import com.mobileinvitation.service.MobileInvitationService;
 import lombok.RequiredArgsConstructor;
@@ -15,10 +16,8 @@ public class MobileInvitationRestController {
     private final MobileInvitationService mobileInvitationService;
 
     @PostMapping("/login")
-    public String login(@RequestBody LoginUserReq loginUserReq) throws Exception {
-        String result = mobileInvitationService.login(loginUserReq);
-
-        return result;
+    public CommonResult login(@RequestBody LoginUserReq loginUserReq) throws Exception {
+        return mobileInvitationService.login(loginUserReq);
     }
 
     @GetMapping(value = "/information")
@@ -38,14 +37,4 @@ public class MobileInvitationRestController {
 
         return modelAndView;
     }
-
-//    @PostMapping("/login")
-//    public String login() {
-//        return "";
-//    }
-//
-//    @GetMapping
-//    public String getInfo() {
-//        return "";
-//    }
 }

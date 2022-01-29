@@ -21,6 +21,16 @@ public class MobileInvitationController {
 ////        modelAndView.addObject("userName", userName);
 //        return modelAndView;
 //    }
+//
+//    @GetMapping(value = "/login")
+//    public ModelAndView login() {
+//        ModelAndView modelAndView = new ModelAndView();
+//        modelAndView.setViewName("login");
+////        mobileInvitationService.login(userName, userPass);
+////        modelAndView.addObject("userName", userName);
+//
+//        return modelAndView;
+//    }
 
 //    @GetMapping(value = "/login/{userName}/{userPass}")
 //    public ModelAndView login(@PathVariable("userName") String userName,
@@ -33,13 +43,5 @@ public class MobileInvitationController {
 //        return modelAndView;
 //    }
 //
-//    @GetMapping(value = "/login")
-//    public ModelAndView login() {
-//        ModelAndView modelAndView = new ModelAndView();
-//        modelAndView.setViewName("login");
-////        mobileInvitationService.login(userName, userPass);
-////        modelAndView.addObject("userName", userName);
-//
-//        return modelAndView;
-//    }
+
 }
