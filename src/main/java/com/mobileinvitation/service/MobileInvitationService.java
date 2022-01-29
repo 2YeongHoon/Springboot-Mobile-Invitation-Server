@@ -24,7 +24,7 @@ public class MobileInvitationService {
         try {
             if (userExistCheck(loginUserReq.getUserName())) {
                 UserEntity user = userPassCheck(loginUserReq).orElse(null);
-                if (!user.getUserPass().equals(user.getUserPass())) {
+                if (user == null) {
                     res.setCode(2);
                     res.setMessage("Password 불일치");
                     return res;
