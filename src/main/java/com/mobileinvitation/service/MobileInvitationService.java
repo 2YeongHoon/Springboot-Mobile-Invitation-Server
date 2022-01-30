@@ -74,6 +74,7 @@ public class MobileInvitationService {
             userExist = false;
         }
         return userExist;
+//        return userRepo.existsByName(userName);
     }
 
 }

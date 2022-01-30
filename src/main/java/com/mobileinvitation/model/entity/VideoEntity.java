@@ -1,9 +1,6 @@
 package com.mobileinvitation.model.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 @Entity
 public class VideoEntity {
@@ -11,9 +8,11 @@ public class VideoEntity {
     @GeneratedValue
     private Long idx;
 
+    @Column
+    private String video;
+
     @ManyToOne
     private WeddingInfoEntity weddingInfoEntity;
-
 
 
 }

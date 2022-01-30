@@ -1,9 +1,6 @@
 package com.mobileinvitation.model.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 @Entity
 public class ImageEntity {
@@ -12,7 +9,9 @@ public class ImageEntity {
     @GeneratedValue
     private Long idx;
 
+    @Column
+    private String image;
+
     @ManyToOne
     private WeddingInfoEntity weddingInfoEntity;
-
 }
