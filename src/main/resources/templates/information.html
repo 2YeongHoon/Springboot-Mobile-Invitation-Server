@@ -185,6 +185,53 @@
 <th:block layout:fragment="script">
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <script>
+        function save() {
+            let groomName = document.getElementById("groomName").value;
+            let groomFather = document.getElementById("groomFather").value;
+            let groomMather = document.getElementById("groomMather").value;
+            let groomRelation = document.getElementById("groomRelation").value;
+            let groomPhone = document.getElementById("groomPhone").value;
+            let groomBank = document.getElementById("groomBank").value;
+            let groomAccountNum = document.getElementById("groomAccountNum").value;
+            let groomAccountOwn = document.getElementById("groomAccountOwn").value;
+            let brideName = document.getElementById("brideName").value;
+            let brideFather = document.getElementById("brideFather").value;
+            let brideMather = document.getElementById("brideMather").value;
+            let brideRelation = document.getElementById("brideRelation").value;
+            let bridePhone = document.getElementById("bridePhone").value;
+            let brideBank = document.getElementById("brideBank").value;
+            let brideAccountNum = document.getElementById("brideAccountNum").value;
+            let brideAccountOwn = document.getElementById("brideAccountOwn").value;
+
+            obj = {
+                "userName": userName,
+                "userPass": userPass
+            }
+            $.ajax({
+                type: "POST",
+                url: "login",
+                data: JSON.stringify(obj),
+                contentType: "application/json",
+                success: function (data) {
+                    switch (data.code) {
+                        case 0:
+                        case 1:
+                            location.href = "information";
+                            break;
+                        case 2:
+                            alert(data.message);
+                            break;
+                    }
+                }
+                ,
+                error: function () {
+                    alert("에러")
+                }
+            })
+            ;
+        }
+        }
+
         function sample6_execDaumPostcode() {
             new daum.Postcode({
                 oncomplete: function (data) {
