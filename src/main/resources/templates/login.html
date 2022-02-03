@@ -19,7 +19,7 @@
     <body>
     <form action="login" method="post">
         전화번호 : <input type="text" id="userName"><br>
-        패스워드 : <input type="text" id="userPass">
+        패스워드 : <input type="password" id="userPass">
         <input type="button" value="제작하기" onclick="login();">
     </form>
     </body>
@@ -46,7 +46,7 @@
                     switch (data.code) {
                         case 0:
                         case 1:
-                            location.href = "information";
+                            location.href = "information/" + userName;
                             break;
                         case 2:
                             alert(data.message);

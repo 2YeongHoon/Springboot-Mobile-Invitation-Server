@@ -32,205 +32,227 @@
         <title>Title</title>
     </head>
     <body>
-    <p>Board</p>
-    <div class="wrap">
-        <div class="body-wrap">
-            <div class="family-info">
-                <label class="mt-3">신랑</label>
-                <div class="row">
-                    <div class="col">
-                        <input class="form-control form-control-sm" type="text" placeholder="아버님" id="groomFather"
-                               aria-label=".form-control-sm example">
+    <form id="frm-upload" enctype="multipart/form-data" action="upload" method="post">
+        <p>Board</p>
+        <div class="wrap">
+            <div class="body-wrap">
+                <div class="family-info">
+                    <label class="mt-3">신랑</label>
+                    <div class="row">
+                        <div class="col">
+                            <input class="form-control form-control-sm" type="text" placeholder="아버님" name="groomFather"
+                                   aria-label=".form-control-sm example">
+                        </div>
+                        <div class="col">
+                            <input class="form-control form-control-sm" type="text" placeholder="어머님" name="groomMather"
+                                   aria-label=".form-control-sm example">
+                        </div>
                     </div>
-                    <div class="col">
-                        <input class="form-control form-control-sm" type="text" placeholder="어머님" id="groomMather"
-                               aria-label=".form-control-sm example">
+                    <div class="row">
+                        <div class="col">
+                            <input class="form-control form-control-sm" type="text" placeholder="신랑이름" name="groomName"
+                                   aria-label=".form-control-sm example">
+                        </div>
+                        <div class="col">
+                            <input class="form-control form-control-sm" type="text" placeholder="관계(선택)"
+                                   name="groomRelation"
+                                   aria-label=".form-control-sm example">
+                        </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        <input class="form-control form-control-sm" type="text" placeholder="신랑이름" id="groomName"
-                               aria-label=".form-control-sm example">
+                    <div class="row">
+                        <div class="col">
+                            <input class="form-control form-control-sm" type="text" placeholder="연락처" name="groomPhone"
+                                   aria-label=".form-control-sm example">
+                        </div>
+                        <div class="col">
+                            <input class="form-control form-control-sm" type="text" placeholder="은행" name="groomBank"
+                                   aria-label=".form-control-sm example">
+                        </div>
                     </div>
-                    <div class="col">
-                        <input class="form-control form-control-sm" type="text" placeholder="관계(선택)" id="groomRelation"
-                               aria-label=".form-control-sm example">
+                    <div class="row">
+                        <div class="col">
+                            <input class="form-control form-control-sm" type="text" placeholder="계좌번호"
+                                   name="groomAccountNum"
+                                   aria-label=".form-control-sm example">
+                        </div>
+                        <div class="col">
+                            <input class="form-control form-control-sm" type="text" placeholder="예금주"
+                                   name="groomAccountOwn"
+                                   aria-label=".form-control-sm example">
+                        </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        <input class="form-control form-control-sm" type="text" placeholder="연락처" id="groomPhone"
-                               aria-label=".form-control-sm example">
+
+                    <label class="mt-3">신부</label>
+                    <div class="row">
+                        <div class="col">
+                            <input class="form-control form-control-sm" type="text" placeholder="아버님" name="brideFather"
+                                   aria-label=".form-control-sm example">
+                        </div>
+                        <div class="col">
+                            <input class="form-control form-control-sm" type="text" placeholder="어머님" name="brideMather"
+                                   aria-label=".form-control-sm example">
+                        </div>
                     </div>
-                    <div class="col">
-                        <input class="form-control form-control-sm" type="text" placeholder="은행" id="groomBank"
-                               aria-label=".form-control-sm example">
+                    <div class="row">
+                        <div class="col">
+                            <input class="form-control form-control-sm" type="text" placeholder="신부" name="brideName"
+                                   aria-label=".form-control-sm example">
+                        </div>
+                        <div class="col">
+                            <input class="form-control form-control-sm" type="text" placeholder="관계(선택)"
+                                   name="brideRelation"
+                                   aria-label=".form-control-sm example">
+                        </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        <input class="form-control form-control-sm" type="text" placeholder="계좌번호" id="groomAccountNum"
-                               aria-label=".form-control-sm example">
+                    <div class="row">
+                        <div class="col">
+                            <input class="form-control form-control-sm" type="text" placeholder="연락처" name="bridePhone"
+                                   aria-label=".form-control-sm example">
+                        </div>
+                        <div class="col">
+                            <input class="form-control form-control-sm" type="text" placeholder="은행" name="brideBank"
+                                   aria-label=".form-control-sm example">
+                        </div>
                     </div>
-                    <div class="col">
-                        <input class="form-control form-control-sm" type="text" placeholder="예금주" id="groomAccountOwn"
-                               aria-label=".form-control-sm example">
+                    <div class="row">
+                        <div class="col">
+                            <input class="form-control form-control-sm" type="text" placeholder="계좌번호"
+                                   name="brideAccountNum"
+                                   aria-label=".form-control-sm example">
+                        </div>
+                        <div class="col">
+                            <input class="form-control form-control-sm" type="text" placeholder="예금주"
+                                   name="brideAccountOwn"
+                                   aria-label=".form-control-sm example">
+                        </div>
                     </div>
                 </div>
 
-                <label class="mt-3">신부</label>
-                <div class="row">
-                    <div class="col">
-                        <input class="form-control form-control-sm" type="text" placeholder="아버님" id="brideFather"
-                               aria-label=".form-control-sm example">
-                    </div>
-                    <div class="col">
-                        <input class="form-control form-control-sm" type="text" placeholder="어머님" id="brideMather"
-                               aria-label=".form-control-sm example">
-                    </div>
+                <div class="wedding-hall-info mt-5">
+                    <label class="mt-3">웨딩홀</label>
+                    <input class="form-control form-control-sm d-flex" placeholder="날짜" name="weddingDate">
+                    <input class="form-control form-control-sm d-flex" placeholder="예식장명" name="weddingHall">
+                    <input type="text" class="form-control form-control-sm" name="sample6_postcode" placeholder="우편번호">
+                    <input type="button" class="form-control form-control-sm" onclick="sample6_execDaumPostcode()"
+                           value="우편번호 찾기">
+                    <input type="text" class="form-control form-control-sm" name="address" placeholder="주소">
+                    <input type="text" class="form-control form-control-sm" name="detailAddress"
+                           placeholder="상세주소">
+                    <input type="text" class="form-control form-control-sm" name="sample6_extraAddress"
+                           placeholder="참고항목">
+                    <!--      <input  class="form-control form-control-sm d-flex" placeholder="주소">-->
+                    <!--      <input  class="form-control form-control-sm d-flex" placeholder="상세주소">-->
                 </div>
-                <div class="row">
-                    <div class="col">
-                        <input class="form-control form-control-sm" type="text" placeholder="신부" id="brideName"
-                               aria-label=".form-control-sm example">
-                    </div>
-                    <div class="col">
-                        <input class="form-control form-control-sm" type="text" placeholder="관계(선택)" id="brideRelation"
-                               aria-label=".form-control-sm example">
-                    </div>
+
+                <div class="location-info mt-5">
+                    <label class="mt-3">위치</label>
+                    <textarea class="form-control form-control-sm d-flex" placeholder="오시는길"
+                              name="wayToCome"></textarea>
+                    <textarea class="form-control form-control-sm d-flex" placeholder="약도"></textarea>
                 </div>
-                <div class="row">
-                    <div class="col">
-                        <input class="form-control form-control-sm" type="text" placeholder="연락처" id="bridePhone"
-                               aria-label=".form-control-sm example">
-                    </div>
-                    <div class="col">
-                        <input class="form-control form-control-sm" type="text" placeholder="은행" id="brideBank"
-                               aria-label=".form-control-sm example">
-                    </div>
+
+
+                <div class="media mt-5">
+                    <label class="mt-3">미디어</label>
+                    <input type="file" class="form-control form-control-sm d-flex"
+                           placeholder="사진" name="image">
+                    <input type="file" class="form-control form-control-sm d-flex" placeholder="비디오" name="video">
                 </div>
-                <div class="row">
-                    <div class="col">
-                        <input class="form-control form-control-sm" type="text" placeholder="계좌번호" id="brideAccountNum"
-                               aria-label=".form-control-sm example">
-                    </div>
-                    <div class="col">
-                        <input class="form-control form-control-sm" type="text" placeholder="예금주" id="brideAccountOwn"
-                               aria-label=".form-control-sm example">
-                    </div>
+
+                <div class="greetings mt-5">
+                    <label class="mt-3">인사말</label>
+                    <textarea class="form-control form-control-sm d-flex" placeholder="인사말"
+                              name="greetingsTitle"></textarea>
                 </div>
-            </div>
 
-            <div class="wedding-hall-info mt-5">
-                <label class="mt-3">웨딩홀</label>
-                <input name="" class="form-control form-control-sm d-flex" placeholder="날짜" id="weddingDate">
-                <input name="" class="form-control form-control-sm d-flex" placeholder="예식장명" id="weddingHall">
-                <input type="text" class="form-control form-control-sm" id="sample6_postcode" placeholder="우편번호">
-                <input type="button" class="form-control form-control-sm" onclick="sample6_execDaumPostcode()"
-                       value="우편번호 찾기">
-                <input type="text" class="form-control form-control-sm" id="sample6_address" placeholder="주소"
-                       id="address">
-                <input type="text" class="form-control form-control-sm" id="sample6_detailAddress"
-                       placeholder="상세주소" id="detailAddress">
-                <input type="text" class="form-control form-control-sm" id="sample6_extraAddress"
-                       placeholder="참고항목">
-                <!--      <input name="" class="form-control form-control-sm d-flex" placeholder="주소">-->
-                <!--      <input name="" class="form-control form-control-sm d-flex" placeholder="상세주소">-->
-            </div>
+                <div class="greetings mt-5">
+                    <label class="mt-3">글귀</label>
+                    <textarea class="form-control form-control-sm d-flex"
+                              placeholder="150자 이내로 작성해주세요^^" name="greetingsBody"></textarea>
+                </div>
 
-            <div class="location-info mt-5">
-                <label class="mt-3">위치</label>
-                <textarea name="" class="form-control form-control-sm d-flex" placeholder="오시는길"
-                          id="wayToCome"></textarea>
-                <textarea name="" class="form-control form-control-sm d-flex" placeholder="약도"></textarea>
-            </div>
+                <div class="greetings mt-5">
+                    <label class="mt-3">인적사항</label>
+                    <textarea class="form-control form-control-sm d-flex"
+                              placeholder="150자 이내로 작성해주세요^^" name="text"></textarea>
+                </div>
 
-            <div class="media mt-5">
-                <label class="mt-3">미디어</label>
-                <input type="file" name="" class="form-control form-control-sm d-flex" placeholder="사진" id="image">
-                <input type="file" name="" class="form-control form-control-sm d-flex" placeholder="비디오" id="video">
-            </div>
-
-            <div class="greetings mt-5">
-                <label class="mt-3">인사말</label>
-                <textarea name="" class="form-control form-control-sm d-flex" placeholder="인사말"
-                          id="greetingsTitle"></textarea>
-            </div>
-
-            <div class="greetings mt-5">
-                <label class="mt-3">글귀</label>
-                <textarea name="" class="form-control form-control-sm d-flex"
-                          placeholder="150자 이내로 작성해주세요^^" id="greetingsBody"></textarea>
-            </div>
-
-            <div class="greetings mt-5">
-                <label class="mt-3">인적사항</label>
-                <textarea name="" class="form-control form-control-sm d-flex"
-                          placeholder="150자 이내로 작성해주세요^^" id="text"></textarea>
-            </div>
-
-            <div class="notice mt-5">
-                <label class="mt-3">공지사항</label>
-                <textarea style="height: 100px;" name="" class="form-control form-control-sm d-flex"
-                          placeholder="자가용보다 대중교통이 편리해요와 같이 전하고 싶은 내용을 작성해 주세요. 전하고 싶은 내용을 작성해 주세요. 또는, 마무리 말씀을 써주셔도 돼요^^!* 150자 이내"
-                          id="notice"></textarea>
-            </div>
-            <div class="btn-area mt-5 mb-5">
-                <button class="btn btn-primary save-btn" type="button" onclick="save();">저장하기</button>
+                <div class="notice mt-5">
+                    <label class="mt-3">공지사항</label>
+                    <textarea style="height: 100px;" class="form-control form-control-sm d-flex"
+                              placeholder="자가용보다 대중교통이 편리해요와 같이 전하고 싶은 내용을 작성해 주세요. 전하고 싶은 내용을 작성해 주세요. 또는, 마무리 말씀을 써주셔도 돼요^^!* 150자 이내"
+                              name="notice"></textarea>
+                </div>
+                <div class="btn-area mt-5 mb-5">
+                    <button class="btn btn-primary save-btn" type="submit">저장하기</button>
+                </div>
             </div>
         </div>
-    </div>
+        <input type="hidden" name="userName" value="">
+    </form>
     </body>
 </th:block>
 <th:block layout:fragment="script">
-    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-    <script>
-        function save() {
-            let groomName = document.getElementById("groomName").value;
-            let groomFather = document.getElementById("groomFather").value;
-            let groomMather = document.getElementById("groomMather").value;
-            let groomRelation = document.getElementById("groomRelation").value;
-            let groomPhone = document.getElementById("groomPhone").value;
-            let groomBank = document.getElementById("groomBank").value;
-            let groomAccountNum = document.getElementById("groomAccountNum").value;
-            let groomAccountOwn = document.getElementById("groomAccountOwn").value;
-            let brideName = document.getElementById("brideName").value;
-            let brideFather = document.getElementById("brideFather").value;
-            let brideMather = document.getElementById("brideMather").value;
-            let brideRelation = document.getElementById("brideRelation").value;
-            let bridePhone = document.getElementById("bridePhone").value;
-            let brideBank = document.getElementById("brideBank").value;
-            let brideAccountNum = document.getElementById("brideAccountNum").value;
-            let brideAccountOwn = document.getElementById("brideAccountOwn").value;
+    <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script th:inline="javascript">
+        function mediaSave() {
+            let obj = {}
 
-            obj = {
-                "userName": userName,
-                "userPass": userPass
+            return obj;
+        }
+
+        function infoSave() {
+            let obj = {
+                "groomName": document.getElementById("groomName").value,
+                "groomFather": document.getElementById("groomFather").value,
+                "groomRelation": document.getElementById("groomRelation").value,
+                "groomPhone": document.getElementById("groomPhone").value,
+                "groomBank": document.getElementById("groomBank").value,
+                "groomAccountNum": document.getElementById("groomAccountNum").value,
+                "groomAccountOwn": document.getElementById("groomAccountOwn").value,
+                "brideName": document.getElementById("brideName").value,
+                "brideFather": document.getElementById("brideFather").value,
+                "brideMather": document.getElementById("brideMather").value,
+                "brideRelation": document.getElementById("brideRelation").value,
+                "bridePhone": document.getElementById("bridePhone").value,
+                "brideBank": document.getElementById("brideBank").value,
+                "brideAccountNum": document.getElementById("brideAccountNum").value,
+                "brideAccountOwn": document.getElementById("brideAccountOwn").value
             }
+            return obj;
+        }
+
+        function save(res) {
+            let media = mediaSave();
+            let info = infoSave();
+            let userName = [[${userName}]];
+            console.log("userName: ", userName);
+
             $.ajax({
                 type: "POST",
-                url: "login",
-                data: JSON.stringify(obj),
-                contentType: "application/json",
+                url: "/upload",
+                dataType: "json",
+                contentType: false,
+                processData: false,
+                enctype: 'multipart/form-data',
+                data: {
+                    image: $('#image').val()
+                },
+                // beforeSend: function () {
+                //     console.log('Ajax submit beforeSend');
+                // },
                 success: function (data) {
-                    switch (data.code) {
-                        case 0:
-                        case 1:
-                            location.href = "information";
-                            break;
-                        case 2:
-                            alert(data.message);
-                            break;
-                    }
-                }
-                ,
-                error: function () {
-                    alert("에러")
-                }
-            })
-            ;
+                    console.log('Ajax submit success');
+                },
+                error: function (data) {
+                    console.log('Ajax submit error');
+                },
+                // complete: function () {
+                //     console.log('Ajax submit complete');
+                // }
+            });
         }
-        }
+
 
         function sample6_execDaumPostcode() {
             new daum.Postcode({
@@ -273,9 +295,9 @@
 
                     // 우편번호와 주소 정보를 해당 필드에 넣는다.
                     document.getElementById('sample6_postcode').value = data.zonecode;
-                    document.getElementById("sample6_address").value = addr;
+                    document.getElementById("address").value = addr;
                     // 커서를 상세주소 필드로 이동한다.
-                    document.getElementById("sample6_detailAddress").focus();
+                    document.getElementById("detailAddress").focus();
                 }
             }).open();
         }

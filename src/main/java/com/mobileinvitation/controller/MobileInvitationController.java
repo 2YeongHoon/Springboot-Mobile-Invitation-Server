@@ -1,47 +1,42 @@
 package com.mobileinvitation.controller;
 
+import com.mobileinvitation.model.request.SaveInfoReq;
 import com.mobileinvitation.service.MobileInvitationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.servlet.ModelAndView;
 
 @RequiredArgsConstructor
 @Controller
 public class MobileInvitationController {
-    private final MobileInvitationService mobileInvitationService;
+//    private final MobileInvitationService mobileInvitationService;
 
-//    @GetMapping(value = "/information")
-//    public ModelAndView information() {
-//        ModelAndView modelAndView = new ModelAndView();
-//        modelAndView.setViewName("information");
-////        modelAndView.addObject("userName", userName);
-//        return modelAndView;
-//    }
-//
-//    @GetMapping(value = "/login")
-//    public ModelAndView login() {
-//        ModelAndView modelAndView = new ModelAndView();
-//        modelAndView.setViewName("login");
-////        mobileInvitationService.login(userName, userPass);
-////        modelAndView.addObject("userName", userName);
-//
-//        return modelAndView;
-//    }
+    @GetMapping(value = "/information/{userName}")
+    public ModelAndView information(@PathVariable("userName") String userId) {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("userName", userId);
+        modelAndView.setViewName("information");
 
-//    @GetMapping(value = "/login/{userName}/{userPass}")
-//    public ModelAndView login(@PathVariable("userName") String userName,
-//                              @PathVariable("userPass") String userPass) throws Exception {
-//        ModelAndView modelAndView = new ModelAndView();
-//        modelAndView.setViewName("login");
-//        mobileInvitationService.login(userName, userPass);
-////        modelAndView.addObject("userName", userName);
-//
-//        return modelAndView;
-//    }
-//
+        return modelAndView;
+    }
+
+    @GetMapping(value = "/login")
+    public ModelAndView login() {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("login");
+
+        return modelAndView;
+    }
+
+    @PostMapping("/information/upload")
+    public String information(SaveInfoReq saveInfoReq) throws Exception {
+//        return mobileInvitationService.login(saveInfoReq);
+        
+        return "";
+    }
 
 }

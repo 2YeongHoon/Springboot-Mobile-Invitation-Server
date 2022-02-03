@@ -2,11 +2,11 @@ package com.mobileinvitation.controller;
 
 import com.mobileinvitation.common.CommonResult;
 import com.mobileinvitation.model.request.LoginUserReq;
+import com.mobileinvitation.model.request.SaveInfoReq;
 import com.mobileinvitation.service.MobileInvitationService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
 @RestController
 @RequiredArgsConstructor
@@ -20,21 +20,9 @@ public class MobileInvitationRestController {
         return mobileInvitationService.login(loginUserReq);
     }
 
-    @GetMapping(value = "/information")
-    public ModelAndView information() {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("information");
-//        modelAndView.addObject("userName", userName);
-        return modelAndView;
-    }
-
-    @GetMapping(value = "/login")
-    public ModelAndView login() {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("login");
-//        mobileInvitationService.login(userName, userPass);
-//        modelAndView.addObject("userName", userName);
-
-        return modelAndView;
-    }
+//    @PostMapping("/information/upload")
+//    public String information(@RequestBody SaveInfoReq saveInfoReq) throws Exception {
+////        return mobileInvitationService.login(saveInfoReq);
+//        return "";
+//    }
 }
