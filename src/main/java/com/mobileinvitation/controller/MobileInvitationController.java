@@ -1,5 +1,6 @@
 package com.mobileinvitation.controller;
 
+import com.mobileinvitation.common.CommonResult;
 import com.mobileinvitation.model.request.SaveInfoReq;
 import com.mobileinvitation.service.MobileInvitationService;
 import lombok.RequiredArgsConstructor;
@@ -13,7 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 @RequiredArgsConstructor
 @Controller
 public class MobileInvitationController {
-//    private final MobileInvitationService mobileInvitationService;
+    private final MobileInvitationService mobileInvitationService;
 
     @GetMapping(value = "/information/{userName}")
     public ModelAndView information(@PathVariable("userName") String userId) {
@@ -33,10 +34,8 @@ public class MobileInvitationController {
     }
 
     @PostMapping("/information/upload")
-    public String information(SaveInfoReq saveInfoReq) throws Exception {
-//        return mobileInvitationService.login(saveInfoReq);
-        
-        return "";
+    public CommonResult information(SaveInfoReq saveInfoReq) throws Exception {
+        return mobileInvitationService.upload(saveInfoReq);
     }
 
 }
