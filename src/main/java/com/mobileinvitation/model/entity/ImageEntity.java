@@ -1,5 +1,7 @@
 package com.mobileinvitation.model.entity;
 
+import lombok.Builder;
+
 import javax.persistence.*;
 
 @Entity
@@ -14,4 +16,6 @@ public class ImageEntity {
 
     @ManyToOne
     private WeddingInfoEntity weddingInfoEntity;
+
+
 }

@@ -28,9 +28,10 @@ public class UserEntity extends TimeEntity {
     private String userPass;
 
     @Builder
-    public UserEntity(Long idx, String userName, String userPass) {
+    public UserEntity(Long idx, String userName, String userPass, WeddingInfoEntity weddingInfoEntity) {
         this.idx = idx;
         this.userName = userName;
         this.userPass = userPass;
+        this.weddingInfoEntity = weddingInfoEntity;
     }
 }

@@ -1,8 +1,10 @@
 package com.mobileinvitation.model.entity;
 
 import com.mobileinvitation.repository.ImageRepo;
+import lombok.Builder;
 
 import javax.persistence.*;
+import java.awt.*;
 import java.util.List;
 
 @Entity
@@ -92,4 +94,9 @@ public class WeddingInfoEntity {
 
     @Column
     private String notice;
+
+    @Builder
+    public WeddingInfoEntity(Long idx, String userName, String userPass, ImageEntity imageEntity, VideoEntity videoEntity) {
+
+    }
 }

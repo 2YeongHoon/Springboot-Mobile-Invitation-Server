@@ -3,6 +3,7 @@ package com.mobileinvitation.service;
 import com.mobileinvitation.common.CommonResult;
 import com.mobileinvitation.model.entity.UserEntity;
 import com.mobileinvitation.model.request.LoginUserReq;
+import com.mobileinvitation.model.request.SaveInfoReq;
 import com.mobileinvitation.repository.UserRepo;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
@@ -26,12 +27,12 @@ public class MobileInvitationService {
                 UserEntity user = userPassCheck(loginUserReq).orElse(null);
                 if (user == null) {
                     res.setCode(2);
-                    res.setMessage("Password 불일치");
+                    res.setMessage("Password가 일치하지 않습니다.");
                     return res;
                 }
             } else {
                 res.setCode(1);
-                res.setMessage("회원정보 없음, infomation호출");
+                res.setMessage("회원정보 없음");
                 return res;
             }
 //            if (ObjectUtils.isEmpty(user)) {
@@ -48,18 +49,16 @@ public class MobileInvitationService {
             throw new Exception(e.getMessage());
         }
         res.setCode(0);
-        res.setMessage("info반환");
+        res.setMessage("information 반환");
         return res;
     }
 
     @Transactional
-    public String getInfo() {
-        return "";
-    }
+    public CommonResult upload(SaveInfoReq saveInfoReq) {
+        CommonResult res = new CommonResult();
+        
 
-    @Transactional
-    public String saveInfo() {
-        return "";
+        return res;
     }
 
     @Transactional

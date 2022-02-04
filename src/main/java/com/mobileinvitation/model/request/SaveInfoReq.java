@@ -26,5 +26,6 @@ public class SaveInfoReq implements Serializable {
     private String brideAccountNum;
     private String brideAccountOwn;
     private MultipartFile image;
+    private MultipartFile video;
 
 }
