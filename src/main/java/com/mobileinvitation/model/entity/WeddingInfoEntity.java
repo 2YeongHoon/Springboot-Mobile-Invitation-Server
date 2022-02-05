@@ -1,24 +1,31 @@
 package com.mobileinvitation.model.entity;
 
-import com.mobileinvitation.repository.ImageRepo;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.awt.*;
 import java.util.List;
 
 @Entity
+@NoArgsConstructor
+@Builder
+@AllArgsConstructor
 public class WeddingInfoEntity {
 
     @Id
     @GeneratedValue
     private Long idx;
 
-    @OneToMany
+    @OneToMany(mappedBy = "weddingInfo")
     private List<VideoEntity> videoEntity;
 
-    @OneToMany
+    @OneToMany(mappedBy = "weddingInfo")
     private List<ImageEntity> imageEntity;
+
+    @OneToOne
+    @JoinColumn(name = "user_idx")
+    private UserEntity user;
 
     @Column
     private String groomName;
@@ -95,8 +102,8 @@ public class WeddingInfoEntity {
     @Column
     private String notice;
 
-    @Builder
-    public WeddingInfoEntity(Long idx, String userName, String userPass, ImageEntity imageEntity, VideoEntity videoEntity) {
-
-    }
+//    @Builder
+//    public WeddingInfoEntity(Long idx, String userName, String userPass, ImageEntity imageEntity, VideoEntity videoEntity) {
+//
+//    }
 }

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<th:block layout:fragment="style">
+    <style>
+        .login {
+            width: 500px;
+            margin: 200px auto auto auto;
+            text-align: center;
+        }
+    </style>
+</th:block>
+
+<th:block layout:fragment="content">
+    <head>
+        <meta charset="UTF-8">
+        <title>login</title>
+    </head>
+    <body>
+    success!!
+    </body>
+</th:block>
+
+<th:block layout:fragment="script">
+    <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script>
+        console.log("hello");
+
+        function login() {
+            let userName = document.getElementById("userName").value;
+            let userPass = document.getElementById("userPass").value;
+            let obj = {
+                "userName": userName,
+                "userPass": userPass
+            }
+            $.ajax({
+                type: "POST",
+                url: "login",
+                data: JSON.stringify(obj),
+                contentType: "application/json",
+                success: function (data) {
+                    switch (data.code) {
+                        case 0:
+                        case 1:
+                            location.href = "information/" + userName;
+                            break;
+                        case 2:
+                            alert(data.message);
+                            break;
+                    }
+                }
+                ,
+                error: function () {
+                    alert("에러")
+                }
+            })
+            ;
+        }
+    </script>
+</th:block>
+
+</html>

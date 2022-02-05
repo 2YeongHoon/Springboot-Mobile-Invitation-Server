@@ -1,6 +1,5 @@
 package com.mobileinvitation.controller;
 
-import com.mobileinvitation.common.CommonResult;
 import com.mobileinvitation.model.request.SaveInfoReq;
 import com.mobileinvitation.service.MobileInvitationService;
 import lombok.RequiredArgsConstructor;
@@ -8,7 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.servlet.ModelAndView;
 
 @RequiredArgsConstructor
@@ -34,8 +32,11 @@ public class MobileInvitationController {
     }
 
     @PostMapping("/information/upload")
-    public CommonResult information(SaveInfoReq saveInfoReq) throws Exception {
-        return mobileInvitationService.upload(saveInfoReq);
+    public ModelAndView information(SaveInfoReq saveInfoReq) throws Exception {
+        mobileInvitationService.upload(saveInfoReq);
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("success");
+        return modelAndView;
     }
 
 }

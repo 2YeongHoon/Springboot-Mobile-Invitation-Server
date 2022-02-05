@@ -10,6 +10,7 @@ import java.io.Serializable;
 @Builder
 public class SaveInfoReq implements Serializable {
     private String userName;
+    private String userPass;
     private String groomName;
     private String groomFather;
     private String groomRelation;

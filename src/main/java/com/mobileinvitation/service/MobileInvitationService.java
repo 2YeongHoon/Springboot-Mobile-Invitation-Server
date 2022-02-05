@@ -1,11 +1,16 @@
 package com.mobileinvitation.service;
 
 import com.mobileinvitation.common.CommonResult;
+import com.mobileinvitation.model.entity.ImageEntity;
 import com.mobileinvitation.model.entity.UserEntity;
+import com.mobileinvitation.model.entity.VideoEntity;
+import com.mobileinvitation.model.entity.WeddingInfoEntity;
 import com.mobileinvitation.model.request.LoginUserReq;
 import com.mobileinvitation.model.request.SaveInfoReq;
+import com.mobileinvitation.repository.ImageRepo;
 import com.mobileinvitation.repository.UserRepo;
-import lombok.Data;
+import com.mobileinvitation.repository.VideoRepo;
+import com.mobileinvitation.repository.WeddingInfoRepo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
@@ -18,6 +23,9 @@ import java.util.Optional;
 public class MobileInvitationService {
 
     private final UserRepo userRepo;
+    private final WeddingInfoRepo weddingInfoRepo;
+    private final ImageRepo imageRepo;
+    private final VideoRepo videoRepo;
 
     @Transactional
     public CommonResult login(LoginUserReq loginUserReq) throws Exception {
@@ -56,7 +64,52 @@ public class MobileInvitationService {
     @Transactional
     public CommonResult upload(SaveInfoReq saveInfoReq) {
         CommonResult res = new CommonResult();
-        
+        // TODO 이미지 업로드
+
+        // user 저장
+        UserEntity userEntity = UserEntity.builder()
+                .userName(saveInfoReq.getUserName())
+                .userPass("pass!!")
+                .build();
+
+        userRepo.save(userEntity);
+
+        // weddingInfo 저장
+        String imageName = saveInfoReq.getImage().getOriginalFilename();
+        String videoName = saveInfoReq.getVideo().getOriginalFilename();
+
+        WeddingInfoEntity weddingInfoEntity = WeddingInfoEntity.builder()
+                .groomName(saveInfoReq.getGroomName())
+                .groomFather(saveInfoReq.getGroomFather())
+                .groomRelation(saveInfoReq.getGroomRelation())
+                .groomPhone(saveInfoReq.getGroomPhone())
+                .groomBank(saveInfoReq.getGroomBank())
+                .groomAccountNum(saveInfoReq.getGroomAccountNum())
+                .groomAccountOwn(saveInfoReq.getGroomAccountOwn())
+                .brideName(saveInfoReq.getBrideName())
+                .brideFather(saveInfoReq.getBrideFather())
+                .brideMather(saveInfoReq.getBrideMather())
+                .brideRelation(saveInfoReq.getBrideRelation())
+                .bridePhone(saveInfoReq.getBridePhone())
+                .brideBank(saveInfoReq.getBrideBank())
+                .brideAccountNum(saveInfoReq.getBrideAccountNum())
+                .brideAccountOwn(saveInfoReq.getBrideAccountOwn())
+                .build();
+
+
+        ImageEntity imageEntity = ImageEntity.builder()
+                .image(imageName)
+                .weddingInfo(weddingInfoEntity)
+                .build();
+
+        VideoEntity videoEntity = VideoEntity.builder()
+                .video(videoName)
+                .weddingInfo(weddingInfoEntity)
+                .build();
+
+        weddingInfoRepo.save(weddingInfoEntity);
+        imageRepo.save(imageEntity);
+        videoRepo.save(videoEntity);
 
         return res;
     }
