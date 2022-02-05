@@ -64,12 +64,13 @@ public class MobileInvitationService {
     @Transactional
     public CommonResult upload(SaveInfoReq saveInfoReq) {
         CommonResult res = new CommonResult();
+        // TODO user idx 조회
         // TODO 이미지 업로드
 
         // user 저장
         UserEntity userEntity = UserEntity.builder()
                 .userName(saveInfoReq.getUserName())
-                .userPass("pass!!")
+                .userPass(saveInfoReq.getUserPass())
                 .build();
 
         userRepo.save(userEntity);

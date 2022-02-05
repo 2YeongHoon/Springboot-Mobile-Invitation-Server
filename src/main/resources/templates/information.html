@@ -32,7 +32,7 @@
         <title>Title</title>
     </head>
     <body>
-    <form id="frm-upload" enctype="multipart/form-data" action="upload" method="post">
+    <form id="frm-upload" enctype="multipart/form-data" action="/upload" method="post">
         <p>Board</p>
         <div class="wrap">
             <div class="body-wrap">
@@ -189,6 +189,7 @@
             </div>
         </div>
         <input type="hidden" name="userName" th:value="${userName}">
+        <input type="hidden" name="userPass" th:value="${userPass}">
     </form>
     </body>
 </th:block>
@@ -223,10 +224,11 @@
         }
 
         function save(res) {
-            let media = mediaSave();
-            let info = infoSave();
-            let userName = [[${userName}]];
-            console.log("userName: ", userName);
+            // let media = mediaSave();
+            // let info = infoSave();
+            // let userName = [[${userName}]];
+            // let
+            // console.log("userName: ", userName);
 
             $.ajax({
                 type: "POST",

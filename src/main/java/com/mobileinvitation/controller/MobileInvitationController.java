@@ -14,10 +14,11 @@ import org.springframework.web.servlet.ModelAndView;
 public class MobileInvitationController {
     private final MobileInvitationService mobileInvitationService;
 
-    @GetMapping(value = "/information/{userName}")
-    public ModelAndView information(@PathVariable("userName") String userId) {
+    @GetMapping(value = "/information/{userName}/{userPass}")
+    public ModelAndView information(@PathVariable("userName") String userId, @PathVariable("userPass") String userPw) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("userName", userId);
+        modelAndView.addObject("userPass", userPw);
         modelAndView.setViewName("information");
 
         return modelAndView;
@@ -31,11 +32,18 @@ public class MobileInvitationController {
         return modelAndView;
     }
 
-    @PostMapping("/information/upload")
+    @PostMapping("/upload")
     public ModelAndView information(SaveInfoReq saveInfoReq) throws Exception {
+        // TODO 미디어 업로드
+        // mobileInvitationService.fileUpload(saveInfoReq);
+
+        // TODO 디비 인서트
+        // mobileInvitationService.dbUpload(saveInfoReq);
+
         mobileInvitationService.upload(saveInfoReq);
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("success");
+
         return modelAndView;
     }
 
