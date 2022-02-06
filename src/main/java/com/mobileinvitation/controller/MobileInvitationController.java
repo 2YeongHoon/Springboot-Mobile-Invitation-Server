@@ -1,5 +1,6 @@
 package com.mobileinvitation.controller;
 
+import com.mobileinvitation.model.item.SaveInfoItem;
 import com.mobileinvitation.model.request.SaveInfoReq;
 import com.mobileinvitation.service.MobileInvitationService;
 import lombok.RequiredArgsConstructor;
@@ -34,13 +35,18 @@ public class MobileInvitationController {
 
     @PostMapping("/upload")
     public ModelAndView information(SaveInfoReq saveInfoReq) throws Exception {
-        // TODO 미디어 업로드
-        // mobileInvitationService.fileUpload(saveInfoReq);
+
+        mobileInvitationService.imageUpload(saveInfoReq.getImage());
+        mobileInvitationService.videoUpload(saveInfoReq.getVideo());
+
+        SaveInfoItem saveInfoItem = saveInfoReq.toItem();
+        // TODO saveInfoItem에 Video, Image 경로 추가
+
 
         // TODO 디비 인서트
-        // mobileInvitationService.dbUpload(saveInfoReq);
+        mobileInvitationService.dbUpload(saveInfoItem);
 
-        mobileInvitationService.upload(saveInfoReq);
+//        mobileInvitationService.upload(saveInfoReq);
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("success");
 

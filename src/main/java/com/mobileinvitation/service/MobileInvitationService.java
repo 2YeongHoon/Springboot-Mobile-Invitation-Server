@@ -5,6 +5,7 @@ import com.mobileinvitation.model.entity.ImageEntity;
 import com.mobileinvitation.model.entity.UserEntity;
 import com.mobileinvitation.model.entity.VideoEntity;
 import com.mobileinvitation.model.entity.WeddingInfoEntity;
+import com.mobileinvitation.model.item.SaveInfoItem;
 import com.mobileinvitation.model.request.LoginUserReq;
 import com.mobileinvitation.model.request.SaveInfoReq;
 import com.mobileinvitation.repository.ImageRepo;
@@ -14,6 +15,7 @@ import com.mobileinvitation.repository.WeddingInfoRepo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.transaction.Transactional;
 import java.util.Optional;
@@ -58,6 +60,29 @@ public class MobileInvitationService {
         }
         res.setCode(0);
         res.setMessage("information 반환");
+        return res;
+    }
+
+    public CommonResult imageUpload(MultipartFile image) {
+        CommonResult res = new CommonResult();
+
+        // TODO 파일 업로드 구현
+
+        return res;
+    }
+
+    public CommonResult videoUpload(MultipartFile video) {
+        CommonResult res = new CommonResult();
+
+        // TODO 파일 업로드 구현
+
+        return res;
+    }
+
+    @Transactional
+    public CommonResult dbUpload(SaveInfoItem saveInfoItem) {
+        CommonResult res = new CommonResult();
+
         return res;
     }
 
