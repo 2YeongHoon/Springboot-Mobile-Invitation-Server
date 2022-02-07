@@ -36,12 +36,14 @@ public class MobileInvitationController {
     @PostMapping("/upload")
     public ModelAndView information(SaveInfoReq saveInfoReq) throws Exception {
 
-        mobileInvitationService.imageUpload(saveInfoReq.getImage());
-        mobileInvitationService.videoUpload(saveInfoReq.getVideo());
+        String imagePath = mobileInvitationService.fileUpload(saveInfoReq.getImage()).getMessage();
+        String videoPath = mobileInvitationService.fileUpload(saveInfoReq.getVideo()).getMessage();
 
         SaveInfoItem saveInfoItem = saveInfoReq.toItem();
-        // TODO saveInfoItem에 Video, Image 경로 추가
-
+        saveInfoItem.builder()
+                .imagePath(imagePath)
+                .videoPath(videoPath)
+                .build();
 
         // TODO 디비 인서트
         mobileInvitationService.dbUpload(saveInfoItem);

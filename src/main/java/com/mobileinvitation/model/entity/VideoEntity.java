@@ -16,10 +16,10 @@ public class VideoEntity {
     private Long idx;
 
     @Column
-    private String video;
+    private String videoPath;
 
     @ManyToOne
-    @JoinColumn(name="weddingInfo")
+    @JoinColumn(name = "weddingInfo")
     private WeddingInfoEntity weddingInfo;
 
 

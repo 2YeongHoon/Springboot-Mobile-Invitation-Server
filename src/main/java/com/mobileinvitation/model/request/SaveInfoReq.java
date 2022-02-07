@@ -30,7 +30,7 @@ public class SaveInfoReq implements Serializable {
     private String weddingDate;
     private String weddingHall;
     private String address;
-    private String detailAddres;
+    private String detailAddress;
     private String notice;
     private String text;
     private String greetingsBody;
@@ -40,7 +40,7 @@ public class SaveInfoReq implements Serializable {
     private MultipartFile video;
 
     public SaveInfoItem toItem() {
-        SaveInfoItem build = SaveInfoItem.builder()
+        SaveInfoItem saveInfoItem = SaveInfoItem.builder()
                 .userName(userName)
                 .userPass(userPass)
                 .groomName(groomName)
@@ -61,12 +61,12 @@ public class SaveInfoReq implements Serializable {
                 .weddingDate(weddingDate)
                 .weddingHall(weddingHall)
                 .address(address)
-                .detailAddres(detailAddres)
+                .detailAddress(detailAddress)
                 .notice(notice)
                 .text(text)
                 .greetingsBody(greetingsBody)
                 .greetingsTitle(greetingsTitle)
                 .build();
-        return build;
+        return saveInfoItem;
     }
 }

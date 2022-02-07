@@ -17,10 +17,10 @@ public class ImageEntity {
     private Long idx;
 
     @Column
-    private String image;
+    private String imagePath;
 
     @ManyToOne
-    @JoinColumn(name="weddingInfo")
+    @JoinColumn(name = "weddingInfo")
     private WeddingInfoEntity weddingInfo;
 
 

@@ -13,11 +13,15 @@ import com.mobileinvitation.repository.UserRepo;
 import com.mobileinvitation.repository.VideoRepo;
 import com.mobileinvitation.repository.WeddingInfoRepo;
 import lombok.RequiredArgsConstructor;
+import net.bytebuddy.utility.FileSystem;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.swing.*;
 import javax.transaction.Transactional;
+import java.io.File;
+import java.io.IOException;
 import java.util.Optional;
 
 @Service
@@ -63,79 +67,42 @@ public class MobileInvitationService {
         return res;
     }
 
-    public CommonResult imageUpload(MultipartFile image) {
-        CommonResult res = new CommonResult();
-
-        // TODO 파일 업로드 구현
-
-        return res;
-    }
-
-    public CommonResult videoUpload(MultipartFile video) {
-        CommonResult res = new CommonResult();
-
-        // TODO 파일 업로드 구현
-
-        return res;
-    }
+//    public CommonResult imageUpload(MultipartFile image) {
+//        CommonResult res = new CommonResult();
+//        // TODO 파일 업로드 구현
+//
+//        return res;
+//    }
+//
+//    public CommonResult videoUpload(MultipartFile video) {
+//        CommonResult res = new CommonResult();
+//        // TODO 파일 업로드 구현
+//
+//        return res;
+//    }
 
     @Transactional
     public CommonResult dbUpload(SaveInfoItem saveInfoItem) {
         CommonResult res = new CommonResult();
 
+        userRepo.save(saveInfoItem.toUserEntity());
+        weddingInfoRepo.save(saveInfoItem.toWeddingInfoEntity());
+        imageRepo.save(saveInfoItem.toImageEntity());
+        videoRepo.save(saveInfoItem.toVideoEntity());
+
         return res;
     }
 
     @Transactional
-    public CommonResult upload(SaveInfoReq saveInfoReq) {
+    public CommonResult fileUpload(MultipartFile media) throws IOException {
         CommonResult res = new CommonResult();
         // TODO user idx 조회
         // TODO 이미지 업로드
-
-        // user 저장
-        UserEntity userEntity = UserEntity.builder()
-                .userName(saveInfoReq.getUserName())
-                .userPass(saveInfoReq.getUserPass())
-                .build();
-
-        userRepo.save(userEntity);
-
-        // weddingInfo 저장
-        String imageName = saveInfoReq.getImage().getOriginalFilename();
-        String videoName = saveInfoReq.getVideo().getOriginalFilename();
-
-        WeddingInfoEntity weddingInfoEntity = WeddingInfoEntity.builder()
-                .groomName(saveInfoReq.getGroomName())
-                .groomFather(saveInfoReq.getGroomFather())
-                .groomRelation(saveInfoReq.getGroomRelation())
-                .groomPhone(saveInfoReq.getGroomPhone())
-                .groomBank(saveInfoReq.getGroomBank())
-                .groomAccountNum(saveInfoReq.getGroomAccountNum())
-                .groomAccountOwn(saveInfoReq.getGroomAccountOwn())
-                .brideName(saveInfoReq.getBrideName())
-                .brideFather(saveInfoReq.getBrideFather())
-                .brideMather(saveInfoReq.getBrideMather())
-                .brideRelation(saveInfoReq.getBrideRelation())
-                .bridePhone(saveInfoReq.getBridePhone())
-                .brideBank(saveInfoReq.getBrideBank())
-                .brideAccountNum(saveInfoReq.getBrideAccountNum())
-                .brideAccountOwn(saveInfoReq.getBrideAccountOwn())
-                .build();
-
-
-        ImageEntity imageEntity = ImageEntity.builder()
-                .image(imageName)
-                .weddingInfo(weddingInfoEntity)
-                .build();
-
-        VideoEntity videoEntity = VideoEntity.builder()
-                .video(videoName)
-                .weddingInfo(weddingInfoEntity)
-                .build();
-
-        weddingInfoRepo.save(weddingInfoEntity);
-        imageRepo.save(imageEntity);
-        videoRepo.save(videoEntity);
+        if (!media.isEmpty()) {
+            String path = "D:\\temp";
+            File file = new File(path, media.getOriginalFilename());
+            media.transferTo(file);
+        }
 
         return res;
     }
