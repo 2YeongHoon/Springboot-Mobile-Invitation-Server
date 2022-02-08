@@ -6,8 +6,13 @@ import com.mobileinvitation.model.entity.VideoEntity;
 import com.mobileinvitation.model.entity.WeddingInfoEntity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.awt.*;
+import java.util.List;
+
+@Getter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -37,11 +42,16 @@ public class SaveInfoItem {
     private String text;
     private String greetingsBody;
     private String greetingsTitle;
-    private String videoPath;
-    private String imagePath;
+    private List<VideoEntity> videoEntityList;
+    private List<ImageEntity> imageEntityList;
+//    private List<String> videoName;
+//    private List<String> imageName;
+//    private List<String> videoPath;
+//    private List<String> imagePath;
 
     public UserEntity toUserEntity() {
         UserEntity userEntity = UserEntity.builder()
+                .weddingInfoEntity(toWeddingInfoEntity())
                 .userName(userName)
                 .userPass(userPass)
                 .build();
@@ -50,6 +60,8 @@ public class SaveInfoItem {
 
     public WeddingInfoEntity toWeddingInfoEntity() {
         WeddingInfoEntity weddingInfoEntity = WeddingInfoEntity.builder()
+//                .imageEntityList()
+//                .videoEntityList()
                 .groomName(groomName)
                 .groomFather(groomFather)
                 .groomRelation(groomRelation)
@@ -74,29 +86,31 @@ public class SaveInfoItem {
                 .greetingsBody(greetingsBody)
                 .greetingsTitle(greetingsTitle)
                 .build();
-
         return weddingInfoEntity;
     }
 
-    public VideoEntity toVideoEntity() {
-        VideoEntity videoEntity = VideoEntity.builder()
-                .videoPath(videoPath)
-                .build();
-
-        return videoEntity;
-    }
-
-    public ImageEntity toImageEntity() {
-        ImageEntity imageEntity = ImageEntity.builder()
-                .imagePath(imagePath)
-                .build();
-
-        return imageEntity;
-    }
+//    public VideoEntity toVideoEntity() {
+//        VideoEntity videoEntity = VideoEntity.builder()
+//                .videoPath(videoPath)
+//                .videoName(videoName)
+//                .build();
+//
+//        return videoEntity;
+//    }
+//
+//    public ImageEntity toImageEntity() {
+//        ImageEntity imageEntity = ImageEntity.builder()
+//                .imageName(imageName)
+//                .imagePath(imagePath)
+//                .build();
+//
+//        return imageEntity;
+//    }
 
     @Builder
-    public SaveInfoItem(String imagePath, String videoPath) {
-        this.videoPath = videoPath;
-        this.imagePath = imagePath;
+    public SaveInfoItem(List<VideoEntity> videoEntity, List<ImageEntity> imageEntity) {
+        this.videoEntityList = videoEntity;
+        this.imageEntityList = imageEntity;
+
     }
 }

@@ -22,6 +22,7 @@ import javax.swing.*;
 import javax.transaction.Transactional;
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -67,44 +68,47 @@ public class MobileInvitationService {
         return res;
     }
 
-//    public CommonResult imageUpload(MultipartFile image) {
-//        CommonResult res = new CommonResult();
-//        // TODO 파일 업로드 구현
-//
-//        return res;
-//    }
-//
-//    public CommonResult videoUpload(MultipartFile video) {
-//        CommonResult res = new CommonResult();
-//        // TODO 파일 업로드 구현
-//
-//        return res;
-//    }
-
     @Transactional
     public CommonResult dbUpload(SaveInfoItem saveInfoItem) {
         CommonResult res = new CommonResult();
+//
+        if (!userExistCheck(saveInfoItem.getUserName())) {
+//            UserEntity userEntity = UserEntity.builder()
+//                    .userName(saveInfoItem.getUserName())
+//                    .userPass(saveInfoItem.getUserPass())
+//                    .build();
+//            userRepo.save(userEntity);
+//            saveInfoItem.toUserEntity()
+//            userRepo.save().getIdx();
+            userRepo.save(saveInfoItem.toUserEntity());
+        } else {
+            userRepo.findByUserName(saveInfoItem.getUserName()).get();
+        }
 
-        userRepo.save(saveInfoItem.toUserEntity());
-        weddingInfoRepo.save(saveInfoItem.toWeddingInfoEntity());
-        imageRepo.save(saveInfoItem.toImageEntity());
-        videoRepo.save(saveInfoItem.toVideoEntity());
+
+//        weddingInfoRepo.save(saveInfoItem.toWeddingInfoEntity());
+//        imageRepo.save(saveInfoItem.toImageEntity());
+//        videoRepo.save(saveInfoItem.toVideoEntity());
 
         return res;
     }
 
     @Transactional
-    public CommonResult fileUpload(MultipartFile media) throws IOException {
+    public String fileUpload(MultipartFile media) throws IOException {
         CommonResult res = new CommonResult();
-        // TODO user idx 조회
-        // TODO 이미지 업로드
+        File file = null;
+
+        //TODO 파일 저장명: UUID_"파일"으로 구현
         if (!media.isEmpty()) {
             String path = "D:\\temp";
-            File file = new File(path, media.getOriginalFilename());
+//            File file = new File(path, media.getOriginalFilename());
+            file = new File(path, media.getOriginalFilename());
+
             media.transferTo(file);
         }
 
-        return res;
+        //TODO Path, fileName 반환
+        return file.getAbsolutePath();
     }
 
     @Transactional
@@ -119,7 +123,5 @@ public class MobileInvitationService {
             userExist = false;
         }
         return userExist;
-//        return userRepo.existsByName(userName);
     }
-
 }

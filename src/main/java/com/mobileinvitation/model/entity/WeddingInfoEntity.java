@@ -8,24 +8,27 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@NoArgsConstructor
 @Builder
+@NoArgsConstructor
 @AllArgsConstructor
 public class WeddingInfoEntity {
 
     @Id
     @GeneratedValue
+    @Column(name = "weddinginfo_id")
     private Long idx;
 
-    @OneToMany(mappedBy = "weddingInfo")
-    private List<VideoEntity> videoEntity;
+    @OneToMany
+    @JoinColumn(name = "video_id")
+    private List<VideoEntity> videoEntityList;
 
-    @OneToMany(mappedBy = "weddingInfo")
-    private List<ImageEntity> imageEntity;
+    @OneToMany
+    @JoinColumn(name = "image_id")
+    private List<ImageEntity> imageEntityList;
 
-    @OneToOne
-    @JoinColumn(name = "user_idx")
-    private UserEntity user;
+//    @OneToOne
+//    @JoinColumn(name = "idx")
+//    private UserEntity user;
 
     @Column
     private String groomName;
@@ -102,8 +105,4 @@ public class WeddingInfoEntity {
     @Column
     private String notice;
 
-//    @Builder
-//    public WeddingInfoEntity(Long idx, String userName, String userPass, ImageEntity imageEntity, VideoEntity videoEntity) {
-//
-//    }
 }

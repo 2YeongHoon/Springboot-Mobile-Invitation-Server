@@ -13,12 +13,14 @@ public class UserEntity extends TimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "user_idx", unique = true, nullable = false)
     private Long idx;
 
-    @OneToOne(mappedBy = "user")
+    @OneToOne
+    @JoinColumn(name = "wedding_idx")
     private WeddingInfoEntity weddingInfoEntity;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String userName;
 
     @Column(nullable = false)

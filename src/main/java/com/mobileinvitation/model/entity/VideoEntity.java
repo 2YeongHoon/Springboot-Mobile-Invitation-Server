@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Builder
@@ -13,14 +14,18 @@ import javax.persistence.*;
 public class VideoEntity {
     @Id
     @GeneratedValue
+    @Column(name = "video_id")
     private Long idx;
+
+    @Column
+    private String videoName;
 
     @Column
     private String videoPath;
 
     @ManyToOne
-    @JoinColumn(name = "weddingInfo")
-    private WeddingInfoEntity weddingInfo;
+    @JoinColumn(name = "user_id")
+    private WeddingInfoEntity videoWeddingInfo;
 
 
 }

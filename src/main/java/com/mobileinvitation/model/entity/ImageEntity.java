@@ -14,14 +14,16 @@ public class ImageEntity {
 
     @Id
     @GeneratedValue
+    @Column(name = "image_id")
     private Long idx;
+
+    @Column
+    private String imageName;
 
     @Column
     private String imagePath;
 
     @ManyToOne
-    @JoinColumn(name = "weddingInfo")
-    private WeddingInfoEntity weddingInfo;
-
-
+    @JoinColumn(name = "user_idx")
+    private WeddingInfoEntity imageWeddingInfo;
 }

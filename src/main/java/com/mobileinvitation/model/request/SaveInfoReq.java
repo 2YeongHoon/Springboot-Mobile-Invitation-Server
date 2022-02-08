@@ -6,6 +6,7 @@ import lombok.Getter;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.Serializable;
+import java.util.List;
 
 @Getter
 @Builder
@@ -36,8 +37,8 @@ public class SaveInfoReq implements Serializable {
     private String greetingsBody;
     private String greetingsTitle;
 
-    private MultipartFile image;
-    private MultipartFile video;
+    private List<MultipartFile> image;
+    private List<MultipartFile> video;
 
     public SaveInfoItem toItem() {
         SaveInfoItem saveInfoItem = SaveInfoItem.builder()
