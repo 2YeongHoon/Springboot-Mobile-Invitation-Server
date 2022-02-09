@@ -18,17 +18,13 @@ public class WeddingInfoEntity {
     @Column(name = "weddinginfo_id")
     private Long idx;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "video_id")
     private List<VideoEntity> videoEntityList;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "image_id")
     private List<ImageEntity> imageEntityList;
-
-//    @OneToOne
-//    @JoinColumn(name = "idx")
-//    private UserEntity user;
 
     @Column
     private String groomName;

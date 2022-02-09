@@ -16,7 +16,7 @@ public class UserEntity extends TimeEntity {
     @Column(name = "user_idx", unique = true, nullable = false)
     private Long idx;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "wedding_idx")
     private WeddingInfoEntity weddingInfoEntity;
 

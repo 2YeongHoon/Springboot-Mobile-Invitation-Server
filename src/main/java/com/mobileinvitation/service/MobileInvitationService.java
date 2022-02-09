@@ -69,9 +69,10 @@ public class MobileInvitationService {
     }
 
     @Transactional
-    public CommonResult dbUpload(SaveInfoItem saveInfoItem) {
+    public CommonResult dbUpload(SaveInfoItem saveInfoItem) throws Exception {
         CommonResult res = new CommonResult();
 //
+        //TODO DB Inssert 오류 수정
         if (!userExistCheck(saveInfoItem.getUserName())) {
 //            UserEntity userEntity = UserEntity.builder()
 //                    .userName(saveInfoItem.getUserName())
@@ -82,13 +83,14 @@ public class MobileInvitationService {
 //            userRepo.save().getIdx();
             userRepo.save(saveInfoItem.toUserEntity());
         } else {
-            userRepo.findByUserName(saveInfoItem.getUserName()).get();
+//            Long userIdx = userRepo.findByUserName(saveInfoItem.getUserName()).get().getIdx();
+//            System.out.println("getIdx: " + userRepo.findByUserName(saveInfoItem.getUserName()).get().getIdx());
+//            System.out.println("userIdx: " + userIdx);
+//            weddingInfoRepo.save(saveInfoItem.toWeddingInfoEntity(userIdx));
         }
 
-
-//        weddingInfoRepo.save(saveInfoItem.toWeddingInfoEntity());
-//        imageRepo.save(saveInfoItem.toImageEntity());
-//        videoRepo.save(saveInfoItem.toVideoEntity());
+        res.setCode(0);
+        res.setMessage("db저장완료");
 
         return res;
     }
@@ -96,19 +98,18 @@ public class MobileInvitationService {
     @Transactional
     public String fileUpload(MultipartFile media) throws IOException {
         CommonResult res = new CommonResult();
-        File file = null;
 
-        //TODO 파일 저장명: UUID_"파일"으로 구현
         if (!media.isEmpty()) {
             String path = "D:\\temp";
-//            File file = new File(path, media.getOriginalFilename());
-            file = new File(path, media.getOriginalFilename());
+            File file = new File(path, media.getOriginalFilename());
+//            file = new File(path, media.getOriginalFilename());
 
             media.transferTo(file);
+            return file.getAbsolutePath();
         }
 
-        //TODO Path, fileName 반환
-        return file.getAbsolutePath();
+        // 파일 경로 반환
+        return null;
     }
 
     @Transactional

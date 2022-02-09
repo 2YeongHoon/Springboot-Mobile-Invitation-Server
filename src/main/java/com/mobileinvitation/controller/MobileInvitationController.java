@@ -49,6 +49,9 @@ public class MobileInvitationController {
         String path = "";
         for (MultipartFile file : saveInfoReq.getImage()) {
             path = mobileInvitationService.fileUpload(file);
+            if (path.equals(null)) {
+                break;
+            }
             VideoEntity videoEntity = VideoEntity.builder()
                     .videoName(file.getOriginalFilename())
                     .videoPath(path)
@@ -58,6 +61,9 @@ public class MobileInvitationController {
 
         for (MultipartFile file : saveInfoReq.getVideo()) {
             path = mobileInvitationService.fileUpload(file);
+            if (path.equals(null)) {
+                break;
+            }
             ImageEntity imageEntity = ImageEntity.builder()
                     .imageName(file.getOriginalFilename())
                     .imagePath(path)
@@ -65,14 +71,12 @@ public class MobileInvitationController {
             imageEntityList.add(imageEntity);
         }
 
-        //TODO 버그 수정
-        SaveInfoItem saveInfoItem = saveInfoReq.toItem();
-        SaveInfoItem.builder()
-                .videoEntityList(videoEntityList)
-                .imageEntityList(imageEntityList)
+        SaveInfoItem saveInfoItem = SaveInfoItem.builder()
+                .saveInfoReq(saveInfoReq)
+                .imageEntity(imageEntityList)
+                .videoEntity(videoEntityList)
                 .build();
 
-        // TODO 디비 인서트
         mobileInvitationService.dbUpload(saveInfoItem);
 
         ModelAndView modelAndView = new ModelAndView();

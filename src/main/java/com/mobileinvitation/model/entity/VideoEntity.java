@@ -23,9 +23,8 @@ public class VideoEntity {
     @Column
     private String videoPath;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
     private WeddingInfoEntity videoWeddingInfo;
-
 
 }

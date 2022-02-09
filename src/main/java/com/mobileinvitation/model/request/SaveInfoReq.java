@@ -40,34 +40,34 @@ public class SaveInfoReq implements Serializable {
     private List<MultipartFile> image;
     private List<MultipartFile> video;
 
-    public SaveInfoItem toItem() {
-        SaveInfoItem saveInfoItem = SaveInfoItem.builder()
-                .userName(userName)
-                .userPass(userPass)
-                .groomName(groomName)
-                .groomFather(groomFather)
-                .groomRelation(groomRelation)
-                .groomPhone(groomPhone)
-                .groomBank(groomBank)
-                .groomAccountNum(groomAccountNum)
-                .groomAccountOwn(groomAccountOwn)
-                .brideName(brideName)
-                .brideFather(brideFather)
-                .brideMather(brideMather)
-                .brideRelation(brideRelation)
-                .bridePhone(bridePhone)
-                .brideBank(brideBank)
-                .brideAccountNum(brideAccountNum)
-                .brideAccountOwn(brideAccountOwn)
-                .weddingDate(weddingDate)
-                .weddingHall(weddingHall)
-                .address(address)
-                .detailAddress(detailAddress)
-                .notice(notice)
-                .text(text)
-                .greetingsBody(greetingsBody)
-                .greetingsTitle(greetingsTitle)
-                .build();
-        return saveInfoItem;
-    }
+//    public SaveInfoItem toItem() {
+//        SaveInfoItem saveInfoItem = SaveInfoItem.builder()
+//                .userName(userName)
+//                .userPass(userPass)
+//                .groomName(groomName)
+//                .groomFather(groomFather)
+//                .groomRelation(groomRelation)
+//                .groomPhone(groomPhone)
+//                .groomBank(groomBank)
+//                .groomAccountNum(groomAccountNum)
+//                .groomAccountOwn(groomAccountOwn)
+//                .brideName(brideName)
+//                .brideFather(brideFather)
+//                .brideMather(brideMather)
+//                .brideRelation(brideRelation)
+//                .bridePhone(bridePhone)
+//                .brideBank(brideBank)
+//                .brideAccountNum(brideAccountNum)
+//                .brideAccountOwn(brideAccountOwn)
+//                .weddingDate(weddingDate)
+//                .weddingHall(weddingHall)
+//                .address(address)
+//                .detailAddress(detailAddress)
+//                .notice(notice)
+//                .text(text)
+//                .greetingsBody(greetingsBody)
+//                .greetingsTitle(greetingsTitle)
+//                .build();
+//        return saveInfoItem;
+//    }
 }
