@@ -49,7 +49,7 @@ public class MobileInvitationController {
         String path = "";
         for (MultipartFile file : saveInfoReq.getImage()) {
             path = mobileInvitationService.fileUpload(file);
-            if (path.equals(null)) {
+            if (path.isEmpty()) {
                 break;
             }
             VideoEntity videoEntity = VideoEntity.builder()
@@ -61,7 +61,8 @@ public class MobileInvitationController {
 
         for (MultipartFile file : saveInfoReq.getVideo()) {
             path = mobileInvitationService.fileUpload(file);
-            if (path.equals(null)) {
+
+            if (path.isEmpty()) {
                 break;
             }
             ImageEntity imageEntity = ImageEntity.builder()
