@@ -46,10 +46,10 @@ public class SaveInfoItem {
     private List<VideoEntity> videoEntityList;
     private List<ImageEntity> imageEntityList;
 
-    public UserEntity toUserEntity() {
-//        WeddingInfoEntity weddingInfoEntity = toWeddingInfoEntity(null);
+    public UserEntity toUserEntity(WeddingInfoEntity weddingInfoEntity) {
+//    public UserEntity toUserEntity() {
         UserEntity userEntity = UserEntity.builder()
-                .weddingInfoEntity(toWeddingInfoEntity())
+                .weddingInfoEntity(weddingInfoEntity)
                 .userName(userName)
                 .userPass(userPass)
                 .build();
@@ -59,8 +59,8 @@ public class SaveInfoItem {
     public WeddingInfoEntity toWeddingInfoEntity() {
         WeddingInfoEntity weddingInfoEntity = WeddingInfoEntity.builder()
 //                .idx(userIdx)
-                .imageEntityList(imageEntityList)
-                .videoEntityList(videoEntityList)
+//                .imageEntityList(imageEntityList)
+//                .videoEntityList(videoEntityList)
                 .groomName(groomName)
                 .groomFather(groomFather)
                 .groomRelation(groomRelation)

@@ -23,7 +23,7 @@ public class ImageEntity {
     @Column
     private String imagePath;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "user_idx")
     private WeddingInfoEntity imageWeddingInfo;
 }

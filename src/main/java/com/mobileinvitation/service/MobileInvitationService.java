@@ -14,12 +14,14 @@ import com.mobileinvitation.repository.VideoRepo;
 import com.mobileinvitation.repository.WeddingInfoRepo;
 import lombok.RequiredArgsConstructor;
 import net.bytebuddy.utility.FileSystem;
+import org.apache.catalina.User;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.swing.*;
 import javax.transaction.Transactional;
+import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
@@ -81,7 +83,16 @@ public class MobileInvitationService {
 //            userRepo.save(userEntity);
 //            saveInfoItem.toUserEntity()
 //            userRepo.save().getIdx();
-            userRepo.save(saveInfoItem.toUserEntity());
+//            userRepo.save(saveInfoItem.toUserEntity());
+            WeddingInfoEntity weddingInfoEntity = new WeddingInfoEntity();
+            weddingInfoEntity = saveInfoItem.toWeddingInfoEntity();
+            for (VideoEntity videoEntity : saveInfoItem.getVideoEntityList()) {
+                weddingInfoEntity.addVideo(videoEntity);
+            }
+            for (ImageEntity imageEntity : saveInfoItem.getImageEntityList()) {
+                weddingInfoEntity.addImage((imageEntity));
+            }
+            userRepo.save(saveInfoItem.toUserEntity(weddingInfoEntity));
         } else {
 //            Long userIdx = userRepo.findByUserName(saveInfoItem.getUserName()).get().getIdx();
 //            System.out.println("getIdx: " + userRepo.findByUserName(saveInfoItem.getUserName()).get().getIdx());
@@ -109,7 +120,7 @@ public class MobileInvitationService {
         }
 
         // 파일 경로 반환
-        return null;
+        return "";
     }
 
     @Transactional
