@@ -9,6 +9,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.apache.catalina.User;
 
 import java.awt.*;
 import java.util.List;
@@ -46,10 +47,9 @@ public class SaveInfoItem {
     private List<VideoEntity> videoEntityList;
     private List<ImageEntity> imageEntityList;
 
-    public UserEntity toUserEntity(WeddingInfoEntity weddingInfoEntity) {
-//    public UserEntity toUserEntity() {
+    public UserEntity toUserEntity(WeddingInfoEntity weddingInfo) {
         UserEntity userEntity = UserEntity.builder()
-                .weddingInfoEntity(weddingInfoEntity)
+                .weddingInfo(weddingInfo)
                 .userName(userName)
                 .userPass(userPass)
                 .build();
@@ -59,8 +59,9 @@ public class SaveInfoItem {
     public WeddingInfoEntity toWeddingInfoEntity() {
         WeddingInfoEntity weddingInfoEntity = WeddingInfoEntity.builder()
 //                .idx(userIdx)
-//                .imageEntityList(imageEntityList)
-//                .videoEntityList(videoEntityList)
+//                .userEntity(userEntity)
+                .imageEntityList(imageEntityList)
+                .videoEntityList(videoEntityList)
                 .groomName(groomName)
                 .groomFather(groomFather)
                 .groomRelation(groomRelation)
@@ -87,24 +88,6 @@ public class SaveInfoItem {
                 .build();
         return weddingInfoEntity;
     }
-
-//    public VideoEntity toVideoEntity() {
-//        VideoEntity videoEntity = VideoEntity.builder()
-//                .videoPath(videoPath)
-//                .videoName(videoName)
-//                .build();
-//
-//        return videoEntity;
-//    }
-//
-//    public ImageEntity toImageEntity() {
-//        ImageEntity imageEntity = ImageEntity.builder()
-//                .imageName(imageName)
-//                .imagePath(imagePath)
-//                .build();
-//
-//        return imageEntity;
-//    }
 
     @Builder
     public SaveInfoItem(SaveInfoReq saveInfoReq, List<VideoEntity> videoEntity, List<ImageEntity> imageEntity) {

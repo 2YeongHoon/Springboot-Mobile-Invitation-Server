@@ -1,20 +1,20 @@
 package com.mobileinvitation.model.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
+@Getter
+@Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class VideoEntity {
     @Id
     @GeneratedValue
-    @Column(name = "video_id")
+//    @Column(name = "video_id")
     private Long idx;
 
     @Column
@@ -23,8 +23,8 @@ public class VideoEntity {
     @Column
     private String videoPath;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private WeddingInfoEntity videoWeddingInfo;
+//    @ManyToOne
+//    @JoinColumn(name = "weddinginfo_id")
+//    private WeddingInfoEntity videoWeddingInfo;
 
 }

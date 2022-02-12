@@ -73,31 +73,22 @@ public class MobileInvitationService {
     @Transactional
     public CommonResult dbUpload(SaveInfoItem saveInfoItem) throws Exception {
         CommonResult res = new CommonResult();
-//
-        //TODO DB Inssert 오류 수정
+
         if (!userExistCheck(saveInfoItem.getUserName())) {
-//            UserEntity userEntity = UserEntity.builder()
-//                    .userName(saveInfoItem.getUserName())
-//                    .userPass(saveInfoItem.getUserPass())
-//                    .build();
-//            userRepo.save(userEntity);
-//            saveInfoItem.toUserEntity()
-//            userRepo.save().getIdx();
-//            userRepo.save(saveInfoItem.toUserEntity());
-            WeddingInfoEntity weddingInfoEntity = new WeddingInfoEntity();
-            weddingInfoEntity = saveInfoItem.toWeddingInfoEntity();
-            for (VideoEntity videoEntity : saveInfoItem.getVideoEntityList()) {
-                weddingInfoEntity.addVideo(videoEntity);
-            }
-            for (ImageEntity imageEntity : saveInfoItem.getImageEntityList()) {
-                weddingInfoEntity.addImage((imageEntity));
-            }
+            WeddingInfoEntity weddingInfoEntity = saveInfoItem.toWeddingInfoEntity();
+            weddingInfoEntity.setVideoEntityList(saveInfoItem.getVideoEntityList());
+            weddingInfoEntity.setImageEntityList(saveInfoItem.getImageEntityList());
             userRepo.save(saveInfoItem.toUserEntity(weddingInfoEntity));
         } else {
-//            Long userIdx = userRepo.findByUserName(saveInfoItem.getUserName()).get().getIdx();
-//            System.out.println("getIdx: " + userRepo.findByUserName(saveInfoItem.getUserName()).get().getIdx());
-//            System.out.println("userIdx: " + userIdx);
-//            weddingInfoRepo.save(saveInfoItem.toWeddingInfoEntity(userIdx));
+            Long userIdx = userRepo.findByUserName(saveInfoItem.getUserName()).get().getWeddingInfo().getIdx();
+
+            WeddingInfoEntity weddingInfoEntity = saveInfoItem.toWeddingInfoEntity();
+            imageRepo.deleteByWeddingInfoIdx(userIdx);
+            videoRepo.deleteByWeddingInfoIdx(userIdx);
+            weddingInfoEntity.setVideoEntityList(saveInfoItem.getVideoEntityList());
+            weddingInfoEntity.setImageEntityList(saveInfoItem.getImageEntityList());
+            weddingInfoEntity.setIdx(userIdx);
+            weddingInfoRepo.save(weddingInfoEntity);
         }
 
         res.setCode(0);

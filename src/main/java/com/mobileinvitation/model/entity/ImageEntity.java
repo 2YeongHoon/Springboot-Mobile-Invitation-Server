@@ -1,12 +1,12 @@
 package com.mobileinvitation.model.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Entity
+@Getter
+@Setter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
@@ -14,7 +14,7 @@ public class ImageEntity {
 
     @Id
     @GeneratedValue
-    @Column(name = "image_id")
+//    @Column(name = "image_id")
     private Long idx;
 
     @Column
@@ -23,7 +23,7 @@ public class ImageEntity {
     @Column
     private String imagePath;
 
-    @ManyToOne
-    @JoinColumn(name = "user_idx")
-    private WeddingInfoEntity imageWeddingInfo;
+//    @ManyToOne
+//    @JoinColumn(name = "weddinginfo_id")
+//    private WeddingInfoEntity imageWeddingInfo;
 }

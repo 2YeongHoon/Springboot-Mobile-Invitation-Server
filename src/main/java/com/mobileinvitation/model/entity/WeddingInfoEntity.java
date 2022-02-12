@@ -1,30 +1,36 @@
 package com.mobileinvitation.model.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
+import java.awt.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Getter
+@Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class WeddingInfoEntity {
 
     @Id
-    @GeneratedValue
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "weddinginfo_id")
+    @GeneratedValue
     private Long idx;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "video_id")
-    private List<VideoEntity> videoEntityList;
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "weddingInfo")
+    private UserEntity user;
 
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "image_id")
-    private List<ImageEntity> imageEntityList;
+    @JoinColumn(name = "weddinginfo_idx")
+    private List<VideoEntity> videoEntityList = new ArrayList<>();
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "weddinginfo_idx")
+    private List<ImageEntity> imageEntityList = new ArrayList<>();
 
     @Column
     private String groomName;
@@ -100,5 +106,4 @@ public class WeddingInfoEntity {
 
     @Column
     private String notice;
-
 }

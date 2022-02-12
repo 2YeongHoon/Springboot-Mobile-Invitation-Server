@@ -11,26 +11,20 @@ import javax.persistence.*;
 @NoArgsConstructor
 public class UserEntity extends TimeEntity {
 
+    //    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @Column(unique = true, nullable = false)
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "user_idx", unique = true, nullable = false)
+    @GeneratedValue
+    @Column(name = "user_id")
     private Long idx;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "wedding_idx")
-    private WeddingInfoEntity weddingInfoEntity;
+    @JoinColumn(name = "weddinginfo_id")
+    private WeddingInfoEntity weddingInfo;
 
     @Column(nullable = false, unique = true)
     private String userName;
 
     @Column(nullable = false)
     private String userPass;
-
-//    @Builder
-//    public UserEntity(Long idx, String userName, String userPass, WeddingInfoEntity weddingInfoEntity) {
-//        this.idx = idx;
-//        this.userName = userName;
-//        this.userPass = userPass;
-//        this.weddingInfoEntity = weddingInfoEntity;
-//    }
 }
