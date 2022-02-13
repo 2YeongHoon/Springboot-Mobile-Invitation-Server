@@ -8,6 +8,7 @@ import com.mobileinvitation.model.entity.WeddingInfoEntity;
 import com.mobileinvitation.model.item.SaveInfoItem;
 import com.mobileinvitation.model.request.LoginUserReq;
 import com.mobileinvitation.model.request.SaveInfoReq;
+import com.mobileinvitation.model.response.LoginInfoRes;
 import com.mobileinvitation.repository.ImageRepo;
 import com.mobileinvitation.repository.UserRepo;
 import com.mobileinvitation.repository.VideoRepo;
@@ -26,6 +27,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -65,6 +67,17 @@ public class MobileInvitationService {
         } catch (Exception e) {
             throw new Exception(e.getMessage());
         }
+        //TODO 로그인 성공시 저장된 데이터 반환
+        LoginInfoRes loginInfoRes = new LoginInfoRes();
+//        loginInfoRes = userRepo.findAllByUserName(loginUserReq.getUserName()).orElse(null);
+
+        List<VideoEntity> videoEntityList = userRepo.findByUserName(loginUserReq.getUserName()).get().getWeddingInfo().getVideoEntityList();
+        List<String> videoNames = videoEntityList.stream().map(x -> x.getVideoName()).collect(Collectors.toList());
+//        System.out.println("findAll" + userRepo.findByUserName(loginUserReq.getUserName()).get().getWeddingInfo().getVideoEntityList().get(0));
+
+        System.out.println("findAll" + videoNames);
+
+
         res.setCode(0);
         res.setMessage("information 반환");
         return res;
@@ -83,8 +96,6 @@ public class MobileInvitationService {
             Long userIdx = userRepo.findByUserName(saveInfoItem.getUserName()).get().getWeddingInfo().getIdx();
 
             WeddingInfoEntity weddingInfoEntity = saveInfoItem.toWeddingInfoEntity();
-            imageRepo.deleteByWeddingInfoIdx(userIdx);
-            videoRepo.deleteByWeddingInfoIdx(userIdx);
             weddingInfoEntity.setVideoEntityList(saveInfoItem.getVideoEntityList());
             weddingInfoEntity.setImageEntityList(saveInfoItem.getImageEntityList());
             weddingInfoEntity.setIdx(userIdx);

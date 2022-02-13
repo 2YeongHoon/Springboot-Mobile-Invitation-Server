@@ -24,11 +24,11 @@ public class WeddingInfoEntity {
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "weddingInfo")
     private UserEntity user;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "weddinginfo_idx")
     private List<VideoEntity> videoEntityList = new ArrayList<>();
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "weddinginfo_idx")
     private List<ImageEntity> imageEntityList = new ArrayList<>();
 
