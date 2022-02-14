@@ -27,6 +27,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service
@@ -54,32 +55,49 @@ public class MobileInvitationService {
                 res.setMessage("회원정보 없음");
                 return res;
             }
-//            if (ObjectUtils.isEmpty(user)) {
-//                UserEntity userEntity = UserEntity.builder()
-//                        .userName(userName)
-//                        .userPass(userPass)
-//                        .build();
-//                userRepo.save(userEntity);
-//
-//            } else {
-//                UserEntity userEntity = user.get();
-//            }
         } catch (Exception e) {
             throw new Exception(e.getMessage());
         }
-        //TODO 로그인 성공시 저장된 데이터 반환
-        LoginInfoRes loginInfoRes = new LoginInfoRes();
-//        loginInfoRes = userRepo.findAllByUserName(loginUserReq.getUserName()).orElse(null);
+        WeddingInfoEntity weddingInfoEntity = userRepo.findByUserName(loginUserReq.getUserName()).get().getWeddingInfo();
 
-        List<VideoEntity> videoEntityList = userRepo.findByUserName(loginUserReq.getUserName()).get().getWeddingInfo().getVideoEntityList();
+        List<VideoEntity> videoEntityList = weddingInfoEntity.getVideoEntityList();
         List<String> videoNames = videoEntityList.stream().map(x -> x.getVideoName()).collect(Collectors.toList());
-//        System.out.println("findAll" + userRepo.findByUserName(loginUserReq.getUserName()).get().getWeddingInfo().getVideoEntityList().get(0));
 
-        System.out.println("findAll" + videoNames);
+        List<ImageEntity> imageEntityList = weddingInfoEntity.getImageEntityList();
+        List<String> imageNames = imageEntityList.stream().map(x -> x.getImageName()).collect(Collectors.toList());
 
+        LoginInfoRes loginInfoRes = LoginInfoRes.builder()
+                .groomName(weddingInfoEntity.getGroomName())
+                .groomFather(weddingInfoEntity.getGroomFather())
+                .groomRelation(weddingInfoEntity.getGroomRelation())
+                .groomPhone(weddingInfoEntity.getGroomPhone())
+                .groomBank(weddingInfoEntity.getGroomBank())
+                .groomAccountNum(weddingInfoEntity.getGroomAccountNum())
+                .groomAccountOwn(weddingInfoEntity.getGroomAccountOwn())
+                .brideName(weddingInfoEntity.getBrideName())
+                .brideFather(weddingInfoEntity.getBrideFather())
+                .brideMather(weddingInfoEntity.getBrideMather())
+                .brideRelation(weddingInfoEntity.getBrideRelation())
+                .bridePhone(weddingInfoEntity.getBridePhone())
+                .brideBank(weddingInfoEntity.getBrideBank())
+                .brideAccountNum(weddingInfoEntity.getBrideAccountNum())
+                .brideAccountOwn(weddingInfoEntity.getBrideAccountOwn())
+                .weddingDate(weddingInfoEntity.getWeddingDate())
+                .weddingHall(weddingInfoEntity.getWeddingHall())
+                .address(weddingInfoEntity.getAddress())
+                .detailAddress(weddingInfoEntity.getDetailAddress())
+                .notice(weddingInfoEntity.getNotice())
+                .text(weddingInfoEntity.getText())
+                .greetingsBody(weddingInfoEntity.getGreetingsBody())
+                .greetingsTitle(weddingInfoEntity.getGreetingsTitle())
+                .images(imageNames)
+                .videos(videoNames)
+                .build();
 
         res.setCode(0);
         res.setMessage("information 반환");
+
+        //TODO loginInfoRes 반환 구현
         return res;
     }
 
@@ -93,7 +111,7 @@ public class MobileInvitationService {
             weddingInfoEntity.setImageEntityList(saveInfoItem.getImageEntityList());
             userRepo.save(saveInfoItem.toUserEntity(weddingInfoEntity));
         } else {
-            Long userIdx = userRepo.findByUserName(saveInfoItem.getUserName()).get().getWeddingInfo().getIdx();
+            UUID userIdx = userRepo.findByUserName(saveInfoItem.getUserName()).get().getWeddingInfo().getIdx();
 
             WeddingInfoEntity weddingInfoEntity = saveInfoItem.toWeddingInfoEntity();
             weddingInfoEntity.setVideoEntityList(saveInfoItem.getVideoEntityList());
@@ -104,7 +122,6 @@ public class MobileInvitationService {
 
         res.setCode(0);
         res.setMessage("db저장완료");
-
         return res;
     }
 
@@ -112,16 +129,15 @@ public class MobileInvitationService {
     public String fileUpload(MultipartFile media) throws IOException {
         CommonResult res = new CommonResult();
 
+        // TODO UUID명 저장
         if (!media.isEmpty()) {
             String path = "D:\\temp";
             File file = new File(path, media.getOriginalFilename());
-//            file = new File(path, media.getOriginalFilename());
 
             media.transferTo(file);
             return file.getAbsolutePath();
         }
 
-        // 파일 경로 반환
         return "";
     }
 

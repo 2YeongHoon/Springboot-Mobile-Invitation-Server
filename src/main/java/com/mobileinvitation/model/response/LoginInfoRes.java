@@ -35,6 +35,6 @@ public class LoginInfoRes {
     private String greetingsBody;
     private String greetingsTitle;
 
-    private List<String> image;
-    private List<String> video;
+    private List<String> images;
+    private List<String> videos;
 }

@@ -3,6 +3,7 @@ package com.mobileinvitation.model.entity;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.UUID;
 
 @Getter
 @Entity
@@ -10,13 +11,10 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserEntity extends TimeEntity {
-
-    //    @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    @Column(unique = true, nullable = false)
     @Id
     @GeneratedValue
-    @Column(name = "user_id")
-    private Long idx;
+    @Column(name = "user_id", columnDefinition = "BINARY(16)")
+    private UUID idx;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "weddinginfo_id")

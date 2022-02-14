@@ -4,6 +4,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.UUID;
 
 @Entity
 @Getter
@@ -14,17 +15,11 @@ import java.util.List;
 public class VideoEntity {
     @Id
     @GeneratedValue
-//    @Column(name = "video_id")
-    private Long idx;
+    private UUID idx;
 
     @Column
     private String videoName;
 
     @Column
     private String videoPath;
-
-//    @ManyToOne
-//    @JoinColumn(name = "weddinginfo_id")
-//    private WeddingInfoEntity videoWeddingInfo;
-
 }

@@ -6,6 +6,7 @@ import javax.persistence.*;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @Entity
 @Getter
@@ -16,10 +17,9 @@ import java.util.List;
 public class WeddingInfoEntity {
 
     @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "weddinginfo_id")
+    @Column(name = "weddinginfo_id", columnDefinition = "BINARY(16)")
     @GeneratedValue
-    private Long idx;
+    private UUID idx;
 
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "weddingInfo")
     private UserEntity user;

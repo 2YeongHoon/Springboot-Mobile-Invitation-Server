@@ -3,6 +3,7 @@ package com.mobileinvitation.model.entity;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.UUID;
 
 @Entity
 @Getter
@@ -14,16 +15,11 @@ public class ImageEntity {
 
     @Id
     @GeneratedValue
-//    @Column(name = "image_id")
-    private Long idx;
+    private UUID idx;
 
     @Column
     private String imageName;
 
     @Column
     private String imagePath;
-
-//    @ManyToOne
-//    @JoinColumn(name = "weddinginfo_id")
-//    private WeddingInfoEntity imageWeddingInfo;
 }
