@@ -13,8 +13,8 @@ import java.util.UUID;
 public class UserEntity extends TimeEntity {
     @Id
     @GeneratedValue
-    @Column(name = "user_id", columnDefinition = "BINARY(16)")
-    private UUID idx;
+    @Column(name = "user_id")
+    private Long idx;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "weddinginfo_id")

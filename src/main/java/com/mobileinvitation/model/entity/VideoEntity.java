@@ -15,7 +15,7 @@ import java.util.UUID;
 public class VideoEntity {
     @Id
     @GeneratedValue
-    private UUID idx;
+    private Long idx;
 
     @Column
     private String videoName;

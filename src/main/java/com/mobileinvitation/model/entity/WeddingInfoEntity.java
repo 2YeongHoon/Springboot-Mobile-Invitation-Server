@@ -17,9 +17,9 @@ import java.util.UUID;
 public class WeddingInfoEntity {
 
     @Id
-    @Column(name = "weddinginfo_id", columnDefinition = "BINARY(16)")
+    @Column(name = "weddinginfo_id")
     @GeneratedValue
-    private UUID idx;
+    private Long idx;
 
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "weddingInfo")
     private UserEntity user;

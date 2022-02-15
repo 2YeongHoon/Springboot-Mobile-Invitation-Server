@@ -15,7 +15,7 @@ public class ImageEntity {
 
     @Id
     @GeneratedValue
-    private UUID idx;
+    private Long idx;
 
     @Column
     private String imageName;
