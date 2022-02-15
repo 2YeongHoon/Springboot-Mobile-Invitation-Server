@@ -46,31 +46,8 @@ public class MobileInvitationController {
         List<VideoEntity> videoEntityList = new ArrayList<>();
         List<ImageEntity> imageEntityList = new ArrayList<>();
 
-        String path = "";
-        for (MultipartFile file : saveInfoReq.getImage()) {
-            path = mobileInvitationService.fileUpload(file);
-            if (path.isEmpty()) {
-                break;
-            }
-            VideoEntity videoEntity = VideoEntity.builder()
-                    .videoName(file.getOriginalFilename())
-                    .videoPath(path)
-                    .build();
-            videoEntityList.add(videoEntity);
-        }
-
-        for (MultipartFile file : saveInfoReq.getVideo()) {
-            path = mobileInvitationService.fileUpload(file);
-
-            if (path.isEmpty()) {
-                break;
-            }
-            ImageEntity imageEntity = ImageEntity.builder()
-                    .imageName(file.getOriginalFilename())
-                    .imagePath(path)
-                    .build();
-            imageEntityList.add(imageEntity);
-        }
+        imageEntityList = mobileInvitationService.imageFileUpload(saveInfoReq.getImage());
+        videoEntityList = mobileInvitationService.videoFileUpload(saveInfoReq.getVideo());
 
         SaveInfoItem saveInfoItem = SaveInfoItem.builder()
                 .saveInfoReq(saveInfoReq)

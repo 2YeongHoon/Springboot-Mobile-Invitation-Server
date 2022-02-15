@@ -25,9 +25,9 @@ import javax.transaction.Transactional;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.*;
 import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service
@@ -111,7 +111,7 @@ public class MobileInvitationService {
             weddingInfoEntity.setImageEntityList(saveInfoItem.getImageEntityList());
             userRepo.save(saveInfoItem.toUserEntity(weddingInfoEntity));
         } else {
-            UUID userIdx = userRepo.findByUserName(saveInfoItem.getUserName()).get().getWeddingInfo().getIdx();
+            Long userIdx = userRepo.findByUserName(saveInfoItem.getUserName()).get().getWeddingInfo().getIdx();
 
             WeddingInfoEntity weddingInfoEntity = saveInfoItem.toWeddingInfoEntity();
             weddingInfoEntity.setVideoEntityList(saveInfoItem.getVideoEntityList());
@@ -126,19 +126,49 @@ public class MobileInvitationService {
     }
 
     @Transactional
-    public String fileUpload(MultipartFile media) throws IOException {
-        CommonResult res = new CommonResult();
+    public List<ImageEntity> imageFileUpload(List<MultipartFile> medias) throws IOException {
+        List<ImageEntity> imageEntityList = new ArrayList<>();
 
-        // TODO UUID명 저장
-        if (!media.isEmpty()) {
-            String path = "D:\\temp";
-            File file = new File(path, media.getOriginalFilename());
+        for (MultipartFile media : medias) {
+            if (!media.isEmpty()) {
+                String path = "D:\\temp";
+                Date nowDate = new Date();
+                SimpleDateFormat time = new SimpleDateFormat("hhmmssSSSS");
+                String fileName = time.format(nowDate) + "_" + media.getOriginalFilename();
 
-            media.transferTo(file);
-            return file.getAbsolutePath();
+                File file = new File(path, fileName);
+                media.transferTo(file);
+                ImageEntity imageEntity = ImageEntity.builder().
+                        imagePath(path).
+                        imageName(fileName).
+                        build();
+                imageEntityList.add(imageEntity);
+            }
         }
+        return imageEntityList;
+    }
 
-        return "";
+    @Transactional
+    public List<VideoEntity> videoFileUpload(List<MultipartFile> medias) throws IOException {
+        List<VideoEntity> videoEntityList = new ArrayList<>();
+
+        for (MultipartFile media : medias) {
+            if (!media.isEmpty()) {
+                String path = "D:\\temp";
+                Date nowDate = new Date();
+                SimpleDateFormat time = new SimpleDateFormat("hhmmssSSSS");
+                String fileName = time.format(nowDate) + "_" + media.getOriginalFilename();
+
+                File file = new File(path, fileName);
+                media.transferTo(file);
+                VideoEntity videoEntity = VideoEntity.builder().
+                        videoPath(path).
+                        videoName(fileName).
+                        build();
+                videoEntityList.add(videoEntity);
+            }
+        }
+        return videoEntityList;
     }
 
     @Transactional
