@@ -2,9 +2,10 @@ package com.mobileinvitation.model.entity;
 
 import lombok.*;
 
-import javax.persistence.*;
-import java.util.List;
-import java.util.UUID;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 @Entity
 @Getter

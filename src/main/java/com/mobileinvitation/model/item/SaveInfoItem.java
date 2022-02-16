@@ -9,9 +9,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.apache.catalina.User;
 
-import java.awt.*;
 import java.util.List;
 
 @Getter
@@ -58,8 +56,6 @@ public class SaveInfoItem {
 
     public WeddingInfoEntity toWeddingInfoEntity() {
         WeddingInfoEntity weddingInfoEntity = WeddingInfoEntity.builder()
-//                .idx(userIdx)
-//                .userEntity(userEntity)
                 .imageEntityList(imageEntityList)
                 .videoEntityList(videoEntityList)
                 .groomName(groomName)

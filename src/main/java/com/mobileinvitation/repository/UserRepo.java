@@ -1,7 +1,6 @@
 package com.mobileinvitation.repository;
 
 import com.mobileinvitation.model.entity.UserEntity;
-import com.mobileinvitation.model.response.LoginInfoRes;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

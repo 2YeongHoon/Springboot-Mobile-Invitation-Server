@@ -1,6 +1,5 @@
 package com.mobileinvitation.model.request;
 
-import com.mobileinvitation.model.item.SaveInfoItem;
 import lombok.Builder;
 import lombok.Getter;
 import org.springframework.web.multipart.MultipartFile;
