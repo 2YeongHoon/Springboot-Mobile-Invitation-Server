@@ -10,10 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -60,6 +58,7 @@ public class MobileInvitationController {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("success");
 
+        // TODO loginInfoRes 반환 구현
         return modelAndView;
     }
 
