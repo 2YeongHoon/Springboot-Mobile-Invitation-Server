@@ -3,7 +3,9 @@ package com.mobileinvitation.controller;
 import com.mobileinvitation.model.entity.ImageEntity;
 import com.mobileinvitation.model.entity.VideoEntity;
 import com.mobileinvitation.model.item.SaveInfoItem;
+import com.mobileinvitation.model.request.LoginUserReq;
 import com.mobileinvitation.model.request.SaveInfoReq;
+import com.mobileinvitation.model.response.LoginInfoRes;
 import com.mobileinvitation.service.MobileInvitationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -21,10 +23,14 @@ public class MobileInvitationController {
     private final MobileInvitationService mobileInvitationService;
 
     @GetMapping(value = "/information/{userName}/{userPass}")
-    public ModelAndView information(@PathVariable("userName") String userId, @PathVariable("userPass") String userPw) {
+    public ModelAndView information(@PathVariable("userName") String userId, @PathVariable("userPass") String userPw) throws Exception {
         ModelAndView modelAndView = new ModelAndView();
+
+        LoginInfoRes loginUserRes = mobileInvitationService.loginInfo(userId);
+
         modelAndView.addObject("userName", userId);
         modelAndView.addObject("userPass", userPw);
+        modelAndView.addObject("loginInfo", loginUserRes);
         modelAndView.setViewName("information");
 
         return modelAndView;
@@ -58,7 +64,6 @@ public class MobileInvitationController {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("success");
 
-        // TODO loginInfoRes 반환 구현
         return modelAndView;
     }
 

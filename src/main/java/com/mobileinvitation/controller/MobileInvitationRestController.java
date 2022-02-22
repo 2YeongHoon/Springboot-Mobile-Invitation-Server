@@ -15,12 +15,7 @@ public class MobileInvitationRestController {
 
     @PostMapping("/login")
     public CommonResult login(@RequestBody LoginUserReq loginUserReq) throws Exception {
-        return mobileInvitationService.login(loginUserReq);
+        CommonResult commonResult = mobileInvitationService.login(loginUserReq);
+        return commonResult;
     }
-
-//    @PostMapping("/information/upload")
-//    public String information(@RequestBody SaveInfoReq saveInfoReq) throws Exception {
-////        return mobileInvitationService.login(saveInfoReq);
-//        return "";
-//    }
 }

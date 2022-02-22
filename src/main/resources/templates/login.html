@@ -43,6 +43,7 @@
                 data: JSON.stringify(obj),
                 contentType: "application/json",
                 success: function (data) {
+                    console.log(data);
                     switch (data.code) {
                         case 0:
                         case 1:

@@ -55,7 +55,14 @@ public class MobileInvitationService {
         } catch (Exception e) {
             throw new Exception(e.getMessage());
         }
-        WeddingInfoEntity weddingInfoEntity = userRepo.findByUserName(loginUserReq.getUserName()).get().getWeddingInfo();
+        res.setCode(0);
+        res.setMessage("information 반환");
+
+        return res;
+    }
+
+    public LoginInfoRes loginInfo(String userName) throws Exception {
+        WeddingInfoEntity weddingInfoEntity = userRepo.findByUserName(userName).get().getWeddingInfo();
 
         List<VideoEntity> videoEntityList = weddingInfoEntity.getVideoEntityList();
         List<String> videoNames = videoEntityList.stream().map(x -> x.getVideoName()).collect(Collectors.toList());
@@ -90,15 +97,11 @@ public class MobileInvitationService {
                 .images(imageNames)
                 .videos(videoNames)
                 .build();
-
-        res.setCode(0);
-        res.setMessage("information 반환");
-
-        //TODO loginInfoRes 반환 구현
-        return res;
+        return loginInfoRes;
     }
 
     @Transactional
+
     public CommonResult dbUpload(SaveInfoItem saveInfoItem) throws Exception {
         CommonResult res = new CommonResult();
 
