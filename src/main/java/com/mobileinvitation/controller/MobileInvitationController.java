@@ -27,9 +27,7 @@ public class MobileInvitationController {
         ModelAndView modelAndView = new ModelAndView();
 
         LoginInfoRes loginUserRes = mobileInvitationService.loginInfo(userId);
-
-        modelAndView.addObject("userName", userId);
-        modelAndView.addObject("userPass", userPw);
+        
         modelAndView.addObject("loginInfo", loginUserRes);
         modelAndView.setViewName("information");
 

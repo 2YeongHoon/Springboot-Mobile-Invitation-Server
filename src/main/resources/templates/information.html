@@ -32,7 +32,7 @@
         <title>Title</title>
     </head>
     <body>
-    <form id="frm-upload" enctype="multipart/form-data" action="/upload" method="post">
+    <form th:object="${loginInfo}" id="frm-upload" enctype="multipart/form-data" action="/upload" method="post">
         <p>Board</p>
         <div class="wrap">
             <div class="body-wrap">
@@ -40,9 +40,8 @@
                     <label class="mt-3">신랑</label>
                     <div class="row">
                         <div class="col">
-                            <input class="form-control form-control-sm" type="text" placeholder="아버님"
-                                   name="groomFather"
-                                   th:field="${loginInfo.groomFather}"
+                            <input class="form-control form-control-sm" type="text"
+                                   name="groomFather" th:value="*{groomFather}"
                                    aria-label=".form-control-sm example">
                         </div>
                         <div class="col">
