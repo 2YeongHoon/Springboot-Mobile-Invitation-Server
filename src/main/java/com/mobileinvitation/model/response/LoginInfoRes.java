@@ -14,6 +14,7 @@ import java.util.List;
 public class LoginInfoRes {
     private String groomName;
     private String groomFather;
+    private String groomMather;
     private String groomRelation;
     private String groomPhone;
     private String groomBank;

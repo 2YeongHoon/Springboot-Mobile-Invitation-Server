@@ -61,6 +61,7 @@ public class MobileInvitationService {
         return res;
     }
 
+    @Transactional
     public LoginInfoRes loginInfo(String userName) throws Exception {
         WeddingInfoEntity weddingInfoEntity = userRepo.findByUserName(userName).get().getWeddingInfo();
 
@@ -73,6 +74,7 @@ public class MobileInvitationService {
         LoginInfoRes loginInfoRes = LoginInfoRes.builder()
                 .groomName(weddingInfoEntity.getGroomName())
                 .groomFather(weddingInfoEntity.getGroomFather())
+                .groomMather(weddingInfoEntity.getGroomMather())
                 .groomRelation(weddingInfoEntity.getGroomRelation())
                 .groomPhone(weddingInfoEntity.getGroomPhone())
                 .groomBank(weddingInfoEntity.getGroomBank())

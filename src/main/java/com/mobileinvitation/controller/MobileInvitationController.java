@@ -25,9 +25,21 @@ public class MobileInvitationController {
     @GetMapping(value = "/information/{userName}/{userPass}")
     public ModelAndView information(@PathVariable("userName") String userId, @PathVariable("userPass") String userPw) throws Exception {
         ModelAndView modelAndView = new ModelAndView();
+        LoginInfoRes loginUserRes = new LoginInfoRes();
+//        LoginInfoRes loginUserRes = mobileInvitationService.loginInfo(userId);
+
+        modelAndView.addObject("loginInfo", loginUserRes);
+        modelAndView.setViewName("information");
+
+        return modelAndView;
+    }
+
+    @GetMapping(value = "/information/{userName}")
+    public ModelAndView information(@PathVariable("userName") String userId) throws Exception {
+        ModelAndView modelAndView = new ModelAndView();
 
         LoginInfoRes loginUserRes = mobileInvitationService.loginInfo(userId);
-        
+
         modelAndView.addObject("loginInfo", loginUserRes);
         modelAndView.setViewName("information");
 

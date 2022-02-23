@@ -7,5 +7,4 @@ import lombok.Data;
 public class CommonResult {
     private int code;
     private String message;
-    private LoginInfoRes loginInfoRes;
 }

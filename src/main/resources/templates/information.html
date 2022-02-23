@@ -40,45 +40,50 @@
                     <label class="mt-3">신랑</label>
                     <div class="row">
                         <div class="col">
-                            <input class="form-control form-control-sm" type="text"
+                            <input class="form-control form-control-sm" type="text" placeholder="신랑아버님"
                                    name="groomFather" th:value="*{groomFather}"
                                    aria-label=".form-control-sm example">
                         </div>
                         <div class="col">
-                            <input class="form-control form-control-sm" type="text" placeholder="어머님" name="groomMather"
+                            <input class="form-control form-control-sm" type="text" placeholder="신랑어머님"
+                                   name="groomMather"
+                                   th:value="*{groomMather}"
                                    aria-label=".form-control-sm example">
                         </div>
                     </div>
                     <div class="row">
                         <div class="col">
                             <input class="form-control form-control-sm" type="text" placeholder="신랑이름" name="groomName"
-                                   aria-label=".form-control-sm example">
+                                   th:value="*{groomName}"
+                                   aria-label=" .form-control-sm example">
                         </div>
                         <div class="col">
                             <input class="form-control form-control-sm" type="text" placeholder="관계(선택)"
-                                   name="groomRelation"
-                                   aria-label=".form-control-sm example">
+                                   name="groomRelation" th:value="*{groomRelation}"
+                                   aria-label=" .form-control-sm example">
                         </div>
                     </div>
                     <div class="row">
                         <div class="col">
                             <input class="form-control form-control-sm" type="text" placeholder="연락처" name="groomPhone"
+                                   th:value="*{groomPhone}"
                                    aria-label=".form-control-sm example">
                         </div>
                         <div class="col">
                             <input class="form-control form-control-sm" type="text" placeholder="은행" name="groomBank"
+                                   th:value="*{groomBank}"
                                    aria-label=".form-control-sm example">
                         </div>
                     </div>
                     <div class="row">
                         <div class="col">
                             <input class="form-control form-control-sm" type="text" placeholder="계좌번호"
-                                   name="groomAccountNum"
+                                   name="groomAccountNum" th:value="*{groomAccountNum}"
                                    aria-label=".form-control-sm example">
                         </div>
                         <div class="col">
                             <input class="form-control form-control-sm" type="text" placeholder="예금주"
-                                   name="groomAccountOwn"
+                                   name="groomAccountOwn" th:value="*{groomAccountOwn}"
                                    aria-label=".form-control-sm example">
                         </div>
                     </div>
@@ -86,43 +91,52 @@
                     <label class="mt-3">신부</label>
                     <div class="row">
                         <div class="col">
-                            <input class="form-control form-control-sm" type="text" placeholder="아버님" name="brideFather"
+                            <input class="form-control form-control-sm" type="text" placeholder="신부아버님"
+                                   name="brideFather"
+                                   th:value="*{brideFather}"
                                    aria-label=".form-control-sm example">
                         </div>
                         <div class="col">
-                            <input class="form-control form-control-sm" type="text" placeholder="어머님" name="brideMather"
+                            <input class="form-control form-control-sm" type="text" placeholder="신부어머님"
+                                   name="brideMather"
+                                   th:value="*{brideMather}"
                                    aria-label=".form-control-sm example">
                         </div>
                     </div>
                     <div class="row">
                         <div class="col">
-                            <input class="form-control form-control-sm" type="text" placeholder="신부" name="brideName"
+                            <input class="form-control form-control-sm" type="text" placeholder="신부이름" name="brideName"
+                                   th:value="*{brideName}"
                                    aria-label=".form-control-sm example">
                         </div>
                         <div class="col">
                             <input class="form-control form-control-sm" type="text" placeholder="관계(선택)"
-                                   name="brideRelation"
+                                   name="brideRelation" th:value="*{brideRelation}"
                                    aria-label=".form-control-sm example">
                         </div>
                     </div>
                     <div class="row">
                         <div class="col">
                             <input class="form-control form-control-sm" type="text" placeholder="연락처" name="bridePhone"
+                                   th:value="*{bridePhone}"
                                    aria-label=".form-control-sm example">
                         </div>
                         <div class="col">
                             <input class="form-control form-control-sm" type="text" placeholder="은행" name="brideBank"
+                                   th:value="*{brideBank}"
                                    aria-label=".form-control-sm example">
                         </div>
                     </div>
                     <div class="row">
                         <div class="col">
                             <input class="form-control form-control-sm" type="text" placeholder="계좌번호"
+                                   th:value="*{brideAccountNum}"
                                    name="brideAccountNum"
                                    aria-label=".form-control-sm example">
                         </div>
                         <div class="col">
                             <input class="form-control form-control-sm" type="text" placeholder="예금주"
+                                   th:value="*{brideAccountOwn}"
                                    name="brideAccountOwn"
                                    aria-label=".form-control-sm example">
                         </div>
@@ -131,14 +145,16 @@
 
                 <div class="wedding-hall-info mt-5">
                     <label class="mt-3">웨딩홀</label>
-                    <input class="form-control form-control-sm d-flex" placeholder="날짜" name="weddingDate">
-                    <input class="form-control form-control-sm d-flex" placeholder="예식장명" name="weddingHall">
+                    <input class="form-control form-control-sm d-flex" placeholder="날짜" name="weddingDate"
+                           th:value="*{weddingDate}">
+                    <input class="form-control form-control-sm d-flex" placeholder="예식장명" name="weddingHall"
+                           th:value="*{weddingHall}">
                     <input type="text" class="form-control form-control-sm" name="sample6_postcode" placeholder="우편번호">
                     <input type="button" class="form-control form-control-sm" onclick="sample6_execDaumPostcode()"
                            value="우편번호 찾기">
                     <input type="text" class="form-control form-control-sm" name="address" placeholder="주소">
                     <input type="text" class="form-control form-control-sm" name="detailAddress"
-                           placeholder="상세주소">
+                           placeholder="상세주소" th:value="*{detailAddress}">
                     <input type="text" class="form-control form-control-sm" name="sample6_extraAddress"
                            placeholder="참고항목">
                     <!--      <input  class="form-control form-control-sm d-flex" placeholder="주소">-->
@@ -163,26 +179,27 @@
                 <div class="greetings mt-5">
                     <label class="mt-3">인사말</label>
                     <textarea class="form-control form-control-sm d-flex" placeholder="인사말"
-                              name="greetingsTitle"></textarea>
+                              name="greetingsTitle" th:value="*{greetingsTitle}"></textarea>
                 </div>
 
                 <div class="greetings mt-5">
                     <label class="mt-3">글귀</label>
                     <textarea class="form-control form-control-sm d-flex"
-                              placeholder="150자 이내로 작성해주세요^^" name="greetingsBody"></textarea>
+                              placeholder="150자 이내로 작성해주세요^^" name="greetingsBody"
+                              th:value="*{greetingsBody}"></textarea>
                 </div>
 
                 <div class="greetings mt-5">
                     <label class="mt-3">인적사항</label>
                     <textarea class="form-control form-control-sm d-flex"
-                              placeholder="150자 이내로 작성해주세요^^" name="text"></textarea>
+                              placeholder="150자 이내로 작성해주세요^^" name="text" th:value="*{text}"></textarea>
                 </div>
 
                 <div class="notice mt-5">
                     <label class="mt-3">공지사항</label>
                     <textarea style="height: 100px;" class="form-control form-control-sm d-flex"
                               placeholder="자가용보다 대중교통이 편리해요와 같이 전하고 싶은 내용을 작성해 주세요. 전하고 싶은 내용을 작성해 주세요. 또는, 마무리 말씀을 써주셔도 돼요^^!* 150자 이내"
-                              name="notice"></textarea>
+                              name="notice" th:value="*{notice}"></textarea>
                 </div>
                 <div class="btn-area mt-5 mb-5">
                     <button class="btn btn-primary save-btn" type="submit">저장하기</button>
