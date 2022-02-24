@@ -3,7 +3,6 @@ package com.mobileinvitation.controller;
 import com.mobileinvitation.model.entity.ImageEntity;
 import com.mobileinvitation.model.entity.VideoEntity;
 import com.mobileinvitation.model.item.SaveInfoItem;
-import com.mobileinvitation.model.request.LoginUserReq;
 import com.mobileinvitation.model.request.SaveInfoReq;
 import com.mobileinvitation.model.response.LoginInfoRes;
 import com.mobileinvitation.service.MobileInvitationService;
@@ -26,7 +25,6 @@ public class MobileInvitationController {
     public ModelAndView information(@PathVariable("userName") String userId, @PathVariable("userPass") String userPw) throws Exception {
         ModelAndView modelAndView = new ModelAndView();
         LoginInfoRes loginUserRes = new LoginInfoRes();
-//        LoginInfoRes loginUserRes = mobileInvitationService.loginInfo(userId);
 
         modelAndView.addObject("loginInfo", loginUserRes);
         modelAndView.setViewName("information");

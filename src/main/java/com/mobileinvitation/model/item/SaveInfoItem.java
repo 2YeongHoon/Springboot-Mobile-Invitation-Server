@@ -21,6 +21,7 @@ public class SaveInfoItem {
     private String userPass;
     private String groomName;
     private String groomFather;
+    private String groomMather;
     private String groomRelation;
     private String groomPhone;
     private String groomBank;
@@ -60,6 +61,7 @@ public class SaveInfoItem {
                 .videoEntityList(videoEntityList)
                 .groomName(groomName)
                 .groomFather(groomFather)
+                .groomMather(groomMather)
                 .groomRelation(groomRelation)
                 .groomPhone(groomPhone)
                 .groomBank(groomBank)
@@ -91,6 +93,7 @@ public class SaveInfoItem {
         this.userPass = saveInfoReq.getUserPass();
         this.groomName = saveInfoReq.getGroomName();
         this.groomFather = saveInfoReq.getGroomFather();
+        this.groomMather = saveInfoReq.getGroomMather();
         this.groomRelation = saveInfoReq.getGroomRelation();
         this.groomPhone = saveInfoReq.getGroomPhone();
         this.groomBank = saveInfoReq.getGroomBank();

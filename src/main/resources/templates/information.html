@@ -152,13 +152,10 @@
                     <input type="text" class="form-control form-control-sm" name="sample6_postcode" placeholder="우편번호">
                     <input type="button" class="form-control form-control-sm" onclick="sample6_execDaumPostcode()"
                            value="우편번호 찾기">
-                    <input type="text" class="form-control form-control-sm" name="address" placeholder="주소">
+                    <input type="text" class="form-control form-control-sm" name="address" placeholder="주소"
+                           th:value="*{address}">
                     <input type="text" class="form-control form-control-sm" name="detailAddress"
                            placeholder="상세주소" th:value="*{detailAddress}">
-                    <input type="text" class="form-control form-control-sm" name="sample6_extraAddress"
-                           placeholder="참고항목">
-                    <!--      <input  class="form-control form-control-sm d-flex" placeholder="주소">-->
-                    <!--      <input  class="form-control form-control-sm d-flex" placeholder="상세주소">-->
                 </div>
 
                 <div class="location-info mt-5">
@@ -214,12 +211,6 @@
 <th:block layout:fragment="script">
     <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
     <script th:inline="javascript">
-        function mediaSave() {
-            let obj = {}
-
-            return obj;
-        }
-
         function infoSave() {
             let obj = {
                 "groomName": document.getElementById("groomName").value,
@@ -242,12 +233,6 @@
         }
 
         function save(res) {
-            // let media = mediaSave();
-            // let info = infoSave();
-            // let userName = [[${userName}]];
-            // let
-            // console.log("userName: ", userName);
-
             $.ajax({
                 type: "POST",
                 url: "/upload",
@@ -258,18 +243,12 @@
                 data: {
                     image: $('#image').val()
                 },
-                // beforeSend: function () {
-                //     console.log('Ajax submit beforeSend');
-                // },
                 success: function (data) {
                     console.log('Ajax submit success');
                 },
                 error: function (data) {
                     console.log('Ajax submit error');
                 },
-                // complete: function () {
-                //     console.log('Ajax submit complete');
-                // }
             });
         }
 
