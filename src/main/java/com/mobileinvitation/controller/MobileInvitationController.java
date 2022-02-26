@@ -1,5 +1,6 @@
 package com.mobileinvitation.controller;
 
+import com.mobileinvitation.S3.service.S3UploaderService;
 import com.mobileinvitation.model.entity.ImageEntity;
 import com.mobileinvitation.model.entity.VideoEntity;
 import com.mobileinvitation.model.item.SaveInfoItem;
@@ -20,6 +21,7 @@ import java.util.List;
 @Controller
 public class MobileInvitationController {
     private final MobileInvitationService mobileInvitationService;
+    private final S3UploaderService s3UploaderService;
 
     @GetMapping(value = "/information/{userName}/{userPass}")
     public ModelAndView information(@PathVariable("userName") String userId, @PathVariable("userPass") String userPw) throws Exception {
@@ -58,8 +60,13 @@ public class MobileInvitationController {
         List<VideoEntity> videoEntityList = new ArrayList<>();
         List<ImageEntity> imageEntityList = new ArrayList<>();
 
-        imageEntityList = mobileInvitationService.imageFileUpload(saveInfoReq.getImage());
-        videoEntityList = mobileInvitationService.videoFileUpload(saveInfoReq.getVideo());
+//        // Local Save
+//        imageEntityList = mobileInvitationService.imageFileUpload(saveInfoReq.getImage());
+//        videoEntityList = mobileInvitationService.videoFileUpload(saveInfoReq.getVideo());
+
+        // S3 Save
+        imageEntityList = s3UploaderService.upload(saveInfoReq.getImage());
+//        videoEntityList = s3UploaderService.upload(saveInfoReq.getVideo());
 
         SaveInfoItem saveInfoItem = SaveInfoItem.builder()
                 .saveInfoReq(saveInfoReq)

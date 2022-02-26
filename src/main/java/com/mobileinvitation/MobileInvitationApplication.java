@@ -8,8 +8,9 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 @EnableJpaAuditing
 public class MobileInvitationApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(MobileInvitationApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(MobileInvitationApplication.class, args);
+    }
+	
 
 }
