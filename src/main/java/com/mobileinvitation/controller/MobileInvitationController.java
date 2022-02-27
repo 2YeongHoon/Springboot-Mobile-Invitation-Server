@@ -65,8 +65,8 @@ public class MobileInvitationController {
 //        videoEntityList = mobileInvitationService.videoFileUpload(saveInfoReq.getVideo());
 
         // S3 Save
-        imageEntityList = s3UploaderService.upload(saveInfoReq.getImage());
-//        videoEntityList = s3UploaderService.upload(saveInfoReq.getVideo());
+        imageEntityList = s3UploaderService.imageUpload(saveInfoReq.getImage());
+        videoEntityList = s3UploaderService.videoUpload(saveInfoReq.getVideo());
 
         SaveInfoItem saveInfoItem = SaveInfoItem.builder()
                 .saveInfoReq(saveInfoReq)

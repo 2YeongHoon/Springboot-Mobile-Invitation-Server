@@ -4,6 +4,7 @@ import com.amazonaws.services.s3.AmazonS3Client;
 import com.amazonaws.services.s3.model.CannedAccessControlList;
 import com.amazonaws.services.s3.model.PutObjectRequest;
 import com.mobileinvitation.model.entity.ImageEntity;
+import com.mobileinvitation.model.entity.VideoEntity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -23,23 +24,7 @@ public class S3UploaderService {
     @Value("${cloud.aws.s3.bucket}")
     public String bucket;
 
-//    public String upload(MultipartFile multipartFile) {
-//        File uploadFile = convert(multipartFile)  // 파일 변환할 수 없으면 에러
-//                .orElseThrow(() -> new IllegalArgumentException("error: MultipartFile -> File convert fail"));
-//
-//        return upload(uploadFile, dirName);
-//    }
-//
-//    // S3로 파일 업로드하기
-//    private String upload(File uploadFile, String dirName) {
-//        String fileName = dirName + "/" + UUID.randomUUID() + uploadFile.getName();   // S3에 저장된 파일 이름
-//        String uploadImageUrl = putS3(uploadFile, fileName); // s3로 업로드
-//        removeNewFile(uploadFile);
-//        return uploadImageUrl;
-//    }
-
-    // S3로 업로드
-    public List<ImageEntity> upload(List<MultipartFile> medias) throws Exception {
+    public List<ImageEntity> imageUpload(List<MultipartFile> medias) throws Exception {
         List<ImageEntity> imageEntityList = new ArrayList<>();
         String path = "D:\\mobile-invitation";
 
@@ -63,5 +48,31 @@ public class S3UploaderService {
             }
         }
         return imageEntityList;
+    }
+
+    public List<VideoEntity> videoUpload(List<MultipartFile> medias) throws Exception {
+        List<VideoEntity> videoEntityList = new ArrayList<>();
+        String path = "D:\\mobile-invitation";
+
+        for (MultipartFile media : medias) {
+            if (!media.isEmpty()) {
+                Date nowDate = new Date();
+                SimpleDateFormat time = new SimpleDateFormat("hhmmssSSSS");
+                String fileName = time.format(nowDate) + "_" + media.getOriginalFilename();
+                File file = new File(path, fileName);
+                media.transferTo(file);
+
+                amazonS3Client.putObject(new PutObjectRequest(bucket, fileName, file).withCannedAcl(CannedAccessControlList.PublicRead));
+
+                //TODO S3 업로드 위치 변경
+                VideoEntity videoEntity = VideoEntity.builder().
+                        videoPath(amazonS3Client.getUrl(bucket, fileName).toString()).
+                        videoName(fileName).
+                        build();
+                videoEntityList.add(videoEntity);
+                file.delete();
+            }
+        }
+        return videoEntityList;
     }
 }
