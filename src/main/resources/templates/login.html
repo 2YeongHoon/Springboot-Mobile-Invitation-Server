@@ -2,7 +2,36 @@
 <html lang="ko" xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <th:block layout:fragment="style">
+
     <style>
+        .login-stay-sign-in {
+            width: 465px;
+            height: 52px;
+
+            display: flex;
+            font-size: 15px;
+            color: #4e4e4e;
+            align-items: center;
+            justify-content: flex-start;
+        }
+
+        .login-stay-sign-in i {
+            font-size: 25px;
+            color: #9ba1a3;
+        }
+
+        .login-stay-sign-in span {
+            padding-left: 5px;
+            line-height: 25px;
+        }
+
+        .login-input-section-wrap {
+            padding-top: 60px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
         .login {
             width: 500px;
             margin: 200px auto auto auto;
@@ -17,11 +46,25 @@
         <title>login</title>
     </head>
     <body>
+
     <form action="login" method="post">
-        전화번호 : <input type="text" id="userName"><br>
-        패스워드 : <input type="password" id="userPass">
-        <input type="button" value="제작하기" onclick="login();">
+        <section class="login-input-section-wrap">
+            <div class="login-input-wrap">
+                <input type="text" placeholder="전화번호" id="userName"></input>
+            </div>
+            <div class="login-input-wrap password-wrap">
+                <input type="password" placeholder="Password" id="userPass"></input>
+            </div>
+            <div class="login-button-wrap">
+                <input type="button" value="제작하기" onclick="login();">
+            </div>
+        </section>
     </form>
+    <!--    <form action="login" method="post">-->
+    <!--        전화번호 : <input type="text" id="userName"><br>-->
+    <!--        패스워드 : <input type="password" id="userPass">-->
+    <!--        <input type="button" value="제작하기" onclick="login();">-->
+    <!--    </form>-->
     </body>
 </th:block>
 
