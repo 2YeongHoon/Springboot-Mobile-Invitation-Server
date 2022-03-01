@@ -4,8 +4,10 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.UUID;
 
 @Getter
 @Entity
@@ -14,9 +16,10 @@ import javax.persistence.*;
 @NoArgsConstructor
 public class UserEntity extends TimeEntity {
     @Id
-    @GeneratedValue
-    @Column(name = "user_id")
-    private Long idx;
+    @GeneratedValue(generator = "uuid2")
+    @Column(columnDefinition = "BINARY(16)", name = "user_id")
+    @GenericGenerator(name = "uuid2", strategy = "uuid2")
+    private UUID idx;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "weddinginfo_id")
