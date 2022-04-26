@@ -60,13 +60,14 @@ public class MobileInvitationController {
         List<VideoEntity> videoEntityList = new ArrayList<>();
         List<ImageEntity> imageEntityList = new ArrayList<>();
 
-//        // Local Save
-//        imageEntityList = mobileInvitationService.imageFileUpload(saveInfoReq.getImage());
-//        videoEntityList = mobileInvitationService.videoFileUpload(saveInfoReq.getVideo());
+        // Local Save
+        imageEntityList = mobileInvitationService.imageFileUpload(saveInfoReq.getImage());
+        videoEntityList = mobileInvitationService.videoFileUpload(saveInfoReq.getVideo());
+        
+//        // S3 Save
+//        imageEntityList = s3UploaderService.imageUpload(saveInfoReq.getImage());
+//        videoEntityList = s3UploaderService.videoUpload(saveInfoReq.getVideo());
 
-        // S3 Save
-        imageEntityList = s3UploaderService.imageUpload(saveInfoReq.getImage());
-        videoEntityList = s3UploaderService.videoUpload(saveInfoReq.getVideo());
 
         SaveInfoItem saveInfoItem = SaveInfoItem.builder()
                 .saveInfoReq(saveInfoReq)
