@@ -1,16 +1,14 @@
 package com.mobileinvitation.rest.controller;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.mobileinvitation.common.CommonResult;
-import com.mobileinvitation.form.model.request.LoginUserReq;
-import com.mobileinvitation.form.service.MobileInvitationService;
 import com.mobileinvitation.rest.model.entity.InformationEntity;
 import com.mobileinvitation.rest.model.entity.MemberEntity;
 import com.mobileinvitation.rest.model.request.SaveInfoRequest;
 import com.mobileinvitation.rest.service.MobileInvitationRestService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
@@ -18,7 +16,6 @@ import org.springframework.web.bind.annotation.*;
 public class MobileInvitationRestController {
 
   private final MobileInvitationRestService mobileInvitationRestService;
-  private final ObjectMapper objectMapper;
 
   @PostMapping("/save-info")
   public void saveInfo(@RequestBody SaveInfoRequest request) {
