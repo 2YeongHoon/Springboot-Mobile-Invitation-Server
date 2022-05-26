@@ -25,7 +25,6 @@ import lombok.NoArgsConstructor;
 public class InformationEntity {
 
   @Id
-  @Column(name = "weddinginfo_id")
   @GeneratedValue
   private Long idx;
 
