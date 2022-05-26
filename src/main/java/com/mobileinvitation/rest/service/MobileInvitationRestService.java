@@ -14,6 +14,13 @@ public class MobileInvitationRestService {
   private final InformationRepository informationRepository;
   private final MemberRepository memberRepository;
 
+  public InformationEntity findInfo(String phone, String password) {
+    MemberEntity member = memberRepository.findByPhoneAndPassword(phone, password);
+//    InformationEntity information = informationRepository.findByMember(member.getIdx());
+
+    return member.getInformation();
+  }
+
   public void saveMember(MemberEntity memberEntity) {
     memberRepository.save(memberEntity);
   }
