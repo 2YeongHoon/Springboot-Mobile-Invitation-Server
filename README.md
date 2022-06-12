@@ -3,7 +3,7 @@
 SpringBoot 모바일 청첩장 프로젝트
 
 ```
-1. LOCAL 설정 ( Docker 기반 )
+1. LOCAL 기반 설정 ( Docker 기반 )
  1.1 Docker DB 컨테이너 생성
    - docker run --name mobile-invitation-server-spring -e MYSQL_ROOT_PASSWORD=<root password> -d -p <connect port>:3306 mysql:latest
  1.2 Docker 접속 및 Database 생성
@@ -11,7 +11,7 @@ SpringBoot 모바일 청첩장 프로젝트
 ```
 
 ```
-2. AWS 설정 ( EC2 / RDS )
+2. AWS 기반 설정 ( EC2 / RDS )
  2.1 RDS 구축
   2.1.1 보안그룹 설정
     - EC2 -> RDS
@@ -25,6 +25,9 @@ SpringBoot 모바일 청첩장 프로젝트
    - sudo apt-get update
    - sudo apt-get install mysql-client
    - sudo apt-get install openjdk-11-jdk ( 배포 버전에 따라 설치 )
+```
+
+```
 3. 배포
  3.1 Build하기
   - intellij의 gradle build의 build 실행
@@ -36,6 +39,8 @@ SpringBoot 모바일 청첩장 프로젝트
  3.2 배포하기
   - java -jar 파일명.jar
 ```
-- LOCAL swagger 주소
+
+```
+4. LOCAL swagger 주소
 http://localhost:8080/swagger-ui/index.html
 ```
