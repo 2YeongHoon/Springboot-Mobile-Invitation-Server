@@ -18,6 +18,7 @@ SpringBoot 모바일 청첩장 프로젝트
     - LOCAL -> RDS ( For Build )
   2.1.2 Database 생성
     - CREATE DATABASE mobile_invitation
+ ※rds 접속방법 mysql -u <id> -p -h <rds endpoint>
  2.2 EC2 구축
   2.2.1 보안그룹 설정
    - PORT http / ssh / https / 8080
