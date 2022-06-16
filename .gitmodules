@@ -1,0 +1,3 @@
+[submodule "config"]
+	path = config
+	url = https://github.com/2YeongHoon/Springboot-Mobile-Invitation-Server-Properties.git
