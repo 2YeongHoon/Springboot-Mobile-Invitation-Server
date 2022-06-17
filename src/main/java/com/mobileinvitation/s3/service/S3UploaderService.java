@@ -2,6 +2,7 @@ package com.mobileinvitation.s3.service;
 
 import com.amazonaws.services.s3.AmazonS3Client;
 import com.amazonaws.services.s3.model.CannedAccessControlList;
+import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.PutObjectRequest;
 import com.mobileinvitation.form.model.entity.ImageEntity;
 import com.mobileinvitation.form.model.entity.VideoEntity;
@@ -10,7 +11,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -27,17 +27,14 @@ public class S3UploaderService {
 
   public List<ImageEntity> imageUpload(List<MultipartFile> medias) throws Exception {
     List<ImageEntity> imageEntityList = new ArrayList<>();
-    String path = "D:\\mobile-invitation";
 
     for (MultipartFile media : medias) {
       if (!media.isEmpty()) {
         Date nowDate = new Date();
         SimpleDateFormat time = new SimpleDateFormat("hhmmssSSSS");
         String fileName = time.format(nowDate) + "_" + media.getOriginalFilename();
-        File file = new File(path, fileName);
-        media.transferTo(file);
 
-        amazonS3Client.putObject(new PutObjectRequest(bucket, fileName, file).withCannedAcl(
+        amazonS3Client.putObject(new PutObjectRequest(bucket, fileName, media.getInputStream(), obtainMetadata(media)).withCannedAcl(
             CannedAccessControlList.PublicRead));
 
         //TODO S3 업로드 위치 변경
@@ -46,7 +43,6 @@ public class S3UploaderService {
             imageName(fileName).
             build();
         imageEntityList.add(imageEntity);
-        file.delete();
       }
     }
     return imageEntityList;
@@ -54,17 +50,14 @@ public class S3UploaderService {
 
   public List<VideoEntity> videoUpload(List<MultipartFile> medias) throws Exception {
     List<VideoEntity> videoEntityList = new ArrayList<>();
-    String path = "D:\\mobile-invitation";
 
     for (MultipartFile media : medias) {
       if (!media.isEmpty()) {
         Date nowDate = new Date();
         SimpleDateFormat time = new SimpleDateFormat("hhmmssSSSS");
         String fileName = time.format(nowDate) + "_" + media.getOriginalFilename();
-        File file = new File(path, fileName);
-        media.transferTo(file);
 
-        amazonS3Client.putObject(new PutObjectRequest(bucket, fileName, file).withCannedAcl(
+        amazonS3Client.putObject(new PutObjectRequest(bucket, fileName, media.getInputStream(), obtainMetadata(media)).withCannedAcl(
             CannedAccessControlList.PublicRead));
 
         //TODO S3 업로드 위치 변경
@@ -73,9 +66,15 @@ public class S3UploaderService {
             videoName(fileName).
             build();
         videoEntityList.add(videoEntity);
-        file.delete();
       }
     }
     return videoEntityList;
+  }
+
+  private ObjectMetadata obtainMetadata(MultipartFile multipartFile) {
+    ObjectMetadata metadata = new ObjectMetadata();
+    metadata.setContentLength(multipartFile.getSize());
+    metadata.setContentType(multipartFile.getContentType());
+    return metadata;
   }
 }
