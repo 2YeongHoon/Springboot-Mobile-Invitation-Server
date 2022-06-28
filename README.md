@@ -30,15 +30,23 @@ SpringBoot 모바일 청첩장 프로젝트
 
 ```
 3. 배포
- 3.1 Build하기
-  - intellij의 gradle build의 build 실행
-  - 프로젝트창 build / libs에 jar 생성
-  - filezilla로 jar파일 옮기기
- ※ 권한 문제 발생 시 해당 디렉토리에 권한 부여
-  - sudo chown -R ubuntu /home/ubuntu/deploy
-  - sudo chmod -R 755 /home/ubuntu/deploy
- 3.2 배포하기
-  - java -jar 파일명.jar
+ 3.1 수동배포
+  3.1.1 Build하기
+   - intellij의 gradle build의 build 실행
+   - 프로젝트창 build / libs에 jar 생성
+   - filezilla로 jar파일 옮기기
+  ※ 권한 문제 발생 시 해당 디렉토리에 권한 부여
+   - sudo chown -R ubuntu /home/ubuntu/deploy
+   - sudo chmod -R 755 /home/ubuntu/deploy
+  3.1.2 배포하기
+   - java -jar 파일명.jar
+   
+ 3.2 CI/CD
+ ※ 배포과정
+ ※ github main branch에 Push -> Webhooks 트리거 발생 -> Jenkins Server에서 수신 및 Build -> Deploy Server에 배포
+  3.2.1 Github Webhooks 설정
+  3.2.1 Jenkins
+   // TODO 설정 설명 추가.
 ```
 
 ```
