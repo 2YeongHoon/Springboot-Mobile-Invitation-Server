@@ -1,3 +1,5 @@
+[![Spring Boot & Gradle CI/CD](https://github.com/2YeongHoon/Jenkins-CICD-Practice/actions/workflows/gradle.yml/badge.svg)](https://github.com/2YeongHoon/Jenkins-CICD-Practice/actions/workflows/gradle.yml)
+
 # Springboot-Mobile-Invitation-Server
 
 SpringBoot 모바일 청첩장 프로젝트
