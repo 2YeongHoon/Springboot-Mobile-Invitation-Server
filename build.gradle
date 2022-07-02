@@ -8,10 +8,13 @@ group = 'com.mobileinvitation'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 
+
+
 configurations {
     compileOnly {
         extendsFrom annotationProcessor
     }
+
 }
 
 repositories {
@@ -34,4 +37,8 @@ dependencies {
 
 test {
     useJUnitPlatform()
+}
+
+jar {
+    enabled = false
 }
