@@ -13,6 +13,12 @@ on:
   pull_request:
     branches: [ "main" ]
 
+env:
+  AWS_REGION: ap-northeast-2
+  S3_BUCKET_NAME: springboot-mobileinvitation-build
+  CODE_DEPLOY_APPLICATION_NAME: codedeploy-app
+  CODE_DEPLOY_DEPLOYMENT_GROUP_NAME: codedeploy-deployment-group
+
 jobs:
   build:
     # 실행 환경 지정
@@ -32,28 +38,34 @@ jobs:
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
           
-      # Build
+    # Gradle build (Test 제외)
       - name: Build with Gradle
-        run: ./gradlew clean build
+        uses: gradle/gradle-build-action@0d13054264b0bb894ded474f08ebb30921341cee
+        with:
+          arguments: clean build -x test
 
-      # 전송할 파일을 담을 디렉토리 생성
-      - name: Make Directory for deliver
-        run: mkdir deploy
+    # AWS 인증
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_KEY }}
+          aws-region: ${{ env.AWS_REGION }}
 
-      # Jar 파일 Copy
-      - name: Copy Jar
-        run: cp ./build/libs/*.jar ./deploy/
-
-      # 압축파일 형태로 전달
-      - name: Make zip file
-        run: zip -r -qq -j ./springboot-mobileinvitation-build.zip ./deploy
-
-      # S3 Bucket으로 copy
-      - name: Deliver to AWS S3
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_KEY }}
+    # 빌드 결과물을 S3 버킷에 업로드
+      - name: Upload to AWS S3
         run: |
-          aws s3 cp \
-          --region ap-northeast-2 \
-          --acl private \ ./springboot-mobileinvitation-build.zip s3://springboot-mobileinvitation-build/
+          aws deploy push \
+            --application-name ${{ env.CODE_DEPLOY_APPLICATION_NAME }} \
+            --ignore-hidden-files \
+            --s3-location s3://$S3_BUCKET_NAME/$GITHUB_SHA.zip \
+            --source .
+
+    # S3 버킷에 있는 파일을 대상으로 CodeDeploy 실행
+      - name: Deploy to AWS EC2 from S3
+        run: |
+          aws deploy create-deployment \
+            --application-name ${{ env.CODE_DEPLOY_APPLICATION_NAME }} \
+            --deployment-config-name CodeDeployDefault.AllAtOnce \
+            --deployment-group-name ${{ env.CODE_DEPLOY_DEPLOYMENT_GROUP_NAME }} \
+            --s3-location bucket=$S3_BUCKET_NAME,key=$GITHUB_SHA.zip,bundleType=zip
