@@ -1,4 +1,4 @@
-[![Spring Boot & Gradle CI/CD](https://github.com/2YeongHoon/Jenkins-CICD-Practice/actions/workflows/gradle.yml/badge.svg)](https://github.com/2YeongHoon/Jenkins-CICD-Practice/actions/workflows/gradle.yml)
+[![Spring Boot & Gradle CI/CD](https://github.com/2YeongHoon/Springboot-Mobile-Invitation-Server/actions/workflows/cicd.yml/badge.svg)](https://github.com/2YeongHoon/Springboot-Mobile-Invitation-Server/actions/workflows/cicd.yml)
 
 # Springboot-Mobile-Invitation-Server
 
