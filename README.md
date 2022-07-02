@@ -42,12 +42,13 @@ SpringBoot 모바일 청첩장 프로젝트
    - sudo chmod -R 755 /home/ubuntu/deploy
   3.1.2 배포하기
    - java -jar 파일명.jar
+   ※ putty를 통해 접속하여 실행시키면 해당 putty종료시 해당 프로세스 종료
+   ※ nohup  java -jar 파일명.jar 1>/dev/null 2>&1 &
    
  3.2 CI/CD
  ※ 배포과정
- ※ github main branch에 Push -> Webhooks 트리거 발생 -> Jenkins Server에서 수신 및 Build -> Deploy Server에 배포
-  3.2.1 Github Webhooks 설정
-  3.2.1 Jenkins
+ ※ github main branch에 Push -> actions빌드 -> s3에 zip형태로 빌드파일 저장 -> CodeDeploy -> Deploy Server에 배포
+  3.2.1 git actions 설정
    // TODO 설정 설명 추가.
 ```
 
