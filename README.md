@@ -8,7 +8,7 @@
 ![Hibernate](https://img.shields.io/badge/Hibernate-5.6.14-orange.svg)
 [![Spring Boot & Gradle CI/CD](https://github.com/2YeongHoon/Springboot-Mobile-Invitation-Server/actions/workflows/cicd.yml/badge.svg)](https://github.com/2YeongHoon/Springboot-Mobile-Invitation-Server/actions/workflows/cicd.yml)
 
-모바일 청첩장 API서버업니다.
+모바일 청첩장 API서버입니다.
 
 # Swagger
 ```
