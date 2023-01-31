@@ -1,9 +1,44 @@
-[![Spring Boot & Gradle CI/CD](https://github.com/2YeongHoon/Springboot-Mobile-Invitation-Server/actions/workflows/cicd.yml/badge.svg)](https://github.com/2YeongHoon/Springboot-Mobile-Invitation-Server/actions/workflows/cicd.yml)
 
 # Springboot-Mobile-Invitation-Server
 
-SpringBoot 모바일 청첩장 프로젝트
 
+![Java](https://img.shields.io/badge/Java-11-red.svg)
+![Spring Boot](https://img.shields.io/badge/Spring%20Boot-2.7.6-green.svg)
+![JPA](https://img.shields.io/badge/Jpa-2.7.6-green.svg)
+![Hibernate](https://img.shields.io/badge/Hibernate-5.6.14-orange.svg)
+[![Spring Boot & Gradle CI/CD](https://github.com/2YeongHoon/Springboot-Mobile-Invitation-Server/actions/workflows/cicd.yml/badge.svg)](https://github.com/2YeongHoon/Springboot-Mobile-Invitation-Server/actions/workflows/cicd.yml)
+
+모바일 청첩장 API서버업니다.
+
+# Swagger
+```
+- local
+http://localhost:8080/swagger-ui/index.html
+```
+# Branch
+기본적으로 git-flow 전략을 따릅니다.
+```
+- `master`: 기준이 되는 브랜치로 제품을 배포하는 브랜치 입니다.
+
+- `main`: refactoring 이전 브랜치 입니다.
+
+- `develop`: 개발 브랜치로 개발자들이 이 브랜치를 기준으로 각자 작업한 기능들을 합칩니다(Merge).
+
+- `feature/`: 단위 기능을 개발하는 브랜치로 기능 개발이 완료되면 "develop" 브랜치에 합칩니다.
+  - `${taskNum}`: 네이밍 규칙은 깃허브의 이슈번호로 생성합니다. 기능 개발 완료 후 "develop" 브랜치에 병합 후 제거됩니다.
+```
+# Commit Rules
+```
+NEW: 신규 파일 및 기능 추가
+IMP: 기능 개선
+SCH: 설정 변경
+CLN: 코드 정리 및 리팩토링
+BUG: 버그 픽스
+TST: 테스트
+DOC: 문서작업
+RMV: 삭제
+```
+# Build
 ```
 1. LOCAL 기반 설정 ( Docker 기반 )
  1.1 Docker DB 컨테이너 생성
@@ -50,9 +85,4 @@ SpringBoot 모바일 청첩장 프로젝트
  ※ github main branch에 Push -> actions빌드 -> s3에 zip형태로 빌드파일 저장 -> CodeDeploy -> Deploy Server에 배포
   3.2.1 git actions 설정
    // TODO 설정 설명 추가.
-```
-
-```
-4. LOCAL swagger 주소
-http://localhost:8080/swagger-ui/index.html
 ```
