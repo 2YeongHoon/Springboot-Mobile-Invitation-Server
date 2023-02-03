@@ -1,5 +1,7 @@
 package com.mobileinvitation.invitation.entity;
 
+import com.mobileinvitation.core.entity.RootEntity;
+import javax.persistence.Table;
 import lombok.*;
 
 import javax.persistence.Column;
@@ -7,13 +9,17 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
-@Entity
+/**
+ * 비디오 엔티티
+ *
+ * <pre>
+ * </pre>
+ * */
 @Getter
-@Setter
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
-public class VideoEntity {
+@Entity
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Table(name = "video")
+public class VideoEntity extends RootEntity {
 
   @Id
   @GeneratedValue

@@ -1,36 +1,36 @@
 package com.mobileinvitation.member.entity;
 
-import com.mobileinvitation.invitation.entity.InformationEntity;
+import com.mobileinvitation.core.entity.RootEntity;
+import com.mobileinvitation.invitation.entity.WeddingInfoEntity;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
+import javax.persistence.Table;
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+/**
+ * 회원 엔티티
+ *
+ * <pre>
+ * </pre>
+ * */
 @Getter
 @Entity
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
-public class MemberEntity {
-
-  @Id
-  @GeneratedValue
-  private Long idx;
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Table(name = "member")
+public class MemberEntity extends RootEntity {
 
   @OneToOne(cascade = CascadeType.ALL)
-  @JoinColumn(name = "information_id")
-  private InformationEntity information;
+  @JoinColumn(name = "weddinginfo_id")
+  private WeddingInfoEntity weddingInfo;
 
-  @Column(nullable = false, unique = true)
-  private String phone;
+  @Column(name = "content", nullable = false, unique = true)
+  private String memberId;
 
-  @Column(nullable = false, unique = true)
-  private String password;
+  @Column(nullable = false)
+  private String pass;
 }

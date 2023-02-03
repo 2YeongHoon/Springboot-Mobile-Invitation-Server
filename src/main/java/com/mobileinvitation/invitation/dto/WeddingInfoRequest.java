@@ -8,7 +8,7 @@ import lombok.Getter;
 
 @Getter
 @Builder
-public class SaveInfoRequest implements Serializable {
+public class WeddingInfoRequest implements Serializable {
 
   @NotBlank(message = "사용자 핸드폰번호를 입력해 주세요.")
   @Schema(description = "사용자 핸드폰번호", required = true)

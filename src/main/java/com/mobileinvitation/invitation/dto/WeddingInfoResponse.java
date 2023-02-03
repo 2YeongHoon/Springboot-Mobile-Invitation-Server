@@ -10,7 +10,7 @@ import lombok.Getter;
 @Getter
 @Builder
 @JsonInclude(Include.NON_EMPTY)
-public class FindInfoResponse implements Serializable {
+public class WeddingInfoResponse implements Serializable {
 
   @Schema(description = "신랑이름")
   private String manName;

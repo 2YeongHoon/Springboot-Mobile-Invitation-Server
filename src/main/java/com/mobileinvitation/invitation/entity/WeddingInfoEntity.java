@@ -1,19 +1,24 @@
 package com.mobileinvitation.invitation.entity;
 
-import com.mobileinvitation.member.entity.UserEntity;
+import com.mobileinvitation.core.entity.RootEntity;
+import com.mobileinvitation.member.entity.MemberEntity;
 import lombok.*;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity
+/**
+ * 웨딩정보 엔티티
+ *
+ * <pre>
+ * </pre>
+ * */
 @Getter
-@Setter
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
-public class WeddingInfoEntity {
+@Entity
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Table(name = "wedding_info")
+public class WeddingInfoEntity extends RootEntity {
 
   @Id
   @Column(name = "weddinginfo_id")
@@ -21,7 +26,7 @@ public class WeddingInfoEntity {
   private Long idx;
 
   @OneToOne(cascade = CascadeType.ALL, mappedBy = "weddingInfo")
-  private UserEntity user;
+  private MemberEntity user;
 
   @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
   @JoinColumn(name = "weddinginfo_idx")
