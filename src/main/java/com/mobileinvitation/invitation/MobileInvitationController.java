@@ -1,25 +1,29 @@
-package com.mobileinvitation.controller;
+package com.mobileinvitation.invitation;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.mobileinvitation.entity.InformationEntity;
-import com.mobileinvitation.entity.MemberEntity;
-import com.mobileinvitation.dto.request.SaveInfoRequest;
-import com.mobileinvitation.dto.response.FindInfoResponse;
-import com.mobileinvitation.service.MobileInvitationService;
+import com.mobileinvitation.invitation.dto.FindInfoResponse;
+import com.mobileinvitation.invitation.dto.SaveInfoRequest;
+import com.mobileinvitation.invitation.entity.InformationEntity;
+import com.mobileinvitation.invitation.service.MobileInvitationService;
+import com.mobileinvitation.member.entity.MemberEntity;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import javax.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.validation.Valid;
-
+/**
+ * 웨딩정보 컨트롤러
+ */
+@Tag(name = "웨딩정보")
+@RequestMapping("/wedding")
 @RestController
 @RequiredArgsConstructor
-@Slf4j
-public class MobileInvitationRestController {
+public class MobileInvitationController {
 
     private final MobileInvitationService mobileInvitationRestService;
     private final ObjectMapper objectMapper;

@@ -1,5 +1,6 @@
-package com.mobileinvitation.entity;
+package com.mobileinvitation.invitation.entity;
 
+import com.mobileinvitation.member.entity.MemberEntity;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;

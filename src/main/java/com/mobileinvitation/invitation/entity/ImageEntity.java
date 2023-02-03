@@ -1,4 +1,4 @@
-package com.mobileinvitation.entity;
+package com.mobileinvitation.invitation.entity;
 
 import lombok.*;
 

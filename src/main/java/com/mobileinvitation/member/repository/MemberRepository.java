@@ -1,6 +1,6 @@
-package com.mobileinvitation.repository;
+package com.mobileinvitation.member.repository;
 
-import com.mobileinvitation.entity.MemberEntity;
+import com.mobileinvitation.member.entity.MemberEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface MemberRepository extends JpaRepository<MemberEntity, Long> {

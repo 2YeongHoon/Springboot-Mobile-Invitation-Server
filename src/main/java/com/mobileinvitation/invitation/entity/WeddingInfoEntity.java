@@ -1,5 +1,6 @@
-package com.mobileinvitation.entity;
+package com.mobileinvitation.invitation.entity;
 
+import com.mobileinvitation.member.entity.UserEntity;
 import lombok.*;
 
 import javax.persistence.*;

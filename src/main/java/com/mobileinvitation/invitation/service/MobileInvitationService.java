@@ -1,9 +1,9 @@
-package com.mobileinvitation.service;
+package com.mobileinvitation.invitation.service;
 
-import com.mobileinvitation.entity.InformationEntity;
-import com.mobileinvitation.entity.MemberEntity;
-import com.mobileinvitation.repository.InformationRepository;
-import com.mobileinvitation.repository.MemberRepository;
+import com.mobileinvitation.invitation.entity.InformationEntity;
+import com.mobileinvitation.member.entity.MemberEntity;
+import com.mobileinvitation.invitation.repository.InformationRepository;
+import com.mobileinvitation.member.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -16,8 +16,6 @@ public class MobileInvitationService {
 
   public InformationEntity findInfo(String phone, String password) {
     MemberEntity member = memberRepository.findByPhoneAndPassword(phone, password);
-//    InformationEntity information = informationRepository.findByMember(member.getIdx());
-
     return member.getInformation();
   }
 

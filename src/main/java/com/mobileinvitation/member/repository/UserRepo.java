@@ -1,6 +1,6 @@
-package com.mobileinvitation.repository;
+package com.mobileinvitation.member.repository;
 
-import com.mobileinvitation.entity.UserEntity;
+import com.mobileinvitation.member.entity.UserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

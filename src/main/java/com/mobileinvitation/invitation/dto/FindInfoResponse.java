@@ -1,4 +1,4 @@
-package com.mobileinvitation.dto.response;
+package com.mobileinvitation.invitation.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;

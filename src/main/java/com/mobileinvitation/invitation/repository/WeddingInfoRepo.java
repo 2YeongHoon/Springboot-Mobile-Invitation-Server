@@ -1,6 +1,6 @@
-package com.mobileinvitation.repository;
+package com.mobileinvitation.invitation.repository;
 
-import com.mobileinvitation.entity.WeddingInfoEntity;
+import com.mobileinvitation.invitation.entity.WeddingInfoEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface WeddingInfoRepo extends JpaRepository<WeddingInfoEntity, Long> {

@@ -1,4 +1,4 @@
-package com.mobileinvitation.dto.request;
+package com.mobileinvitation.invitation.dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.Serializable;
