@@ -20,94 +20,88 @@ import java.util.List;
 @Table(name = "wedding_info")
 public class WeddingInfoEntity extends RootEntity {
 
-  @Id
-  @Column(name = "weddinginfo_id")
-  @GeneratedValue
-  private Long idx;
-
   @OneToOne(cascade = CascadeType.ALL, mappedBy = "weddingInfo")
   private MemberEntity user;
 
-  @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-  @JoinColumn(name = "weddinginfo_idx")
+  @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+  @JoinColumn(name = "weddinginfo_id")
   private List<VideoEntity> videoEntityList = new ArrayList<>();
 
-  @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-  @JoinColumn(name = "weddinginfo_idx")
+  @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+  @JoinColumn(name = "weddinginfo_id")
   private List<ImageEntity> imageEntityList = new ArrayList<>();
 
-  @Column
+  @Column(name = "groom_name")
   private String groomName;
 
-  @Column
+  @Column(name = "groom_father")
   private String groomFather;
 
-  @Column
+  @Column(name = "groom_mather")
   private String groomMather;
 
-  @Column // enum 설정필요
+  //TODO enum형태 변환
+  @Column(name = "groom_relation")
   private String groomRelation;
 
-  @Column
+  @Column(name = "groom_phone")
   private String groomPhone;
 
-  @Column
+  @Column(name = "groom_bank")
   private String groomBank;
 
-  @Column
+  @Column(name = "groom_account_own")
   private String groomAccountOwn;
 
-  @Column
+  @Column(name = "groom_account_num")
   private String groomAccountNum;
 
-  @Column
+  @Column(name = "bride_name")
   private String brideName;
 
-  @Column
+  @Column(name = "bride_father")
   private String brideFather;
 
-  @Column
+  @Column(name = "bride_mather")
   private String brideMather;
 
-  @Column // enum 설정필요
+  //TODO enum 타입 추가
+  @Column(name = "bride_relation")
   private String brideRelation;
 
-  @Column
+  @Column(name = "bride_phone")
   private String bridePhone;
 
-  @Column
+  @Column(name = "bride_bank")
   private String brideBank;
 
-  @Column
+  @Column(name = "bride_account_own")
   private String brideAccountOwn;
 
-  @Column
+  @Column(name = "bride_account_num")
   private String brideAccountNum;
 
-  @Column
+  @Column(name = "wedding_hall")
   private String weddingHall;
 
-  @Column
+  @Column(name = "detail_address")
   private String detailAddress;
 
-  @Column
+  @Column(name = "address")
   private String address;
 
-  @Column
-  private String wayToCome;
-
-  @Column
+  @Column(name = "wedding_date")
   private String weddingDate;
 
-  @Column
+  @Column(name = "greetings_title")
   private String greetingsTitle;
 
-  @Column
+  @Column(name = "greetings_body")
   private String greetingsBody;
 
-  @Column
+  @Column(name = "text")
   private String text;
 
-  @Column
+  @Column(name = "notice")
   private String notice;
 }
