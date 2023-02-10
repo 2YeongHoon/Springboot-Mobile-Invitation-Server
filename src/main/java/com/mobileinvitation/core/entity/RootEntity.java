@@ -18,8 +18,10 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
  * 최상위 엔티티
  *
  * <pre>
- * {@link #doctor} 의사 엔티티
- * {@link #content} 즐겨쓰는 메시지
+ * {@link #createId} 생성ID
+ * {@link #createDt} 생성일
+ * {@link #updateId} 업데이트ID
+ * {@link #updateDt} 업데이트일
  * </pre>
  * */
 @Getter
