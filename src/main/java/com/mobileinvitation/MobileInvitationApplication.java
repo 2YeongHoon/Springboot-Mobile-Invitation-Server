@@ -11,6 +11,4 @@ public class MobileInvitationApplication {
     public static void main(String[] args) {
         SpringApplication.run(MobileInvitationApplication.class, args);
     }
-	
-
 }
