@@ -17,7 +17,7 @@ import lombok.NoArgsConstructor;
  *
  * <pre>
  * </pre>
- * */
+ */
 @Getter
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -31,6 +31,6 @@ public class MemberEntity extends RootEntity {
   @Column(name = "content", nullable = false, unique = true)
   private String memberId;
 
-  @Column(nullable = false)
-  private String pass;
+  @Column(name = "password", nullable = false)
+  private String password;
 }

@@ -2,6 +2,7 @@ package com.mobileinvitation.core.entity;
 
 import java.time.LocalDateTime;
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,7 +24,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
  * {@link #updateId} 업데이트ID
  * {@link #updateDt} 업데이트일
  * </pre>
- * */
+ */
 @Getter
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
