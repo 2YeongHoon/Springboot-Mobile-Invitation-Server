@@ -2,7 +2,6 @@ package com.mobileinvitation.core.entity;
 
 import java.time.LocalDateTime;
 import javax.persistence.Column;
-import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
