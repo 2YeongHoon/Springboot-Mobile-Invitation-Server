@@ -1,5 +1,6 @@
 package com.mobileinvitation.invitation;
 
+import com.mobileinvitation.invitation.dto.WeddingInfoRequest;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
@@ -30,7 +31,8 @@ public class MobileInvitationController {
     })
     @PostMapping("{id}")
     public ResponseEntity<Void> registerWeddingInfo(
-        @PathVariable("id") Long memberId) {
+        @PathVariable("id") String memberId,
+        WeddingInfoRequest request) {
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
@@ -42,7 +44,8 @@ public class MobileInvitationController {
     })
     @GetMapping("{id}")
     public ResponseEntity<Void> retrieveWeddingInfo(
-        @PathVariable("id") Long memberId) {
+        @PathVariable("id") String memberId) {
+
         return ResponseEntity.status(HttpStatus.OK).build();
     }
 }

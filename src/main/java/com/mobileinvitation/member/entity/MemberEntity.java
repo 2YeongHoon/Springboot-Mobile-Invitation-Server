@@ -17,7 +17,7 @@ import lombok.NoArgsConstructor;
  *
  * <pre>
  * </pre>
- * */
+ */
 @Getter
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -25,12 +25,12 @@ import lombok.NoArgsConstructor;
 public class MemberEntity extends RootEntity {
 
   @OneToOne(cascade = CascadeType.ALL)
-  @JoinColumn(name = "weddinginfo_id")
+  @JoinColumn(name = "wedding_info_id")
   private WeddingInfoEntity weddingInfo;
 
   @Column(name = "content", nullable = false, unique = true)
   private String memberId;
 
-  @Column(nullable = false)
-  private String pass;
+  @Column(name = "password", nullable = false)
+  private String password;
 }

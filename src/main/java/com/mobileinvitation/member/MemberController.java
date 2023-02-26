@@ -25,28 +25,27 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class MemberController {
 
-    @Operation(summary = "[미구현] 회원가입", tags = "회원")
-    @ResponseStatus(value = HttpStatus.CREATED)
-    @ApiResponses(value = {
-        @ApiResponse(responseCode = "201", description = "Created"),
-    })
-    @PostMapping("{id}/password/{password}")
-    public ResponseEntity<Void> registerMember(
-        @PathVariable("id") Long memberId,
-        @PathVariable("password") Long passwordId) {
-        return ResponseEntity.status(HttpStatus.CREATED).build();
-    }
+  @Operation(summary = "[미구현] 회원가입", tags = "회원")
+  @ResponseStatus(value = HttpStatus.CREATED)
+  @ApiResponses(value = {
+      @ApiResponse(responseCode = "201", description = "Created"),
+  })
+  @PostMapping("{id}/password/{password}")
+  public ResponseEntity<Void> registerMember(
+      @PathVariable("id") Long memberId,
+      @PathVariable("password") Long passwordId) {
+    return ResponseEntity.status(HttpStatus.CREATED).build();
+  }
 
-    @Operation(summary = "[미구현] 회원조회", tags = "회원")
-    @ResponseStatus(value = HttpStatus.OK)
-    @ApiResponses(value = {
-        @ApiResponse(responseCode = "200", description = "Success"),
-        @ApiResponse(responseCode = "404", description = "존재하는 회원이 없습니다.")
-    })
-    @GetMapping("{id}")
-    public ResponseEntity<Void> retrieveMember(
-        @PathVariable("id") Long memberId) {
-        return ResponseEntity.status(HttpStatus.CREATED).build();
-    }
-
+  @Operation(summary = "[미구현] 회원조회", tags = "회원")
+  @ResponseStatus(value = HttpStatus.OK)
+  @ApiResponses(value = {
+      @ApiResponse(responseCode = "200", description = "Success"),
+      @ApiResponse(responseCode = "404", description = "존재하는 회원이 없습니다.")
+  })
+  @GetMapping("{id}")
+  public ResponseEntity<Void> retrieveMember(
+      @PathVariable("id") Long memberId) {
+    return ResponseEntity.status(HttpStatus.CREATED).build();
+  }
 }
