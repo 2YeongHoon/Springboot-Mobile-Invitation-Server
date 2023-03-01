@@ -19,33 +19,35 @@ import org.springframework.web.bind.annotation.RestController;
  * 웨딩정보 컨트롤러
  */
 @Tag(name = "웨딩정보")
-@RequestMapping("/wedding")
+@RequestMapping("/wedding/member")
 @RestController
 @RequiredArgsConstructor
 public class MobileInvitationController {
 
-    @Operation(summary = "[미구현] 웨딩정보 저장", tags = "웨딩정보")
-    @ResponseStatus(value = HttpStatus.CREATED)
-    @ApiResponses(value = {
-        @ApiResponse(responseCode = "201", description = "Created"),
-    })
-    @PostMapping("{id}")
-    public ResponseEntity<Void> registerWeddingInfo(
-        @PathVariable("id") String memberId,
-        WeddingInfoRequest request) {
-        return ResponseEntity.status(HttpStatus.CREATED).build();
-    }
+  @Operation(summary = "웨딩정보 저장", tags = "웨딩정보")
+  @ResponseStatus(value = HttpStatus.CREATED)
+  @ApiResponses(value = {
+      @ApiResponse(responseCode = "201", description = "Created"),
+      @ApiResponse(responseCode = "404", description = "존재하는 회원이 없습니다.")
+  })
+  @PostMapping("{member-id}")
+  public ResponseEntity<Void> registerWeddingInfo(
+      @PathVariable("member-id") String memberId,
+      WeddingInfoRequest request) {
+    
+    return ResponseEntity.status(HttpStatus.CREATED).build();
+  }
 
-    @Operation(summary = "[미구현] 웨딩정보 조회", tags = "회원")
-    @ResponseStatus(value = HttpStatus.OK)
-    @ApiResponses(value = {
-        @ApiResponse(responseCode = "200", description = "Success"),
-        @ApiResponse(responseCode = "404", description = "존재하는 회원이 없습니다.")
-    })
-    @GetMapping("{id}")
-    public ResponseEntity<Void> retrieveWeddingInfo(
-        @PathVariable("id") String memberId) {
+  @Operation(summary = "[미구현] 웨딩정보 조회", tags = "웨딩정보")
+  @ResponseStatus(value = HttpStatus.OK)
+  @ApiResponses(value = {
+      @ApiResponse(responseCode = "200", description = "Success"),
+      @ApiResponse(responseCode = "404", description = "존재하는 회원이 없습니다.")
+  })
+  @GetMapping("{member-id}")
+  public ResponseEntity<Void> retrieveWeddingInfo(
+      @PathVariable("member-id") String memberId) {
 
-        return ResponseEntity.status(HttpStatus.OK).build();
-    }
+    return ResponseEntity.status(HttpStatus.OK).build();
+  }
 }
