@@ -1,16 +1,12 @@
 package com.mobileinvitation.invitation.dto;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import io.swagger.v3.oas.annotations.media.Schema;
-import java.io.Serializable;
 import lombok.Builder;
 import lombok.Getter;
 
 @Getter
 @Builder
-@JsonInclude(Include.NON_EMPTY)
-public class WeddingInfoResponse implements Serializable {
+public class WeddingInfoResponse {
 
   @Schema(description = "신랑이름")
   private String manName;

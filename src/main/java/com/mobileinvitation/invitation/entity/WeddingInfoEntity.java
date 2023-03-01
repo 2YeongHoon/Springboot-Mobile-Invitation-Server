@@ -2,6 +2,7 @@ package com.mobileinvitation.invitation.entity;
 
 import com.mobileinvitation.core.entity.RootEntity;
 import com.mobileinvitation.member.entity.MemberEntity;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -102,16 +103,13 @@ public class WeddingInfoEntity extends RootEntity {
   private String address;
 
   @Column(name = "wedding_date")
-  private String weddingDate;
+  private LocalDateTime weddingDate;
 
   @Column(name = "greetings_title")
   private String greetingsTitle;
 
   @Column(name = "greetings_body")
   private String greetingsBody;
-
-  @Column(name = "text")
-  private String text;
 
   @Column(name = "notice")
   private String notice;
