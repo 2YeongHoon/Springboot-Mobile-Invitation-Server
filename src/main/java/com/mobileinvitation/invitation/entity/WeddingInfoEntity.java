@@ -2,18 +2,26 @@ package com.mobileinvitation.invitation.entity;
 
 import com.mobileinvitation.core.entity.RootEntity;
 import com.mobileinvitation.member.entity.MemberEntity;
-import lombok.*;
-
-import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 /**
  * 웨딩정보 엔티티
  *
  * <pre>
  * </pre>
- * */
+ */
 @Getter
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -23,13 +31,16 @@ public class WeddingInfoEntity extends RootEntity {
   @OneToOne(cascade = CascadeType.ALL, mappedBy = "weddingInfo")
   private MemberEntity user;
 
-  @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-  @JoinColumn(name = "weddinginfo_id")
-  private List<VideoEntity> videoEntityList = new ArrayList<>();
-
-  @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-  @JoinColumn(name = "weddinginfo_id")
+  @OneToMany(
+      cascade = CascadeType.ALL
+      , fetch = FetchType.LAZY)
+  @JoinColumn(name = "wedding_info_id")
   private List<ImageEntity> imageEntityList = new ArrayList<>();
+
+  @OneToMany(cascade = CascadeType.ALL
+      , fetch = FetchType.LAZY)
+  @JoinColumn(name = "wedding_info_id")
+  private List<VideoEntity> videoEntityList = new ArrayList<>();
 
   @Column(name = "groom_name")
   private String groomName;

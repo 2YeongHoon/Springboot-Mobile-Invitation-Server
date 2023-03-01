@@ -23,7 +23,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
  * {@link #updateId} 업데이트ID
  * {@link #updateDt} 업데이트일
  * </pre>
- * */
+ */
 @Getter
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
