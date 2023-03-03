@@ -1,6 +1,8 @@
 package com.mobileinvitation.invitation.entity;
 
 import com.mobileinvitation.core.entity.RootEntity;
+import com.mobileinvitation.invitation.dto.WeddingInfoRequest;
+import com.mobileinvitation.invitation.enums.Family;
 import com.mobileinvitation.member.entity.MemberEntity;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -10,10 +12,14 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -23,25 +29,17 @@ import lombok.NoArgsConstructor;
  * <pre>
  * </pre>
  */
-@Getter
 @Entity
+@Getter
+@Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor
 @Table(name = "wedding_info")
 public class WeddingInfoEntity extends RootEntity {
 
-  @OneToOne(cascade = CascadeType.ALL, mappedBy = "weddingInfo")
-  private MemberEntity user;
-
-  @OneToMany(
-      cascade = CascadeType.ALL
-      , fetch = FetchType.LAZY)
-  @JoinColumn(name = "wedding_info_id")
-  private List<ImageEntity> imageEntityList = new ArrayList<>();
-
-  @OneToMany(cascade = CascadeType.ALL
-      , fetch = FetchType.LAZY)
-  @JoinColumn(name = "wedding_info_id")
-  private List<VideoEntity> videoEntityList = new ArrayList<>();
+  @ManyToOne(cascade = CascadeType.ALL)
+  @JoinColumn(name = "member_id", referencedColumnName = "id")
+  private MemberEntity member;
 
   @Column(name = "groom_name")
   private String groomName;
@@ -52,9 +50,8 @@ public class WeddingInfoEntity extends RootEntity {
   @Column(name = "groom_mather")
   private String groomMather;
 
-  //TODO enum형태 변환
   @Column(name = "groom_relation")
-  private String groomRelation;
+  private Family groomRelation;
 
   @Column(name = "groom_phone")
   private String groomPhone;
@@ -77,9 +74,8 @@ public class WeddingInfoEntity extends RootEntity {
   @Column(name = "bride_mather")
   private String brideMather;
 
-  //TODO enum 타입 추가
   @Column(name = "bride_relation")
-  private String brideRelation;
+  private Family brideRelation;
 
   @Column(name = "bride_phone")
   private String bridePhone;
@@ -113,4 +109,33 @@ public class WeddingInfoEntity extends RootEntity {
 
   @Column(name = "notice")
   private String notice;
+
+  private WeddingInfoEntity(MemberEntity memberId, WeddingInfoRequest request){
+    this.member = memberId;
+    this.groomName = request.getGroomName();
+    this.groomFather = request.getGroomFather();
+    this.groomMather = request.getGroomMather();
+    this.groomRelation = request.getGroomRelation();
+    this.groomPhone = request.getGroomPhone();
+    this.groomBank = request.getGroomBank();
+    this.groomAccountOwn = request.getGroomAccountOwn();
+    this.groomAccountNum = request.getGroomAccountNum();
+    this.brideName = request.getBrideName();
+    this.brideFather = request.getBrideFather();
+    this.brideMather = request.getBrideMather();
+    this.brideRelation = request.getBrideRelation();
+    this.bridePhone = request.getBridePhone();
+    this.brideBank = request.getBrideBank();
+    this.brideAccountOwn = request.getBrideAccountOwn();
+    this.brideAccountNum = request.getBrideAccountNum();
+    this.weddingHall = request.getWeddingHall();
+    this.detailAddress = request.getDetailAddress();
+    this.weddingDate = request.getWeddingDate();
+    this.greetingsTitle = request.getGreetingsTitle();
+    this.greetingsBody = request.getGreetingsBody();
+    this.notice = request.getNotice();
+  }
+  public static WeddingInfoEntity of(MemberEntity memberId, WeddingInfoRequest request){
+    return  new WeddingInfoEntity(memberId, request);
+  }
 }

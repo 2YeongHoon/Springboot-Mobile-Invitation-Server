@@ -3,9 +3,15 @@ package com.mobileinvitation.invitation.dto;
 import com.mobileinvitation.invitation.enums.Family;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.time.LocalDateTime;
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+@Setter
 @Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Schema(description = "웨딩정보 저장 요청데이터")
 public class WeddingInfoRequest {
 
   @Schema(description = "신랑이름", example = "이두", required = true)

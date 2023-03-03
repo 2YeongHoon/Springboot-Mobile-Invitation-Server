@@ -1,11 +1,14 @@
 package com.mobileinvitation.invitation.entity;
 
 import com.mobileinvitation.core.entity.RootEntity;
-import com.mobileinvitation.core.entity.utils.YesOrNo;
+import com.mobileinvitation.core.entity.enums.YesOrNo;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.persistence.criteria.Root;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,6 +24,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Table(name = "image")
 public class ImageEntity extends RootEntity {
+
+  @ManyToOne(
+      cascade = CascadeType.ALL
+      , fetch = FetchType.LAZY)
+  @JoinColumn(name = "wedding_info_id")
+  private WeddingInfoEntity weddingInfoId;
 
   @Column(name = "name", nullable = false)
   private String name;

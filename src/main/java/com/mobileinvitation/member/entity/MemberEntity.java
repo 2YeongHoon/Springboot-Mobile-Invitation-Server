@@ -6,6 +6,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import lombok.AccessLevel;
@@ -23,10 +24,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Table(name = "member")
 public class MemberEntity extends RootEntity {
-
-  @OneToOne(cascade = CascadeType.ALL)
-  @JoinColumn(name = "wedding_info_id")
-  private WeddingInfoEntity weddingInfo;
 
   @Column(name = "content", nullable = false, unique = true)
   private String memberId;

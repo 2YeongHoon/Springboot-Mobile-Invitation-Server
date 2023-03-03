@@ -1,6 +1,7 @@
 package com.mobileinvitation.invitation;
 
 import com.mobileinvitation.invitation.dto.WeddingInfoRequest;
+import com.mobileinvitation.invitation.service.ChangeWeddingInfoService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
@@ -24,6 +25,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class MobileInvitationController {
 
+  private final ChangeWeddingInfoService changeWeddingInfoService;
+
   @Operation(summary = "웨딩정보 저장", tags = "웨딩정보")
   @ResponseStatus(value = HttpStatus.CREATED)
   @ApiResponses(value = {
@@ -32,9 +35,10 @@ public class MobileInvitationController {
   })
   @PostMapping("{member-id}")
   public ResponseEntity<Void> registerWeddingInfo(
-      @PathVariable("member-id") String memberId,
+      @PathVariable("member-id") Long memberId,
       WeddingInfoRequest request) {
-    
+
+    changeWeddingInfoService.save(memberId, request);
     return ResponseEntity.status(HttpStatus.CREATED).build();
   }
 
