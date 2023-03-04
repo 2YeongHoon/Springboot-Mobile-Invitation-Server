@@ -3,6 +3,7 @@ package com.mobileinvitation.invitation.service;
 import com.mobileinvitation.invitation.dto.WeddingInfoRequest;
 import com.mobileinvitation.invitation.entity.WeddingInfoEntity;
 import com.mobileinvitation.member.entity.MemberEntity;
+import com.mobileinvitation.member.service.RetrieveMemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,12 +16,12 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 public class ChangeWeddingInfoService {
 
-    private final MobileInvitationService mobileInvitationService;
+  private final MobileInvitationService mobileInvitationService;
+  private final RetrieveMemberService retrieveMemberService;
 
-    public void save(Long memberId, WeddingInfoRequest request){
-        //TODO member 조회
-        MemberEntity member = null;
-        WeddingInfoEntity weddingInfoEntity = WeddingInfoEntity.of(member, request);
-        mobileInvitationService.save(weddingInfoEntity);
-    }
+  public void save(Long memberId, WeddingInfoRequest request) {
+    MemberEntity member = retrieveMemberService.findByMemberId(memberId);
+    WeddingInfoEntity weddingInfoEntity = WeddingInfoEntity.of(member, request);
+    mobileInvitationService.save(weddingInfoEntity);
+  }
 }
