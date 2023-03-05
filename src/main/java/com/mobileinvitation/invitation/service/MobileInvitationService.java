@@ -1,7 +1,6 @@
 package com.mobileinvitation.invitation.service;
 
-import com.mobileinvitation.invitation.dto.WeddingInfoRequest;
-import com.mobileinvitation.invitation.entity.WeddingInfoEntity;
+import com.mobileinvitation.invitation.entity.WeddingInfo;
 import com.mobileinvitation.invitation.repository.WeddingInfoEntityRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -13,13 +12,13 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class MobileInvitationService {
 
-    private final WeddingInfoEntityRepository weddingInfoEntityRepository;
+  private final WeddingInfoEntityRepository weddingInfoEntityRepository;
 
-    public void save(WeddingInfoEntity entity){
-        weddingInfoEntityRepository.save(entity);
-    }
+  public void save(WeddingInfo entity) {
+    weddingInfoEntityRepository.save(entity);
+  }
 
-    public WeddingInfoEntity findWeddingInfoByMemberId(Long memberId){
-        return null;
-    }
+  public WeddingInfo findWeddingInfoByMemberId(Long memberId) {
+    return null;
+  }
 }

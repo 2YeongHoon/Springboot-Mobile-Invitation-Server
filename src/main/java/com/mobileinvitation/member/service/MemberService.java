@@ -1,6 +1,6 @@
 package com.mobileinvitation.member.service;
 
-import com.mobileinvitation.member.entity.MemberEntity;
+import com.mobileinvitation.member.entity.Member;
 import com.mobileinvitation.member.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -16,7 +16,7 @@ public class MemberService {
 
   private final MemberRepository memberRepository;
 
-  public MemberEntity findByMemberId(Long memberId) {
+  public Member findByMemberId(Long memberId) {
     return memberRepository.getById(memberId);
   }
 }

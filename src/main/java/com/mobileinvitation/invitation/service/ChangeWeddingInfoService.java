@@ -1,8 +1,8 @@
 package com.mobileinvitation.invitation.service;
 
 import com.mobileinvitation.invitation.dto.WeddingInfoRequest;
-import com.mobileinvitation.invitation.entity.WeddingInfoEntity;
-import com.mobileinvitation.member.entity.MemberEntity;
+import com.mobileinvitation.invitation.entity.WeddingInfo;
+import com.mobileinvitation.member.entity.Member;
 import com.mobileinvitation.member.service.RetrieveMemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -20,8 +20,8 @@ public class ChangeWeddingInfoService {
   private final RetrieveMemberService retrieveMemberService;
 
   public void save(Long memberId, WeddingInfoRequest request) {
-    MemberEntity member = retrieveMemberService.findByMemberId(memberId);
-    WeddingInfoEntity weddingInfoEntity = WeddingInfoEntity.of(member, request);
+    Member member = retrieveMemberService.findByMemberId(memberId);
+    WeddingInfo weddingInfoEntity = WeddingInfo.of(member, request);
     mobileInvitationService.save(weddingInfoEntity);
   }
 }

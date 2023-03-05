@@ -3,19 +3,13 @@ package com.mobileinvitation.invitation.entity;
 import com.mobileinvitation.core.entity.RootEntity;
 import com.mobileinvitation.invitation.dto.WeddingInfoRequest;
 import com.mobileinvitation.invitation.enums.Family;
-import com.mobileinvitation.member.entity.MemberEntity;
+import com.mobileinvitation.member.entity.Member;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -35,11 +29,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 @Table(name = "wedding_info")
-public class WeddingInfoEntity extends RootEntity {
+public class WeddingInfo extends RootEntity {
 
   @ManyToOne(cascade = CascadeType.ALL)
   @JoinColumn(name = "member_id", referencedColumnName = "id")
-  private MemberEntity member;
+  private Member member;
 
   @Column(name = "groom_name")
   private String groomName;
@@ -110,7 +104,7 @@ public class WeddingInfoEntity extends RootEntity {
   @Column(name = "notice")
   private String notice;
 
-  private WeddingInfoEntity(MemberEntity memberId, WeddingInfoRequest request){
+  private WeddingInfo(Member memberId, WeddingInfoRequest request) {
     this.member = memberId;
     this.groomName = request.getGroomName();
     this.groomFather = request.getGroomFather();
@@ -135,7 +129,8 @@ public class WeddingInfoEntity extends RootEntity {
     this.greetingsBody = request.getGreetingsBody();
     this.notice = request.getNotice();
   }
-  public static WeddingInfoEntity of(MemberEntity memberId, WeddingInfoRequest request){
-    return  new WeddingInfoEntity(memberId, request);
+
+  public static WeddingInfo of(Member memberId, WeddingInfoRequest request) {
+    return new WeddingInfo(memberId, request);
   }
 }

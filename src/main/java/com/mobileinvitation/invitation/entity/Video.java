@@ -23,13 +23,13 @@ import lombok.NoArgsConstructor;
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Table(name = "video")
-public class VideoEntity extends RootEntity {
+public class Video extends RootEntity {
 
   @ManyToOne(cascade = CascadeType.ALL
       , fetch = FetchType.LAZY)
   @JoinColumn(name = "wedding_info_id")
-  private WeddingInfoEntity videoEntityList;
-  
+  private WeddingInfo videoEntityList;
+
   @Column(name = "name", nullable = false)
   private String name;
 
