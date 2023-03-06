@@ -1,34 +1,75 @@
 package com.mobileinvitation.config.swagger;
 
-import io.swagger.v3.oas.annotations.OpenAPIDefinition;
-import io.swagger.v3.oas.annotations.info.Info;
-import io.swagger.v3.oas.annotations.info.License;
-import io.swagger.v3.oas.annotations.servers.Server;
-import org.springdoc.core.GroupedOpenApi;
+import java.util.Collections;
+import java.util.List;
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.bind.annotation.RestController;
+import springfox.documentation.builders.ApiInfoBuilder;
+import springfox.documentation.builders.PathSelectors;
+import springfox.documentation.builders.RequestHandlerSelectors;
+import springfox.documentation.service.ApiInfo;
+import springfox.documentation.service.ApiKey;
+import springfox.documentation.service.AuthorizationScope;
+import springfox.documentation.service.SecurityReference;
+import springfox.documentation.spi.DocumentationType;
+import springfox.documentation.spi.service.contexts.SecurityContext;
+import springfox.documentation.spring.web.plugins.Docket;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
-@OpenAPIDefinition(
-    info = @Info(title = "API 명세서",
-        description = "API 명세서",
-        version = "v1",
-//        contact = @Contact(name = "", email = ""),
-        license = @License(name = "Apache 2.0",
-            url = "http://www.apache.org/licenses/LICENSE-2.0.html")
-    ),
-    servers = {
-        @Server(url = "http://localhost:8080/", description = "local")
-        // dev 등등 필요시 추가
-    }
-)
+/**
+ * Swagger 설정 접속주소
+ * <a href="http://localhost:5656/swagger-ui/">swagger</a>
+ */
+@EnableSwagger2
 @Configuration
+@RequiredArgsConstructor
 public class SwaggerConfig {
 
+//    @Value("${custom.version}")
+//    private String VERSION;
+//
+//    @Value("${custom.title}")
+//    private String TITLE;
+
   @Bean
-  public GroupedOpenApi infoOpenApi() {
-    String[] paths = {"/**"};
-    return GroupedOpenApi.builder().group("rest Controller API").pathsToMatch(paths)
+  public Docket api() {
+    return new Docket(DocumentationType.OAS_30)
+        .apiInfo(apiInfo())
+        .pathMapping("/")
+        .securityContexts(Collections.singletonList(securityContext()))
+        .securitySchemes(Collections.singletonList(apiKey()))
+        .useDefaultResponseMessages(false)
+        .select()
+        .apis(RequestHandlerSelectors.withClassAnnotation(RestController.class))
+        .apis(RequestHandlerSelectors.any())
+        .paths(PathSelectors.any())
         .build();
   }
 
+  private ApiKey apiKey() {
+    return new ApiKey("Authorization", "Bearer", "header");
+  }
+
+  private SecurityContext securityContext() {
+    return SecurityContext.builder().securityReferences(defaultAuth()).build();
+  }
+
+  List<SecurityReference> defaultAuth() {
+    AuthorizationScope authorizationScope = new AuthorizationScope("global",
+        "accessEverything");
+    AuthorizationScope[] authorizationScopes = new AuthorizationScope[1];
+    authorizationScopes[0] = authorizationScope;
+    return List.of(new SecurityReference("Authorization", authorizationScopes));
+  }
+
+  private ApiInfo apiInfo() {
+    return new ApiInfoBuilder()
+        .title("Title")
+        .description("Connect doctors and patients")
+        .license("Ikoob. All rights reserved")
+        .version("1.0.0")
+        .build();
+  }
 }

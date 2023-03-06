@@ -1,5 +1,6 @@
 package com.mobileinvitation.invitation.service;
 
+import com.mobileinvitation.invitation.entity.WeddingInfo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -12,4 +13,9 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 public class RetrieveWeddingInfoService {
 
+  private final MobileInvitationService mobileInvitationService;
+
+  public WeddingInfo getWeddingInfo(Long memberId) {
+    return mobileInvitationService.findWeddingInfoByMemberId(memberId);
+  }
 }

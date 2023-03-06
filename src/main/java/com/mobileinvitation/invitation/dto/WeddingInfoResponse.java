@@ -1,47 +1,81 @@
 package com.mobileinvitation.invitation.dto;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.mobileinvitation.invitation.enums.Family;
 import io.swagger.v3.oas.annotations.media.Schema;
-import java.io.Serializable;
+import java.time.LocalDateTime;
 import lombok.Builder;
 import lombok.Getter;
 
 @Getter
-@Builder
-@JsonInclude(Include.NON_EMPTY)
-public class WeddingInfoResponse implements Serializable {
+@Schema(description = "웨딩정보 조회 응답데이터")
+public class WeddingInfoResponse {
 
   @Schema(description = "신랑이름")
-  private String manName;
+  private String groomName;
 
-  @Schema(description = "신부이름")
-  private String womanName;
+  @Schema(description = "신랑아버지")
+  private String groomFather;
 
-  @Schema(description = "신랑 아버지 이름")
-  private String manFather;
+  @Schema(description = "신랑어머니")
+  private String groomMather;
 
-  @Schema(description = "신랑 어머니 이름")
-  private String manMother;
+  @Schema(description = "신랑형제관계")
+  private Family groomRelation;
 
-  @Schema(description = "신부 아버지 이름")
-  private String womanFather;
+  @Schema(description = "신랑핸드폰")
+  private String groomPhone;
 
-  @Schema(description = "신부 어머니 이름")
-  private String womanMother;
+  @Schema(description = "신랑 은행명")
+  private String groomBank;
 
-  @Schema(description = "결혼식 날짜")
-  private String date;
+  @Schema(description = "예금주 명")
+  private String groomAccountOwn;
 
-  @Schema(description = "결혼식 시간")
-  private String time;
+  @Schema(description = "계좌번호")
+  private String groomAccountNum;
+
+  @Schema(description = "신부")
+  private String brideName;
+
+  @Schema(description = "신부아버지")
+  private String brideFather;
+
+  @Schema(description = "신부어머니")
+  private String brideMather;
+
+  @Schema(description = "신부형제관계")
+  private Family brideRelation;
+
+  @Schema(description = "신부핸드폰")
+  private String bridePhone;
+
+  @Schema(description = "은행명")
+  private String brideBank;
+
+  @Schema(description = "예금주명")
+  private String brideAccountOwn;
+
+  @Schema(description = "계좌번호")
+  private String brideAccountNum;
+
+  @Schema(description = "웨딩홀명")
+  private String weddingHall;
 
   @Schema(description = "주소")
-  private String add1;
+  private String address;
 
-  @Schema(description = "상세주소")
-  private String add2;
+  @Schema(description = "신랑어머니")
+  private String detailAddress;
 
-  @Schema(description = "글귀")
-  private String text;
+  @Schema(description = "결혼식날짜")
+  private LocalDateTime weddingDate;
+
+  @Schema(description = "인사말제목")
+  private String greetingsTitle;
+
+  @Schema(description = "인사말")
+  private String greetingsBody;
+
+  @Schema(description = "알림")
+  private String notice;
 }
